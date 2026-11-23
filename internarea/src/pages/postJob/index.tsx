@@ -11,9 +11,12 @@ import {
   Calendar,
 } from "lucide-react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "@/lib/api";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 const index = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     title: "",
     company: "",
@@ -42,17 +45,22 @@ const index = () => {
     e.preventDefault();
     const hasemptyfields = Object.values(formData).some((val) => !val.trim());
     if (hasemptyfields) {
-      toast.error("Please fill in all detials");
+      toast.error(t("post.fillAll"));
+      return;
+    }
+    const openings = Number(formData.numberOfOpening);
+    if (!Number.isInteger(openings) || openings < 1) {
+      toast.error(t("post.invalidOpenings"));
       return;
     }
     try {
       setisloading(true);
-      const res = await axios.post("https://internshala-clone-y2p2.onrender.com/api/job", formData);
-      toast.success("job posted successfuly");
+      const res = await axios.post(`${API_BASE_URL}/api/job`, formData);
+      toast.success(t("post.jobSuccess"));
       router.push("/adminpanel");
     } catch (error) {
       console.log(error);
-      toast.error("error posting job");
+      toast.error(t("post.failed"));
     } finally {
       setisloading(false);
     }
@@ -62,13 +70,13 @@ const index = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-gray-900">Post New Job</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t("post.jobTitle")}</h1>
             <p className="mt-2 text-sm text-gray-600">
-              Create a new job opportunity
+              {t("post.jobSubtitle")}
             </p>
           </div>
 
-          <form className="space-y-6" onSubmit={handlesubmit}>
+          <form className="space-y-6" onSubmit={handlesubmit} noValidate>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {/* Basic Information */}
               <div className="space-y-4">
@@ -76,7 +84,7 @@ const index = () => {
                   <label className="block text-sm font-medium text-gray-700">
                     <div className="flex items-center mb-1">
                       <Briefcase className="h-4 w-4 mr-1" />
-                      Title*
+                      {t("post.fields.title")}*
                     </div>
                   </label>
                   <input
@@ -85,7 +93,7 @@ const index = () => {
                     value={formData.title}
                     onChange={handleChange}
                     className="text-black  mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                    placeholder="e.g. Frontend Developer Intern"
+                    placeholder={t("post.placeholders.titleJob")}
                   />
                 </div>
 
@@ -93,7 +101,7 @@ const index = () => {
                   <label className="block text-sm font-medium text-gray-700">
                     <div className="flex items-center mb-1">
                       <Building2 className="h-4 w-4 mr-1" />
-                      Company Name*
+                      {t("post.fields.company")}*
                     </div>
                   </label>
                   <input
@@ -102,7 +110,7 @@ const index = () => {
                     value={formData.company}
                     onChange={handleChange}
                     className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                    placeholder="e.g. Tech Solutions Inc"
+                    placeholder={t("post.placeholders.company")}
                   />
                 </div>
               </div>
@@ -112,7 +120,7 @@ const index = () => {
                   <label className="block text-sm font-medium text-gray-700">
                     <div className="flex items-center mb-1">
                       <MapPin className="h-4 w-4 mr-1" />
-                      Location*
+                      {t("post.fields.location")}*
                     </div>
                   </label>
                   <input
@@ -121,7 +129,7 @@ const index = () => {
                     value={formData.location}
                     onChange={handleChange}
                     className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                    placeholder="e.g. Mumbai, India"
+                    placeholder={t("post.placeholders.location")}
                   />
                 </div>
 
@@ -129,7 +137,7 @@ const index = () => {
                   <label className="block text-sm font-medium text-gray-700">
                     <div className="flex items-center mb-1">
                       <Tags className="h-4 w-4 mr-1" />
-                      Category*
+                      {t("post.fields.category")}*
                     </div>
                   </label>
                   <input
@@ -138,7 +146,7 @@ const index = () => {
                     value={formData.category}
                     onChange={handleChange}
                     className=" text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                    placeholder="e.g. Software Development"
+                    placeholder={t("post.placeholders.category")}
                   />
                 </div>
               </div>
@@ -150,7 +158,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Info className="h-4 w-4 mr-1" />
-                    About Company*
+                    {t("post.fields.aboutCompany")}*
                   </div>
                 </label>
                 <textarea
@@ -159,7 +167,7 @@ const index = () => {
                   onChange={handleChange}
                   rows={4}
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="Describe your company..."
+                  placeholder={t("post.placeholders.aboutCompany")}
                 />
               </div>
 
@@ -167,7 +175,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Briefcase className="h-4 w-4 mr-1" />
-                    About Job*
+                    {t("post.fields.aboutJob")}*
                   </div>
                 </label>
                 <textarea
@@ -176,7 +184,7 @@ const index = () => {
                   onChange={handleChange}
                   rows={4}
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="Describe the internship role..."
+                  placeholder={t("post.placeholders.aboutJob")}
                 />
               </div>
             </div>
@@ -187,7 +195,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Users className="h-4 w-4 mr-1" />
-                    Who Can Apply*
+                    {t("post.fields.whoCanApply")}*
                   </div>
                 </label>
                 <textarea
@@ -196,7 +204,7 @@ const index = () => {
                   onChange={handleChange}
                   rows={3}
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="Eligibility criteria..."
+                  placeholder={t("post.placeholders.whoCanApply")}
                 />
               </div>
 
@@ -204,7 +212,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Info className="h-4 w-4 mr-1" />
-                    Perks*
+                    {t("post.fields.perks")}*
                   </div>
                 </label>
                 <textarea
@@ -213,7 +221,7 @@ const index = () => {
                   onChange={handleChange}
                   rows={3}
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="List the perks..."
+                  placeholder={t("post.placeholders.perks")}
                 />
               </div>
             </div>
@@ -224,7 +232,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Users className="h-4 w-4 mr-1" />
-                    Number of Openings*
+                    {t("post.fields.openings")}*
                   </div>
                 </label>
                 <input
@@ -234,7 +242,7 @@ const index = () => {
                   onChange={handleChange}
                   min="1"
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="e.g. 5"
+                  placeholder={t("post.placeholders.openings")}
                 />
               </div>
 
@@ -242,7 +250,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <DollarSign className="h-4 w-4 mr-1" />
-                    CTC*
+                    {t("post.fields.ctc")}*
                   </div>
                 </label>
                 <input
@@ -251,7 +259,7 @@ const index = () => {
                   value={formData.CTC}
                   onChange={handleChange}
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="e.g. ₹10 LPAn"
+                  placeholder={t("post.placeholders.ctc")}
                 />
               </div>
 
@@ -259,7 +267,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Calendar className="h-4 w-4 mr-1" />
-                    Start Date*
+                    {t("post.fields.startDate")}*
                   </div>
                 </label>
                 <input
@@ -275,7 +283,7 @@ const index = () => {
                 <label className="block text-sm font-medium text-gray-700">
                   <div className="flex items-center mb-1">
                     <Info className="h-4 w-4 mr-1" />
-                    Additional Information*
+                    {t("post.fields.additionalInfo")}*
                   </div>
                 </label>
                 <textarea
@@ -284,7 +292,7 @@ const index = () => {
                   onChange={handleChange}
                   rows={3}
                   className="text-black mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="Any additional details..."
+                  placeholder={t("post.placeholders.additionalInfo")}
                 />
               </div>
             </div>
@@ -298,10 +306,10 @@ const index = () => {
                 {isloading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>
-                    Posting job...
+                    {t("post.postingJob")}
                   </div>
                 ) : (
-                  "Post Job"
+                  t("post.postJob")
                 )}
               </button>
             </div>

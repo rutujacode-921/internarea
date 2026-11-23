@@ -2,8 +2,11 @@ import axios from "axios";
 import { Building2, Calendar, FileText, Loader2, User } from "lucide-react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "@/lib/api";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 const index = () => {
+  const { t, formatDate } = useLanguage();
   const router = useRouter();
   const { id } = router.query;
   const [loading, setloading] = useState(false);
@@ -13,7 +16,7 @@ const index = () => {
       try {
         setloading(true);
         const res = await axios.get(
-          `https://internshala-clone-y2p2.onrender.com/api/application/${id}`
+          `${API_BASE_URL}/api/application/${id}`
         );
         console.log(res.data);
         setdata(res.data);
@@ -32,7 +35,7 @@ const index = () => {
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         <span className="ml-2 text-gray-600">
-          Loading application details...
+          {t("applicationDetail.loading")}
         </span>
       </div>
     );
@@ -45,7 +48,7 @@ const index = () => {
             {/* Image Section */}
             <div className="relative">
               <img
-                alt="Applicant photo"
+                alt={t("applicationDetail.photoAlt")}
                 className="w-full h-full object-cover"
                 src={data?.user?.photo}
               />
@@ -60,7 +63,7 @@ const index = () => {
                   }`}
                 >
                   <span className="font-semibold capitalize">
-                    {data.status}
+                    {t(`applications.statusValues.${data.status}`)}
                   </span>
                 </div>
               )}
@@ -71,7 +74,7 @@ const index = () => {
               <div className="mb-8">
                 <div className="flex items-center mb-6">
                   <Building2 className="w-5 h-5 text-blue-600 mr-2" />
-                  <h2 className="text-sm font-medium text-gray-500">Company</h2>
+                  <h2 className="text-sm font-medium text-gray-500">{t("applicationDetail.company")}</h2>
                 </div>
                 <h1 className="text-2xl font-bold text-gray-900 mb-4">
                   {data.company}
@@ -82,7 +85,7 @@ const index = () => {
                 <div className="flex items-center mb-4">
                   <FileText className="w-5 h-5 text-blue-600 mr-2" />
                   <h2 className="text-sm font-medium text-gray-500">
-                    Cover Letter
+                    {t("applicationDetail.coverLetter")}
                   </h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
@@ -95,15 +98,11 @@ const index = () => {
                   <div className="flex items-center mb-2">
                     <Calendar className="w-5 h-5 text-blue-600 mr-2" />
                     <span className="text-sm font-medium text-gray-500">
-                      Application Date
+                      {t("applicationDetail.date")}
                     </span>
                   </div>
                   <p className="text-gray-900 font-semibold">
-                    {new Date(data.createdAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
+                    {formatDate(data.createdAt)}
                   </p>
                 </div>
 
@@ -111,7 +110,7 @@ const index = () => {
                   <div className="flex items-center mb-2">
                     <User className="w-5 h-5 text-blue-600 mr-2" />
                     <span className="text-sm font-medium text-gray-500">
-                      Applied By
+                      {t("applicationDetail.appliedBy")}
                     </span>
                   </div>
                   <p className="text-gray-900 font-semibold">

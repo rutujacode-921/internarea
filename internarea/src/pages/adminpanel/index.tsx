@@ -8,53 +8,55 @@ import {
   Settings
 } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/i18n/LanguageProvider';
 const index = () => {
+    const { t } = useLanguage();
     const stats = [
-        { label: 'Total Applications', value: '2,345', change: '+12%', changeType: 'positive' },
-        { label: 'Active Jobs', value: '45', change: '+3%', changeType: 'positive' },
-        { label: 'Active Internships', value: '89', change: '+24%', changeType: 'positive' },
-        { label: 'Conversion Rate', value: '5.25%', change: '-1.3%', changeType: 'negative' },
+        { label: t("admin.stats.totalApplications"), value: '2,345', change: '+12%', changeType: 'positive' },
+        { label: t("admin.stats.activeJobs"), value: '45', change: '+3%', changeType: 'positive' },
+        { label: t("admin.stats.activeInternships"), value: '89', change: '+24%', changeType: 'positive' },
+        { label: t("admin.stats.conversionRate"), value: '5.25%', change: '-1.3%', changeType: 'negative' },
       ];
     
       const menuItems = [
         {
-          title: 'View Applications',
-          description: 'View and manage all applications from candidates',
+          title: t("admin.menu.viewApplications"),
+          description: t("admin.menu.viewApplicationsDesc"),
           icon: Mail,
           link: '/applications',
           color: 'bg-blue-600',
         },
         {
-          title: 'Post Job',
-          description: 'Create and publish new job opportunities',
+          title: t("admin.menu.postJob"),
+          description: t("admin.menu.postJobDesc"),
           icon: Briefcase,
           link: '/postJob',
           color: 'bg-green-600',
         },
         {
-          title: 'Post Internship',
-          description: 'Create and manage internship positions',
+          title: t("admin.menu.postInternship"),
+          description: t("admin.menu.postInternshipDesc"),
           icon: Send,
           link: '/postInternship',
           color: 'bg-purple-600',
         },
         {
-          title: 'Manage Users',
-          description: 'View and manage user accounts',
+          title: t("admin.menu.manageUsers"),
+          description: t("admin.menu.manageUsersDesc"),
           icon: Users,
           link: '/users',
           color: 'bg-orange-600',
         },
         {
-          title: 'Analytics',
-          description: 'View detailed reports and statistics',
+          title: t("admin.menu.analytics"),
+          description: t("admin.menu.analyticsDesc"),
           icon: BarChart,
           link: '/analytics',
           color: 'bg-red-600',
         },
         {
-          title: 'Settings',
-          description: 'Configure system preferences',
+          title: t("admin.menu.settings"),
+          description: t("admin.menu.settingsDesc"),
           icon: Settings,
           link: '/settings',
           color: 'bg-gray-600',
@@ -65,9 +67,9 @@ const index = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900">{t("admin.dashboard")}</h1>
         <p className="mt-1 text-sm text-gray-500">
-          Manage your jobs, internships, and applications
+          {t("admin.dashboardSubtitle")}
         </p>
       </div>
 

@@ -1,21 +1,24 @@
 import { selectuser } from "@/Feature/Userslice";
-import { ExternalLink, Mail, User } from "lucide-react";
+import { ExternalLink, Globe, Mail, User } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-interface User {
-  name: string;
-  email: string;
-  photo: string;
-}
+import { useLanguage } from "@/i18n/LanguageProvider";
+import LanguageSwitcher from "@/Components/LanguageSwitcher";
+import LanguageHistory from "@/Components/LanguageHistory";
+
 const index = () => {
-  // const [user, setuser] = useState<User | null>({
-  //   name: "Rahul",
-  //   email: "xyz@gmail.com",
-  //   photo:
-  //     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=faces",
-  // });
-  const user=useSelector(selectuser)
+  const user = useSelector(selectuser);
+  const { t } = useLanguage();
+
+  if (!user) {
+    return (
+      <div className="min-h-[50vh] flex items-center justify-center bg-gray-50 px-4">
+        <p className="text-gray-600">{t("profile.signInPrompt")}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,20 +55,12 @@ const index = () => {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-blue-50 rounded-lg p-4 text-center">
-                  <span className="text-blue-600 font-semibold text-2xl">
-                    0
-                  </span>
-                  <p className="text-blue-600 text-sm mt-1">
-                    Active Applications
-                  </p>
+                  <span className="text-blue-600 font-semibold text-2xl">0</span>
+                  <p className="text-blue-600 text-sm mt-1">{t("profile.activeApplications")}</p>
                 </div>
                 <div className="bg-green-50 rounded-lg p-4 text-center">
-                  <span className="text-green-600 font-semibold text-2xl">
-                    0
-                  </span>
-                  <p className="text-green-600 text-sm mt-1">
-                    Accepted Applications
-                  </p>
+                  <span className="text-green-600 font-semibold text-2xl">0</span>
+                  <p className="text-green-600 text-sm mt-1">{t("profile.acceptedApplications")}</p>
                 </div>
               </div>
 
@@ -75,10 +70,28 @@ const index = () => {
                   href="/userapplication"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
                 >
-                  View Applications
+                  {t("profile.viewApplications")}
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
               </div>
+
+              {/* Language preference */}
+              <div className="rounded-lg border border-gray-200 p-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <h2 className="flex items-center gap-2 font-semibold text-gray-900">
+                      <Globe className="h-4 w-4 text-blue-600" />
+                      {t("profile.languageSection")}
+                    </h2>
+                    <p className="mt-1 text-sm text-gray-500">{t("profile.languageHelp")}</p>
+                  </div>
+                  <div className="sm:w-56">
+                    <LanguageSwitcher fullWidth />
+                  </div>
+                </div>
+              </div>
+
+              <LanguageHistory />
             </div>
           </div>
         </div>
