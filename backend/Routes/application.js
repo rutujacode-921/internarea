@@ -1,9 +1,24 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const application = require("../Model/Application");
+const { GeneratedResume } = require("../Model/Resume");
+const { optionalAuth } = require("../middleware/auth");
+const { sendError } = require("../utils/errors");
 
-router.post("/", async (req, res) => {
+router.post("/", optionalAuth, async (req, res) => {
+  // An attached resume must be one of the signed-in student's generated resumes.
+  let resume;
+  if (req.body.resumeId) {
+    if (!req.authUser) return sendError(req, res, 401, "UNAUTHORIZED");
+    const generated = mongoose.isValidObjectId(req.body.resumeId)
+      ? await GeneratedResume.findOne({ _id: req.body.resumeId, uid: req.authUser.uid }).select("title shareToken")
+      : null;
+    if (!generated) return sendError(req, res, 400, "RESUME_NOT_OWNED");
+    resume = { id: generated._id, title: generated.title, shareToken: generated.shareToken };
+  }
   const applicationipdata = new application({
+    resume,
     company: req.body.company,
     category: req.body.category,
     coverLetter: req.body.coverLetter,
@@ -18,6 +33,7 @@ router.post("/", async (req, res) => {
     })
     .catch((error) => {
       console.log(error);
+      sendError(req, res, 500, "SERVER_ERROR");
     });
 });
 router.get("/", async (req, res) => {

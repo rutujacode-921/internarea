@@ -337,5 +337,307 @@
       "marketplaces": "交易平台",
       "ecommerce": "电子商务"
     }
+  },
+  "resume": {
+    "nav": "简历生成器",
+    "signIn": "请登录以使用简历生成器。",
+    "dashboard": {
+      "title": "简历生成器",
+      "subtitle": "创建专业、兼容 ATS 的简历，并选择随申请一起发送的简历。",
+      "loadFailed": "无法加载您的简历。"
+    },
+    "premium": {
+      "badge": "高级会员",
+      "title": "升级为高级会员",
+      "description": "解锁简历生成器 {{days}} 天，创建招聘人员和求职者追踪系统都能读取的简历。",
+      "features": {
+        "templates": "多款兼容 ATS 的模板",
+        "customize": "自定义颜色、字体和字号",
+        "preview": "下载前实时预览",
+        "versions": "保存多份简历和多个版本",
+        "default": "自动将简历附加到申请中",
+        "history": "完整的付款、发票和下载记录"
+      },
+      "perResume": "每生成一份简历 PDF 收费 {{price}}。",
+      "period": "{{days}} 天",
+      "upgrade": "以 {{price}} 升级",
+      "extend": "续期高级会员（{{price}}）",
+      "activeUntil": "高级会员有效期至 {{date}}",
+      "expired": "您的高级会员已于 {{date}} 到期。",
+      "item": "InternArea 高级会员（{{days}} 天）",
+      "notConfigured": "服务器尚未配置支付功能。"
+    },
+    "tabs": {
+      "drafts": "我的草稿",
+      "generated": "已生成的简历",
+      "payments": "付款与发票",
+      "downloads": "下载记录"
+    },
+    "drafts": {
+      "new": "新建简历",
+      "help": "草稿可随意修改。生成 PDF 收费 {{price}}。",
+      "premiumOnly": "创建和编辑简历需要高级会员。",
+      "empty": "还没有草稿。创建您的第一份简历吧。",
+      "edit": "编辑",
+      "view": "查看",
+      "duplicate": "复制",
+      "delete": "删除",
+      "confirmDelete": "删除草稿“{{title}}”？已生成的简历会保留。",
+      "deleted": "草稿已删除",
+      "updated": "更新于 {{date}}",
+      "version": "v{{version}}",
+      "incomplete": "生成前还有 {{count}} 项需要完善",
+      "ready": "可以生成"
+    },
+    "generated": {
+      "empty": "您还没有生成过简历。",
+      "default": "默认",
+      "setDefault": "设为默认",
+      "defaultSet": "默认简历已更新",
+      "defaultHelp": "您的默认简历会附加到实习和工作申请中，可随时更改。",
+      "view": "查看",
+      "download": "下载",
+      "downloads": "下载 {{count}} 次",
+      "createdOn": "生成于 {{date}}"
+    },
+    "payments": {
+      "empty": "暂无交易记录。",
+      "date": "日期",
+      "item": "项目",
+      "amount": "金额",
+      "status": "状态",
+      "reference": "参考号",
+      "invoice": "发票",
+      "purposes": {
+        "premium": "高级会员",
+        "resume": "简历 PDF"
+      },
+      "statuses": {
+        "created": "待支付",
+        "paid": "已支付",
+        "failed": "失败",
+        "cancelled": "已取消",
+        "expired": "已过期",
+        "refunded": "已退款"
+      },
+      "duplicateRefunded": "重复付款，已退款",
+      "refundPending": "退款处理中",
+      "generating": "已支付，正在生成 PDF。"
+    },
+    "downloads": {
+      "empty": "暂无下载记录。",
+      "date": "日期",
+      "resume": "简历",
+      "type": "类型",
+      "device": "浏览器 / 设备",
+      "ip": "IP 地址",
+      "kinds": {
+        "download": "由您下载",
+        "shared_view": "从申请中打开"
+      }
+    },
+    "builder": {
+      "back": "我的简历",
+      "titleLabel": "简历名称",
+      "titlePlaceholder": "简历名称，例如：前端岗位",
+      "save": "保存",
+      "saving": "正在保存...",
+      "saved": "已保存（v{{version}}）",
+      "unsaved": "有未保存的更改",
+      "saveFailed": "无法保存您的简历。",
+      "loadFailed": "无法加载此简历。",
+      "leaveWarning": "您有未保存的更改，仍要离开吗？",
+      "versions": "版本",
+      "generate": "生成 PDF（{{price}}）",
+      "completeFirst": "请先补全缺少的信息。",
+      "premiumExpired": "编辑和生成简历需要高级会员。您仍可查看此草稿。",
+      "renew": "获取高级会员",
+      "conflict": "此简历已在其他标签页或设备上被修改，您的更改未保存。",
+      "reload": "加载最新版本",
+      "issuesTitle": "生成 PDF（{{price}}）前请完成以下各项：",
+      "moreIssues": "...还有 {{count}} 项",
+      "issuesAfterSave": "此列表在保存后更新。",
+      "design": "模板与设计",
+      "template": "模板",
+      "templates": {
+        "classic": {
+          "name": "经典",
+          "desc": "居中标题，简洁分隔线"
+        },
+        "modern": {
+          "name": "现代",
+          "desc": "强调色条和醒目标题"
+        },
+        "minimal": {
+          "name": "极简",
+          "desc": "紧凑，ATS 兼容性最佳"
+        },
+        "executive": {
+          "name": "商务",
+          "desc": "彩色页眉横幅"
+        }
+      },
+      "color": "强调色",
+      "customColor": "自定义",
+      "font": "字体",
+      "fonts": {
+        "sans": "无衬线（Helvetica）",
+        "serif": "衬线（Times）",
+        "mono": "等宽（Courier）"
+      },
+      "fontSize": "字号",
+      "sizes": {
+        "small": "小",
+        "medium": "中",
+        "large": "大"
+      },
+      "preview": "实时预览",
+      "previewNote": "您的 PDF 将如此显示。",
+      "photo": {
+        "title": "头像",
+        "upload": "上传照片",
+        "change": "更换照片",
+        "remove": "移除",
+        "help": "可选。JPG 或 PNG。",
+        "invalidType": "请选择 JPG 或 PNG 图片。",
+        "tooLarge": "图片过大，请选择更小的图片。",
+        "failed": "无法读取此图片。"
+      },
+      "sections": {
+        "personal": "个人信息",
+        "objective": "求职目标",
+        "education": "教育经历",
+        "experience": "工作经历",
+        "internships": "实习经历",
+        "projects": "项目经历",
+        "skills": "技能",
+        "certifications": "证书",
+        "achievements": "成就",
+        "languages": "语言",
+        "links": "社交链接",
+        "references": "推荐人"
+      },
+      "fields": {
+        "fullName": "姓名",
+        "headline": "简介标题",
+        "email": "邮箱",
+        "phone": "电话",
+        "location": "城市、国家",
+        "institution": "学校 / 院校",
+        "degree": "学位",
+        "field": "专业",
+        "score": "成绩 / 绩点",
+        "startDate": "开始",
+        "endDate": "结束",
+        "description": "描述",
+        "role": "职位 / 角色",
+        "organization": "公司 / 机构",
+        "current": "我目前在此任职",
+        "name": "名称",
+        "technologies": "使用的技术",
+        "link": "链接",
+        "issuer": "颁发机构",
+        "date": "日期",
+        "url": "网址",
+        "proficiency": "熟练程度",
+        "label": "平台（如 LinkedIn）",
+        "designation": "职务",
+        "relationship": "关系",
+        "skill": "技能",
+        "achievement": "成就"
+      },
+      "placeholders": {
+        "headline": "例如 Computer Science Student | Frontend Developer",
+        "objective": "用 2-3 句话（英文）说明您想要的职位和您的优势。",
+        "description": "以 - 开头的行会显示为项目符号",
+        "skills": "输入技能后按回车"
+      },
+      "addEntry": "添加到{{section}}",
+      "addSkill": "添加",
+      "remove": "移除",
+      "moveUp": "上移",
+      "moveDown": "下移",
+      "issues": {
+        "required": "{{field}}为必填项",
+        "invalid": "{{field}}无效",
+        "tooShort": "{{field}}太短（至少 30 个字符）",
+        "beforeStart": "{{field}}：结束日期早于开始日期",
+        "unsupportedCharacters": "{{field}}包含 PDF 无法显示的字符。请使用英文（拉丁字母）填写。"
+      }
+    },
+    "versions": {
+      "title": "版本历史",
+      "help": "每次保存都会生成一个新版本。恢复某个版本时会将其另存为最新版本，不会丢失任何内容。",
+      "empty": "暂无版本。",
+      "current": "当前",
+      "preview": "预览",
+      "restore": "恢复",
+      "restored": "已恢复版本 {{version}}",
+      "previewing": "正在预览版本 {{version}}",
+      "backToCurrent": "返回当前版本",
+      "discardChanges": "恢复将丢弃未保存的更改。是否继续？",
+      "loadFailed": "无法加载版本。",
+      "notes": {
+        "created": "已创建",
+        "copied": "从其他简历复制",
+        "saved": "已保存",
+        "restored": "从 v{{version}} 恢复"
+      }
+    },
+    "pay": {
+      "titleResume": "生成您的简历",
+      "titlePremium": "升级为高级会员",
+      "resumeItem": "简历 PDF：{{title}}",
+      "progress": "付款进度",
+      "step1": "验证邮箱",
+      "step2": "付款",
+      "step3": "完成",
+      "otpIntro": "为保障安全，我们会向您的注册邮箱发送一次性密码。验证通过后才能付款。",
+      "sendCode": "发送验证码",
+      "verify": "验证",
+      "verified": "邮箱已验证，现在可以安全付款。",
+      "verifiedFor": "验证有效时间：{{time}}",
+      "payNow": "通过 Razorpay 支付 {{price}}",
+      "opening": "正在打开 Razorpay...",
+      "secureNote": "付款由 Razorpay 安全处理。",
+      "confirming": "正在确认您的付款...",
+      "generating": "已收到付款，正在生成 PDF...",
+      "stillConfirming": "我们仍在与 Razorpay 确认您的付款。您可以关闭此窗口：如果付款成功，简历会自动出现在“我的简历”中，且不会重复扣款。",
+      "stillConfirmingShort": "仍在确认您上一笔付款，请稍后再查看。",
+      "recovered": "您之前的付款已确认。",
+      "alreadyPaid": "此付款已在另一个窗口中完成。",
+      "cancelled": "付款已取消，未扣款。",
+      "failed": "付款失败：{{reason}}",
+      "failedGeneric": "付款失败，未扣款。",
+      "tryAgain": "重试",
+      "reverify": "您的验证已过期，请重新验证邮箱。",
+      "scriptFailed": "无法加载 Razorpay。请检查网络后重试。",
+      "successResume": "您的简历已生成！已保存到您的个人资料，并设为申请时的默认简历。",
+      "successPremium": "高级会员有效期至 {{date}}。",
+      "duplicateRefunded": "您之前已生成过完全相同的简历，因此本次付款已退款。请在“我的简历”中下载。",
+      "download": "下载 PDF",
+      "invoiceNote": "发票 {{number}} 可在“付款与发票”中查看。",
+      "viewMyResumes": "前往我的简历"
+    },
+    "apply": {
+      "choose": "要发送的简历",
+      "none": "不附加简历",
+      "noneYet": "您还没有生成过简历。",
+      "build": "使用简历生成器创建一份",
+      "loadFailed": "无法加载您的简历。",
+      "changeDefault": "已选择您的默认简历。",
+      "manage": "管理简历"
+    },
+    "application": {
+      "resume": "简历",
+      "none": "未附加简历"
+    },
+    "profile": {
+      "title": "简历",
+      "free": "免费版",
+      "defaultIs": "默认简历：{{title}}",
+      "noDefault": "暂无默认简历。",
+      "open": "打开简历生成器"
+    }
   }
 }

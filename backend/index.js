@@ -11,7 +11,15 @@ const port = process.env.PORT || 5000;
 app.set("trust proxy", true);
 
 app.use(cors());
-app.use(bodyparser.json({ limit: "50mb" }));
+// Keep the raw body too: Razorpay webhook signatures are computed over it.
+app.use(
+  bodyparser.json({
+    limit: "50mb",
+    verify: (req, res, buf) => {
+      if (req.originalUrl.startsWith("/api/payments/webhook")) req.rawBody = buf.toString("utf8");
+    },
+  })
+);
 app.use(bodyparser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
 

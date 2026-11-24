@@ -30,4 +30,11 @@ async function requireAuth(req, res, next) {
   }
 }
 
-module.exports = { requireAuth };
+// Like requireAuth, but lets requests without a token through (req.authUser
+// stays unset). A token that is present must still be valid.
+function optionalAuth(req, res, next) {
+  if (!req.headers.authorization) return next();
+  return requireAuth(req, res, next);
+}
+
+module.exports = { requireAuth, optionalAuth };

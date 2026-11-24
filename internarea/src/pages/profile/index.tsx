@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import LanguageSwitcher from "@/Components/LanguageSwitcher";
 import LanguageHistory from "@/Components/LanguageHistory";
+import ResumeProfileCard from "@/Components/ResumeProfileCard";
 
 const index = () => {
   const user = useSelector(selectuser);
@@ -74,6 +75,8 @@ const index = () => {
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
               </div>
+
+              <ResumeProfileCard />
 
               {/* Language preference */}
               <div className="rounded-lg border border-gray-200 p-4">

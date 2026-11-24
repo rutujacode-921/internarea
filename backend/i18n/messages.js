@@ -172,6 +172,15 @@ const messages = {
   },
 };
 
+// Resume Builder, Premium and payment messages live in their own file.
+const resumeMessages = require("./resumeMessages");
+for (const [code, extra] of Object.entries(resumeMessages)) {
+  if (!messages[code]) continue;
+  Object.assign(messages[code].errors, extra.errors);
+  messages[code].products = extra.products;
+  messages[code].paymentEmail = extra.paymentEmail;
+}
+
 const interpolate = (text, vars = {}) =>
   text.replace(/\{\{\s*(\w+)\s*\}\}/g, (match, key) =>
     vars[key] !== undefined ? String(vars[key]) : match

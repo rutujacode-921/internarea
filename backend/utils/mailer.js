@@ -25,16 +25,37 @@ const escapeHtml = (value) =>
 async function sendLanguageOtpEmail({ to, code, targetLanguage, uiLanguage, minutes }) {
   const t = (key, vars) => translate(uiLanguage, `email.${key}`, vars);
   const language = languageName(uiLanguage, targetLanguage);
+  await sendOtpEmail({
+    to,
+    code,
+    subject: t("subject"),
+    heading: t("heading"),
+    intro: t("intro", { language }),
+    expiry: t("expiry", { minutes }),
+    ignore: t("ignore"),
+  });
+}
 
-  const subject = t("subject");
-  const intro = t("intro", { language });
-  const expiry = t("expiry", { minutes });
-  const ignore = t("ignore");
+// Sends the OTP that must be verified before a Razorpay payment can start.
+async function sendPaymentOtpEmail({ to, code, item, amount, uiLanguage, minutes }) {
+  const t = (key, vars) => translate(uiLanguage, `paymentEmail.${key}`, vars);
+  await sendOtpEmail({
+    to,
+    code,
+    subject: t("subject"),
+    heading: t("heading"),
+    intro: t("intro", { item, amount }),
+    expiry: t("expiry", { minutes }),
+    ignore: t("ignore"),
+  });
+}
 
-  const text = `${t("heading")}\n\n${intro}\n\n${code}\n\n${expiry}\n\n${ignore}`;
+// Shared layout for OTP emails. Prints the code to the console in development without SMTP.
+async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore }) {
+  const text = `${heading}\n\n${intro}\n\n${code}\n\n${expiry}\n\n${ignore}`;
   const html = `
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#1f2937">
-    <h2 style="color:#2563eb;margin:0 0 16px">${escapeHtml(t("heading"))}</h2>
+    <h2 style="color:#2563eb;margin:0 0 16px">${escapeHtml(heading)}</h2>
     <p>${escapeHtml(intro)}</p>
     <p style="font-size:32px;font-weight:bold;letter-spacing:8px;text-align:center;background:#eff6ff;border-radius:8px;padding:16px;margin:24px 0">${code}</p>
     <p>${escapeHtml(expiry)}</p>
@@ -60,4 +81,4 @@ async function sendLanguageOtpEmail({ to, code, targetLanguage, uiLanguage, minu
   });
 }
 
-module.exports = { sendLanguageOtpEmail };
+module.exports = { sendLanguageOtpEmail, sendPaymentOtpEmail };

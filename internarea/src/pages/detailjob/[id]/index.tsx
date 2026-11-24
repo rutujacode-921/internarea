@@ -16,7 +16,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectuser } from "@/Feature/Userslice";
-import { API_BASE_URL } from "@/lib/api";
+import { api, API_BASE_URL } from "@/lib/api";
+import ResumePicker from "@/Components/ResumePicker";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 // Stored in English so application data stays consistent; labels are translated.
@@ -47,6 +48,7 @@ const index = () => {
   const [availability, setAvailability] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coverLetter, setCoverLetter] = useState("");
+  const [resumeId, setResumeId] = useState<string | null>(null);
   if (!jobdata) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -71,11 +73,9 @@ const index = () => {
         user: user,
         Application: id,
         availability,
+        resumeId,
       };
-      await axios.post(
-        `${API_BASE_URL}/api/application`,
-        applicationdata
-      );
+      await api.post("/api/application", applicationdata);
       toast.success(t("apply.success"));
       router.push("/job");
     } catch (error) {
@@ -187,9 +187,11 @@ const index = () => {
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {t("apply.resume")}
                 </h3>
-                <p className="text-gray-600">
-                  {t("apply.resumeNote")}
-                </p>
+                {user ? (
+                  <ResumePicker value={resumeId} onChange={setResumeId} />
+                ) : (
+                  <p className="text-gray-600">{t("apply.resumeNote")}</p>
+                )}
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">

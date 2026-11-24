@@ -337,5 +337,307 @@
       "marketplaces": "Marketplaces",
       "ecommerce": "Comercio electrónico"
     }
+  },
+  "resume": {
+    "nav": "Creador de CV",
+    "signIn": "Inicia sesión para usar el Creador de CV.",
+    "dashboard": {
+      "title": "Creador de CV",
+      "subtitle": "Crea CV profesionales y compatibles con ATS, y elige cuál se envía con tus postulaciones.",
+      "loadFailed": "No se pudieron cargar tus CV."
+    },
+    "premium": {
+      "badge": "Premium",
+      "title": "Mejora a Premium",
+      "description": "Desbloquea el Creador de CV durante {{days}} días y crea CV que los reclutadores y los sistemas de seguimiento de candidatos pueden leer.",
+      "features": {
+        "templates": "Varias plantillas compatibles con ATS",
+        "customize": "Colores, fuentes y tamaño de texto personalizados",
+        "preview": "Vista previa en vivo antes de descargar",
+        "versions": "Guarda varios CV y versiones",
+        "default": "Adjunta tu CV a las postulaciones automáticamente",
+        "history": "Historial completo de pagos, facturas y descargas"
+      },
+      "perResume": "Cada CV en PDF generado cuesta {{price}}.",
+      "period": "por {{days}} días",
+      "upgrade": "Mejorar por {{price}}",
+      "extend": "Ampliar Premium ({{price}})",
+      "activeUntil": "Premium hasta el {{date}}",
+      "expired": "Tu Premium caducó el {{date}}.",
+      "item": "InternArea Premium ({{days}} días)",
+      "notConfigured": "Los pagos aún no están configurados en el servidor."
+    },
+    "tabs": {
+      "drafts": "Mis borradores",
+      "generated": "CV generados",
+      "payments": "Pagos y facturas",
+      "downloads": "Historial de descargas"
+    },
+    "drafts": {
+      "new": "Nuevo CV",
+      "help": "Edita tus borradores tantas veces como quieras. Generar un PDF cuesta {{price}}.",
+      "premiumOnly": "Crear y editar CV requiere Premium.",
+      "empty": "Aún no tienes borradores. Crea tu primer CV.",
+      "edit": "Editar",
+      "view": "Ver",
+      "duplicate": "Duplicar",
+      "delete": "Eliminar",
+      "confirmDelete": "¿Eliminar el borrador \"{{title}}\"? Los CV que ya generaste se conservan.",
+      "deleted": "Borrador eliminado",
+      "updated": "actualizado el {{date}}",
+      "version": "v{{version}}",
+      "incomplete": "{{count}} elemento(s) por completar antes de generar",
+      "ready": "Listo para generar"
+    },
+    "generated": {
+      "empty": "Aún no has generado ningún CV.",
+      "default": "Predeterminado",
+      "setDefault": "Establecer como predeterminado",
+      "defaultSet": "CV predeterminado actualizado",
+      "defaultHelp": "Tu CV predeterminado se adjunta a las postulaciones de prácticas y empleos. Puedes cambiarlo en cualquier momento.",
+      "view": "Ver",
+      "download": "Descargar",
+      "downloads": "{{count}} descarga(s)",
+      "createdOn": "Generado el {{date}}"
+    },
+    "payments": {
+      "empty": "Aún no hay transacciones.",
+      "date": "Fecha",
+      "item": "Concepto",
+      "amount": "Importe",
+      "status": "Estado",
+      "reference": "Referencia",
+      "invoice": "Factura",
+      "purposes": {
+        "premium": "Premium",
+        "resume": "CV en PDF"
+      },
+      "statuses": {
+        "created": "Pendiente",
+        "paid": "Pagado",
+        "failed": "Fallido",
+        "cancelled": "Cancelado",
+        "expired": "Caducado",
+        "refunded": "Reembolsado"
+      },
+      "duplicateRefunded": "Pago duplicado, reembolsado",
+      "refundPending": "Reembolso en proceso",
+      "generating": "Pagado. Se está generando tu PDF."
+    },
+    "downloads": {
+      "empty": "Aún no hay descargas.",
+      "date": "Fecha",
+      "resume": "CV",
+      "type": "Tipo",
+      "device": "Navegador / dispositivo",
+      "ip": "Dirección IP",
+      "kinds": {
+        "download": "Descargado por ti",
+        "shared_view": "Abierto desde una postulación"
+      }
+    },
+    "builder": {
+      "back": "Mis CV",
+      "titleLabel": "Nombre del CV",
+      "titlePlaceholder": "Nombre del CV, p. ej. Puestos de frontend",
+      "save": "Guardar",
+      "saving": "Guardando...",
+      "saved": "Guardado (v{{version}})",
+      "unsaved": "Cambios sin guardar",
+      "saveFailed": "No se pudo guardar tu CV.",
+      "loadFailed": "No se pudo cargar este CV.",
+      "leaveWarning": "Tienes cambios sin guardar. ¿Salir de todos modos?",
+      "versions": "Versiones",
+      "generate": "Generar PDF ({{price}})",
+      "completeFirst": "Completa primero la información que falta.",
+      "premiumExpired": "Se necesita Premium para editar y generar CV. Aún puedes ver este borrador.",
+      "renew": "Obtener Premium",
+      "conflict": "Este CV se modificó en otra pestaña o dispositivo, así que tus cambios no se guardaron.",
+      "reload": "Cargar la última versión",
+      "issuesTitle": "Completa esto antes de generar tu PDF ({{price}}):",
+      "moreIssues": "...y {{count}} más",
+      "issuesAfterSave": "Esta lista se actualiza al guardar.",
+      "design": "Plantilla y diseño",
+      "template": "Plantilla",
+      "templates": {
+        "classic": {
+          "name": "Clásica",
+          "desc": "Encabezado centrado, líneas limpias"
+        },
+        "modern": {
+          "name": "Moderna",
+          "desc": "Barra de color y títulos destacados"
+        },
+        "minimal": {
+          "name": "Mínima",
+          "desc": "Compacta, máxima compatibilidad ATS"
+        },
+        "executive": {
+          "name": "Ejecutiva",
+          "desc": "Encabezado con banda de color"
+        }
+      },
+      "color": "Color de acento",
+      "customColor": "Personalizado",
+      "font": "Fuente",
+      "fonts": {
+        "sans": "Sans serif (Helvetica)",
+        "serif": "Serif (Times)",
+        "mono": "Monoespaciada (Courier)"
+      },
+      "fontSize": "Tamaño del texto",
+      "sizes": {
+        "small": "Pequeño",
+        "medium": "Mediano",
+        "large": "Grande"
+      },
+      "preview": "Vista previa en vivo",
+      "previewNote": "Tu PDF se verá así.",
+      "photo": {
+        "title": "Foto de perfil",
+        "upload": "Subir foto",
+        "change": "Cambiar foto",
+        "remove": "Quitar",
+        "help": "Opcional. JPG o PNG.",
+        "invalidType": "Elige una imagen JPG o PNG.",
+        "tooLarge": "La imagen es demasiado grande. Elige una más pequeña.",
+        "failed": "No se pudo leer esta imagen."
+      },
+      "sections": {
+        "personal": "Datos personales",
+        "objective": "Objetivo profesional",
+        "education": "Formación",
+        "experience": "Experiencia laboral",
+        "internships": "Prácticas",
+        "projects": "Proyectos",
+        "skills": "Habilidades",
+        "certifications": "Certificaciones",
+        "achievements": "Logros",
+        "languages": "Idiomas",
+        "links": "Redes sociales",
+        "references": "Referencias"
+      },
+      "fields": {
+        "fullName": "Nombre completo",
+        "headline": "Titular",
+        "email": "Correo electrónico",
+        "phone": "Teléfono",
+        "location": "Ciudad, país",
+        "institution": "Escuela / universidad",
+        "degree": "Título",
+        "field": "Área de estudio",
+        "score": "Nota / promedio",
+        "startDate": "Inicio",
+        "endDate": "Fin",
+        "description": "Descripción",
+        "role": "Puesto / cargo",
+        "organization": "Empresa / organización",
+        "current": "Trabajo aquí actualmente",
+        "name": "Nombre",
+        "technologies": "Tecnologías usadas",
+        "link": "Enlace",
+        "issuer": "Emitido por",
+        "date": "Fecha",
+        "url": "URL",
+        "proficiency": "Nivel",
+        "label": "Plataforma (p. ej. LinkedIn)",
+        "designation": "Cargo",
+        "relationship": "Relación",
+        "skill": "Habilidad",
+        "achievement": "Logro"
+      },
+      "placeholders": {
+        "headline": "p. ej. Estudiante de Informática | Desarrollador frontend",
+        "objective": "2 o 3 frases sobre el puesto que buscas y lo que aportas.",
+        "description": "Empieza una línea con - para crear una viñeta",
+        "skills": "Escribe una habilidad y pulsa Intro"
+      },
+      "addEntry": "Añadir a {{section}}",
+      "addSkill": "Añadir",
+      "remove": "Quitar",
+      "moveUp": "Subir",
+      "moveDown": "Bajar",
+      "issues": {
+        "required": "{{field}} es obligatorio",
+        "invalid": "{{field}} no es válido",
+        "tooShort": "{{field}} es demasiado corto (mínimo 30 caracteres)",
+        "beforeStart": "{{field}}: la fecha de fin es anterior a la de inicio",
+        "unsupportedCharacters": "{{field}} contiene caracteres que el PDF no puede mostrar. Usa letras latinas."
+      }
+    },
+    "versions": {
+      "title": "Historial de versiones",
+      "help": "Cada vez que guardas se crea una versión nueva. Al restaurar una versión se guarda como la más reciente, así que no se pierde nada.",
+      "empty": "Aún no hay versiones.",
+      "current": "Actual",
+      "preview": "Vista previa",
+      "restore": "Restaurar",
+      "restored": "Versión {{version}} restaurada",
+      "previewing": "Viendo la versión {{version}}",
+      "backToCurrent": "Volver a la actual",
+      "discardChanges": "Al restaurar se descartarán tus cambios sin guardar. ¿Continuar?",
+      "loadFailed": "No se pudieron cargar las versiones.",
+      "notes": {
+        "created": "Creado",
+        "copied": "Copiado de otro CV",
+        "saved": "Guardado",
+        "restored": "Restaurado desde v{{version}}"
+      }
+    },
+    "pay": {
+      "titleResume": "Genera tu CV",
+      "titlePremium": "Mejora a Premium",
+      "resumeItem": "CV en PDF: {{title}}",
+      "progress": "Progreso del pago",
+      "step1": "Verificar correo",
+      "step2": "Pagar",
+      "step3": "Listo",
+      "otpIntro": "Por tu seguridad, enviaremos una contraseña de un solo uso a tu correo registrado. El pago se habilita solo después de verificarla.",
+      "sendCode": "Enviar código",
+      "verify": "Verificar",
+      "verified": "Correo verificado. Ya puedes pagar de forma segura.",
+      "verifiedFor": "Verificación válida durante {{time}}",
+      "payNow": "Pagar {{price}} con Razorpay",
+      "opening": "Abriendo Razorpay...",
+      "secureNote": "Los pagos se procesan de forma segura con Razorpay.",
+      "confirming": "Confirmando tu pago...",
+      "generating": "Pago recibido. Generando tu PDF...",
+      "stillConfirming": "Seguimos confirmando tu pago con Razorpay. Puedes cerrar esta ventana: si el pago se realizó, tu CV aparecerá automáticamente en Mis CV y no se te cobrará dos veces.",
+      "stillConfirmingShort": "Seguimos confirmando tu último pago. Vuelve a consultar en un momento.",
+      "recovered": "Tu pago anterior se ha confirmado.",
+      "alreadyPaid": "Este pago ya se completó en otra ventana.",
+      "cancelled": "Pago cancelado. No se te ha cobrado.",
+      "failed": "El pago falló: {{reason}}",
+      "failedGeneric": "El pago falló. No se te ha cobrado.",
+      "tryAgain": "Intentar de nuevo",
+      "reverify": "Tu verificación ha caducado. Verifica tu correo de nuevo.",
+      "scriptFailed": "No se pudo cargar Razorpay. Revisa tu conexión e inténtalo de nuevo.",
+      "successResume": "¡Tu CV está listo! Se guardó en tu perfil y se estableció como CV predeterminado para tus postulaciones.",
+      "successPremium": "Premium está activo hasta el {{date}}.",
+      "duplicateRefunded": "Ya habías generado exactamente este CV, así que este pago se ha reembolsado. Descárgalo desde Mis CV.",
+      "download": "Descargar PDF",
+      "invoiceNote": "La factura {{number}} está disponible en Pagos y facturas.",
+      "viewMyResumes": "Ir a Mis CV"
+    },
+    "apply": {
+      "choose": "CV que se enviará",
+      "none": "No adjuntar CV",
+      "noneYet": "Aún no has generado ningún CV.",
+      "build": "Crea uno con el Creador de CV",
+      "loadFailed": "No se pudieron cargar tus CV.",
+      "changeDefault": "Tu CV predeterminado está seleccionado.",
+      "manage": "Gestionar CV"
+    },
+    "application": {
+      "resume": "CV",
+      "none": "No se adjuntó ningún CV"
+    },
+    "profile": {
+      "title": "CV",
+      "free": "Plan gratuito",
+      "defaultIs": "CV predeterminado: {{title}}",
+      "noDefault": "Aún no tienes un CV predeterminado.",
+      "open": "Abrir Creador de CV"
+    }
   }
 }

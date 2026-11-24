@@ -337,5 +337,307 @@
       "marketplaces": "Marketplaces",
       "ecommerce": "Ecommerce"
     }
+  },
+  "resume": {
+    "nav": "Resume Builder",
+    "signIn": "Sign in to use the Resume Builder.",
+    "dashboard": {
+      "title": "Resume Builder",
+      "subtitle": "Create professional, ATS-friendly resumes and choose which one goes with your applications.",
+      "loadFailed": "Couldn't load your resumes."
+    },
+    "premium": {
+      "badge": "Premium",
+      "title": "Upgrade to Premium",
+      "description": "Unlock the Resume Builder for {{days}} days and create resumes recruiters and applicant tracking systems can read.",
+      "features": {
+        "templates": "Multiple ATS-friendly templates",
+        "customize": "Custom colors, fonts and text size",
+        "preview": "Live preview before you download",
+        "versions": "Save multiple resumes and versions",
+        "default": "Attach your resume to applications automatically",
+        "history": "Full payment, invoice and download history"
+      },
+      "perResume": "Each generated resume PDF costs {{price}}.",
+      "period": "for {{days}} days",
+      "upgrade": "Upgrade for {{price}}",
+      "extend": "Extend Premium ({{price}})",
+      "activeUntil": "Premium until {{date}}",
+      "expired": "Your Premium expired on {{date}}.",
+      "item": "InternArea Premium ({{days}} days)",
+      "notConfigured": "Payments are not set up on the server yet."
+    },
+    "tabs": {
+      "drafts": "My drafts",
+      "generated": "Generated resumes",
+      "payments": "Payments & invoices",
+      "downloads": "Download history"
+    },
+    "drafts": {
+      "new": "New resume",
+      "help": "Edit your drafts as often as you like. Generating a PDF costs {{price}}.",
+      "premiumOnly": "Creating and editing resumes requires Premium.",
+      "empty": "No drafts yet. Create your first resume.",
+      "edit": "Edit",
+      "view": "View",
+      "duplicate": "Duplicate",
+      "delete": "Delete",
+      "confirmDelete": "Delete the draft \"{{title}}\"? Resumes you've already generated are kept.",
+      "deleted": "Draft deleted",
+      "updated": "updated {{date}}",
+      "version": "v{{version}}",
+      "incomplete": "{{count}} item(s) to complete before generating",
+      "ready": "Ready to generate"
+    },
+    "generated": {
+      "empty": "You haven't generated a resume yet.",
+      "default": "Default",
+      "setDefault": "Set as default",
+      "defaultSet": "Default resume updated",
+      "defaultHelp": "Your default resume is attached to internship and job applications. You can change it at any time.",
+      "view": "View",
+      "download": "Download",
+      "downloads": "{{count}} download(s)",
+      "createdOn": "Generated {{date}}"
+    },
+    "payments": {
+      "empty": "No transactions yet.",
+      "date": "Date",
+      "item": "Item",
+      "amount": "Amount",
+      "status": "Status",
+      "reference": "Reference",
+      "invoice": "Invoice",
+      "purposes": {
+        "premium": "Premium",
+        "resume": "Resume PDF"
+      },
+      "statuses": {
+        "created": "Pending",
+        "paid": "Paid",
+        "failed": "Failed",
+        "cancelled": "Cancelled",
+        "expired": "Expired",
+        "refunded": "Refunded"
+      },
+      "duplicateRefunded": "Duplicate payment, refunded",
+      "refundPending": "Refund being processed",
+      "generating": "Paid. Your PDF is being generated."
+    },
+    "downloads": {
+      "empty": "No downloads yet.",
+      "date": "Date",
+      "resume": "Resume",
+      "type": "Type",
+      "device": "Browser / device",
+      "ip": "IP address",
+      "kinds": {
+        "download": "Downloaded by you",
+        "shared_view": "Opened from an application"
+      }
+    },
+    "builder": {
+      "back": "My resumes",
+      "titleLabel": "Resume name",
+      "titlePlaceholder": "Resume name, e.g. Frontend roles",
+      "save": "Save",
+      "saving": "Saving...",
+      "saved": "Saved (v{{version}})",
+      "unsaved": "Unsaved changes",
+      "saveFailed": "Couldn't save your resume.",
+      "loadFailed": "Couldn't load this resume.",
+      "leaveWarning": "You have unsaved changes. Leave anyway?",
+      "versions": "Versions",
+      "generate": "Generate PDF ({{price}})",
+      "completeFirst": "Please complete the missing information first.",
+      "premiumExpired": "Premium is needed to edit and generate resumes. You can still view this draft.",
+      "renew": "Get Premium",
+      "conflict": "This resume was changed in another tab or device, so your changes weren't saved.",
+      "reload": "Load latest version",
+      "issuesTitle": "Complete these before generating your PDF ({{price}}):",
+      "moreIssues": "...and {{count}} more",
+      "issuesAfterSave": "This list updates when you save.",
+      "design": "Template & design",
+      "template": "Template",
+      "templates": {
+        "classic": {
+          "name": "Classic",
+          "desc": "Centered header, clean rules"
+        },
+        "modern": {
+          "name": "Modern",
+          "desc": "Accent bar and bold headings"
+        },
+        "minimal": {
+          "name": "Minimal",
+          "desc": "Compact, maximum ATS safety"
+        },
+        "executive": {
+          "name": "Executive",
+          "desc": "Colored header band"
+        }
+      },
+      "color": "Accent color",
+      "customColor": "Custom",
+      "font": "Font",
+      "fonts": {
+        "sans": "Sans-serif (Helvetica)",
+        "serif": "Serif (Times)",
+        "mono": "Monospace (Courier)"
+      },
+      "fontSize": "Text size",
+      "sizes": {
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large"
+      },
+      "preview": "Live preview",
+      "previewNote": "Your PDF will look like this.",
+      "photo": {
+        "title": "Profile photo",
+        "upload": "Upload photo",
+        "change": "Change photo",
+        "remove": "Remove",
+        "help": "Optional. JPG or PNG.",
+        "invalidType": "Please choose a JPG or PNG image.",
+        "tooLarge": "This image is too large. Please choose a smaller one.",
+        "failed": "Couldn't read this image."
+      },
+      "sections": {
+        "personal": "Personal details",
+        "objective": "Career objective",
+        "education": "Education",
+        "experience": "Work experience",
+        "internships": "Internships",
+        "projects": "Projects",
+        "skills": "Skills",
+        "certifications": "Certifications",
+        "achievements": "Achievements",
+        "languages": "Languages",
+        "links": "Social links",
+        "references": "References"
+      },
+      "fields": {
+        "fullName": "Full name",
+        "headline": "Headline",
+        "email": "Email",
+        "phone": "Phone",
+        "location": "City, country",
+        "institution": "School / college",
+        "degree": "Degree",
+        "field": "Field of study",
+        "score": "Grade / CGPA",
+        "startDate": "Start",
+        "endDate": "End",
+        "description": "Description",
+        "role": "Role / title",
+        "organization": "Company / organization",
+        "current": "I currently work here",
+        "name": "Name",
+        "technologies": "Technologies used",
+        "link": "Link",
+        "issuer": "Issued by",
+        "date": "Date",
+        "url": "URL",
+        "proficiency": "Proficiency",
+        "label": "Platform (e.g. LinkedIn)",
+        "designation": "Designation",
+        "relationship": "Relationship",
+        "skill": "Skill",
+        "achievement": "Achievement"
+      },
+      "placeholders": {
+        "headline": "e.g. Computer Science Student | Frontend Developer",
+        "objective": "2-3 sentences about the role you want and what you bring to it.",
+        "description": "Start a line with - to make a bullet point",
+        "skills": "Type a skill and press Enter"
+      },
+      "addEntry": "Add to {{section}}",
+      "addSkill": "Add",
+      "remove": "Remove",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "issues": {
+        "required": "{{field}} is required",
+        "invalid": "{{field}} is not valid",
+        "tooShort": "{{field}} is too short (at least 30 characters)",
+        "beforeStart": "{{field}}: end date is before the start date",
+        "unsupportedCharacters": "{{field}} contains characters the PDF can't display. Please use English (Latin) letters."
+      }
+    },
+    "versions": {
+      "title": "Version history",
+      "help": "A new version is saved each time you save. Restoring a version saves it as the newest one, so nothing is lost.",
+      "empty": "No versions yet.",
+      "current": "Current",
+      "preview": "Preview",
+      "restore": "Restore",
+      "restored": "Version {{version}} restored",
+      "previewing": "Previewing version {{version}}",
+      "backToCurrent": "Back to current",
+      "discardChanges": "Restoring will discard your unsaved changes. Continue?",
+      "loadFailed": "Couldn't load versions.",
+      "notes": {
+        "created": "Created",
+        "copied": "Copied from another resume",
+        "saved": "Saved",
+        "restored": "Restored from v{{version}}"
+      }
+    },
+    "pay": {
+      "titleResume": "Generate your resume",
+      "titlePremium": "Upgrade to Premium",
+      "resumeItem": "Resume PDF: {{title}}",
+      "progress": "Payment progress",
+      "step1": "Verify email",
+      "step2": "Pay",
+      "step3": "Done",
+      "otpIntro": "For your security, we'll email a one-time password to your registered address. Payment opens only after it's verified.",
+      "sendCode": "Send code",
+      "verify": "Verify",
+      "verified": "Email verified. You can now pay securely.",
+      "verifiedFor": "Verification valid for {{time}}",
+      "payNow": "Pay {{price}} with Razorpay",
+      "opening": "Opening Razorpay...",
+      "secureNote": "Payments are processed securely by Razorpay.",
+      "confirming": "Confirming your payment...",
+      "generating": "Payment received. Generating your PDF...",
+      "stillConfirming": "We're still confirming your payment with Razorpay. You can close this window: if the payment went through, your resume will appear in My Resumes automatically, and you won't be charged twice.",
+      "stillConfirmingShort": "We're still confirming your last payment. Check back in a moment.",
+      "recovered": "Your earlier payment was confirmed.",
+      "alreadyPaid": "This payment was already completed in another window.",
+      "cancelled": "Payment cancelled. You have not been charged.",
+      "failed": "Payment failed: {{reason}}",
+      "failedGeneric": "Payment failed. You have not been charged.",
+      "tryAgain": "Try again",
+      "reverify": "Your verification has expired. Please verify your email again.",
+      "scriptFailed": "Couldn't load Razorpay. Check your connection and try again.",
+      "successResume": "Your resume is ready! It's saved to your profile and set as your default resume for applications.",
+      "successPremium": "Premium is active until {{date}}.",
+      "duplicateRefunded": "You had already generated this exact resume, so this payment has been refunded. Download it from My Resumes.",
+      "download": "Download PDF",
+      "invoiceNote": "Invoice {{number}} is available under Payments & invoices.",
+      "viewMyResumes": "Go to My Resumes"
+    },
+    "apply": {
+      "choose": "Resume to send",
+      "none": "Don't attach a resume",
+      "noneYet": "You haven't generated a resume yet.",
+      "build": "Build one with the Resume Builder",
+      "loadFailed": "Couldn't load your resumes.",
+      "changeDefault": "Your default resume is selected.",
+      "manage": "Manage resumes"
+    },
+    "application": {
+      "resume": "Resume",
+      "none": "No resume attached"
+    },
+    "profile": {
+      "title": "Resume",
+      "free": "Free plan",
+      "defaultIs": "Default resume: {{title}}",
+      "noDefault": "No default resume yet.",
+      "open": "Open Resume Builder"
+    }
   }
 }

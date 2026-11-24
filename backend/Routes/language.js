@@ -1,5 +1,4 @@
 const express = require("express");
-const crypto = require("crypto");
 const mongoose = require("mongoose");
 const router = express.Router();
 
@@ -10,35 +9,13 @@ const { requireAuth } = require("../middleware/auth");
 const { sendError } = require("../utils/errors");
 const { getClientInfo } = require("../utils/clientInfo");
 const { sendLanguageOtpEmail } = require("../utils/mailer");
+const { hashOtp, generateOtpCode, safeEqual, maskEmail } = require("../utils/otp");
 const { getRequestLanguage, languageName } = require("../i18n/messages");
 const {
   OTP_SETTINGS,
   isSupportedLanguage,
   requiresOtp,
 } = require("../config/languages");
-
-const OTP_SECRET =
-  process.env.OTP_SECRET ||
-  (() => {
-    console.warn("OTP_SECRET is not set; using a random secret (codes reset on restart).");
-    return crypto.randomBytes(32).toString("hex");
-  })();
-
-const hashOtp = (otpId, code) =>
-  crypto.createHmac("sha256", OTP_SECRET).update(`${otpId}:${code}`).digest("hex");
-
-const safeEqual = (a, b) => {
-  const left = Buffer.from(a, "hex");
-  const right = Buffer.from(b, "hex");
-  return left.length === right.length && crypto.timingSafeEqual(left, right);
-};
-
-const maskEmail = (email) => {
-  const [name, domain] = email.split("@");
-  if (!domain) return email;
-  const visible = name.slice(0, Math.min(2, name.length));
-  return `${visible}${"*".repeat(Math.max(name.length - visible.length, 3))}@${domain}`;
-};
 
 const asyncHandler = (fn) => (req, res, next) =>
   fn(req, res, next).catch((error) => {
@@ -196,7 +173,7 @@ router.post(
     );
 
     const otpId = new mongoose.Types.ObjectId();
-    const code = crypto.randomInt(0, 1000000).toString().padStart(6, "0");
+    const code = generateOtpCode();
     const expiresAt = new Date(now + OTP_SETTINGS.ttlMinutes * 60 * 1000);
     const clientInfo = getClientInfo(req);
 

@@ -12,3 +12,12 @@ function sendError(req, res, status, code, vars = {}, extra = {}) {
 }
 
 module.exports = { sendError };
+
+// Wraps an async route so unexpected errors become a localized 500.
+const asyncHandler = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch((error) => {
+    console.error(`API error on ${req.method} ${req.originalUrl}:`, error);
+    if (!res.headersSent) sendError(req, res, 500, "SERVER_ERROR");
+  });
+
+module.exports.asyncHandler = asyncHandler;

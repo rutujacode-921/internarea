@@ -14,7 +14,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { API_BASE_URL } from "@/lib/api";
+import { api, API_BASE_URL } from "@/lib/api";
+import ResumePicker from "@/Components/ResumePicker";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 // Stored in English so application data stays consistent; labels are translated.
@@ -44,6 +45,7 @@ const index = () => {
   const [availability, setAvailability] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coverLetter, setCoverLetter] = useState("");
+  const [resumeId, setResumeId] = useState<string | null>(null);
   const user=useSelector(selectuser)
   if (!internshipData) {
     return (
@@ -68,9 +70,10 @@ const index = () => {
         coverLetter:coverLetter,
         user:user,
         Application:id,
-        availability
+        availability,
+        resumeId,
       }
-      await axios.post(`${API_BASE_URL}/api/application`,applicationdata)
+      await api.post("/api/application", applicationdata)
       toast.success(t("apply.success"))
       router.push('/internship')
     } catch (error) {
@@ -187,9 +190,11 @@ const index = () => {
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {t("apply.resume")}
                 </h3>
-                <p className="text-gray-600">
-                  {t("apply.resumeNote")}
-                </p>
+                {user ? (
+                  <ResumePicker value={resumeId} onChange={setResumeId} />
+                ) : (
+                  <p className="text-gray-600">{t("apply.resumeNote")}</p>
+                )}
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">

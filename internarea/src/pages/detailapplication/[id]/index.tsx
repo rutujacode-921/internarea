@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Building2, Calendar, FileText, Loader2, User } from "lucide-react";
+import { Building2, Calendar, ExternalLink, FileText, Loader2, User } from "lucide-react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "@/lib/api";
@@ -91,6 +91,28 @@ const index = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {data.coverLetter}
                 </p>
+              </div>
+
+              <div className="mb-8">
+                <div className="flex items-center mb-4">
+                  <FileText className="w-5 h-5 text-blue-600 mr-2" />
+                  <h2 className="text-sm font-medium text-gray-500">
+                    {t("resume.application.resume")}
+                  </h2>
+                </div>
+                {data.resume?.shareToken ? (
+                  <a
+                    href={`${API_BASE_URL}/api/resumes/shared/${data.resume.shareToken}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    {data.resume.title}
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <p className="text-gray-500">{t("resume.application.none")}</p>
+                )}
               </div>
 
               <div className="grid grid-cols-2 gap-6 mb-8">

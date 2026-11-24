@@ -337,5 +337,307 @@
       "marketplaces": "Marketplaces",
       "ecommerce": "E-commerce"
     }
+  },
+  "resume": {
+    "nav": "Criador de Currículos",
+    "signIn": "Faça login para usar o Criador de Currículos.",
+    "dashboard": {
+      "title": "Criador de Currículos",
+      "subtitle": "Crie currículos profissionais e compatíveis com ATS e escolha qual será enviado com suas candidaturas.",
+      "loadFailed": "Não foi possível carregar seus currículos."
+    },
+    "premium": {
+      "badge": "Premium",
+      "title": "Faça upgrade para Premium",
+      "description": "Desbloqueie o Criador de Currículos por {{days}} dias e crie currículos que recrutadores e sistemas de rastreamento de candidatos conseguem ler.",
+      "features": {
+        "templates": "Vários modelos compatíveis com ATS",
+        "customize": "Cores, fontes e tamanho de texto personalizados",
+        "preview": "Pré-visualização ao vivo antes de baixar",
+        "versions": "Salve vários currículos e versões",
+        "default": "Anexe seu currículo às candidaturas automaticamente",
+        "history": "Histórico completo de pagamentos, faturas e downloads"
+      },
+      "perResume": "Cada currículo em PDF gerado custa {{price}}.",
+      "period": "por {{days}} dias",
+      "upgrade": "Fazer upgrade por {{price}}",
+      "extend": "Estender Premium ({{price}})",
+      "activeUntil": "Premium até {{date}}",
+      "expired": "Seu Premium expirou em {{date}}.",
+      "item": "InternArea Premium ({{days}} dias)",
+      "notConfigured": "Os pagamentos ainda não foram configurados no servidor."
+    },
+    "tabs": {
+      "drafts": "Meus rascunhos",
+      "generated": "Currículos gerados",
+      "payments": "Pagamentos e faturas",
+      "downloads": "Histórico de downloads"
+    },
+    "drafts": {
+      "new": "Novo currículo",
+      "help": "Edite seus rascunhos quantas vezes quiser. Gerar um PDF custa {{price}}.",
+      "premiumOnly": "Criar e editar currículos exige Premium.",
+      "empty": "Nenhum rascunho ainda. Crie seu primeiro currículo.",
+      "edit": "Editar",
+      "view": "Ver",
+      "duplicate": "Duplicar",
+      "delete": "Excluir",
+      "confirmDelete": "Excluir o rascunho \"{{title}}\"? Os currículos já gerados serão mantidos.",
+      "deleted": "Rascunho excluído",
+      "updated": "atualizado em {{date}}",
+      "version": "v{{version}}",
+      "incomplete": "{{count}} item(ns) a completar antes de gerar",
+      "ready": "Pronto para gerar"
+    },
+    "generated": {
+      "empty": "Você ainda não gerou nenhum currículo.",
+      "default": "Padrão",
+      "setDefault": "Definir como padrão",
+      "defaultSet": "Currículo padrão atualizado",
+      "defaultHelp": "Seu currículo padrão é anexado às candidaturas de estágios e empregos. Você pode alterá-lo a qualquer momento.",
+      "view": "Ver",
+      "download": "Baixar",
+      "downloads": "{{count}} download(s)",
+      "createdOn": "Gerado em {{date}}"
+    },
+    "payments": {
+      "empty": "Nenhuma transação ainda.",
+      "date": "Data",
+      "item": "Item",
+      "amount": "Valor",
+      "status": "Status",
+      "reference": "Referência",
+      "invoice": "Fatura",
+      "purposes": {
+        "premium": "Premium",
+        "resume": "Currículo em PDF"
+      },
+      "statuses": {
+        "created": "Pendente",
+        "paid": "Pago",
+        "failed": "Falhou",
+        "cancelled": "Cancelado",
+        "expired": "Expirado",
+        "refunded": "Reembolsado"
+      },
+      "duplicateRefunded": "Pagamento duplicado, reembolsado",
+      "refundPending": "Reembolso em processamento",
+      "generating": "Pago. Seu PDF está sendo gerado."
+    },
+    "downloads": {
+      "empty": "Nenhum download ainda.",
+      "date": "Data",
+      "resume": "Currículo",
+      "type": "Tipo",
+      "device": "Navegador / dispositivo",
+      "ip": "Endereço IP",
+      "kinds": {
+        "download": "Baixado por você",
+        "shared_view": "Aberto a partir de uma candidatura"
+      }
+    },
+    "builder": {
+      "back": "Meus currículos",
+      "titleLabel": "Nome do currículo",
+      "titlePlaceholder": "Nome do currículo, ex.: Vagas de frontend",
+      "save": "Salvar",
+      "saving": "Salvando...",
+      "saved": "Salvo (v{{version}})",
+      "unsaved": "Alterações não salvas",
+      "saveFailed": "Não foi possível salvar seu currículo.",
+      "loadFailed": "Não foi possível carregar este currículo.",
+      "leaveWarning": "Você tem alterações não salvas. Sair mesmo assim?",
+      "versions": "Versões",
+      "generate": "Gerar PDF ({{price}})",
+      "completeFirst": "Preencha primeiro as informações que faltam.",
+      "premiumExpired": "É preciso ter Premium para editar e gerar currículos. Você ainda pode ver este rascunho.",
+      "renew": "Obter Premium",
+      "conflict": "Este currículo foi alterado em outra aba ou dispositivo, então suas alterações não foram salvas.",
+      "reload": "Carregar a versão mais recente",
+      "issuesTitle": "Complete isto antes de gerar seu PDF ({{price}}):",
+      "moreIssues": "...e mais {{count}}",
+      "issuesAfterSave": "Esta lista é atualizada quando você salva.",
+      "design": "Modelo e design",
+      "template": "Modelo",
+      "templates": {
+        "classic": {
+          "name": "Clássico",
+          "desc": "Cabeçalho centralizado, linhas limpas"
+        },
+        "modern": {
+          "name": "Moderno",
+          "desc": "Barra colorida e títulos em destaque"
+        },
+        "minimal": {
+          "name": "Minimalista",
+          "desc": "Compacto, máxima compatibilidade ATS"
+        },
+        "executive": {
+          "name": "Executivo",
+          "desc": "Faixa colorida no cabeçalho"
+        }
+      },
+      "color": "Cor de destaque",
+      "customColor": "Personalizada",
+      "font": "Fonte",
+      "fonts": {
+        "sans": "Sem serifa (Helvetica)",
+        "serif": "Serifada (Times)",
+        "mono": "Monoespaçada (Courier)"
+      },
+      "fontSize": "Tamanho do texto",
+      "sizes": {
+        "small": "Pequeno",
+        "medium": "Médio",
+        "large": "Grande"
+      },
+      "preview": "Pré-visualização ao vivo",
+      "previewNote": "Seu PDF ficará assim.",
+      "photo": {
+        "title": "Foto de perfil",
+        "upload": "Enviar foto",
+        "change": "Trocar foto",
+        "remove": "Remover",
+        "help": "Opcional. JPG ou PNG.",
+        "invalidType": "Escolha uma imagem JPG ou PNG.",
+        "tooLarge": "Esta imagem é muito grande. Escolha uma menor.",
+        "failed": "Não foi possível ler esta imagem."
+      },
+      "sections": {
+        "personal": "Dados pessoais",
+        "objective": "Objetivo profissional",
+        "education": "Formação",
+        "experience": "Experiência profissional",
+        "internships": "Estágios",
+        "projects": "Projetos",
+        "skills": "Habilidades",
+        "certifications": "Certificações",
+        "achievements": "Conquistas",
+        "languages": "Idiomas",
+        "links": "Redes sociais",
+        "references": "Referências"
+      },
+      "fields": {
+        "fullName": "Nome completo",
+        "headline": "Título profissional",
+        "email": "E-mail",
+        "phone": "Telefone",
+        "location": "Cidade, país",
+        "institution": "Escola / faculdade",
+        "degree": "Curso / grau",
+        "field": "Área de estudo",
+        "score": "Nota / média",
+        "startDate": "Início",
+        "endDate": "Fim",
+        "description": "Descrição",
+        "role": "Cargo / função",
+        "organization": "Empresa / organização",
+        "current": "Trabalho aqui atualmente",
+        "name": "Nome",
+        "technologies": "Tecnologias usadas",
+        "link": "Link",
+        "issuer": "Emitido por",
+        "date": "Data",
+        "url": "URL",
+        "proficiency": "Nível",
+        "label": "Plataforma (ex.: LinkedIn)",
+        "designation": "Cargo",
+        "relationship": "Relação",
+        "skill": "Habilidade",
+        "achievement": "Conquista"
+      },
+      "placeholders": {
+        "headline": "ex.: Estudante de Ciência da Computação | Desenvolvedor frontend",
+        "objective": "2 a 3 frases sobre a vaga que você quer e o que você oferece.",
+        "description": "Comece uma linha com - para criar um tópico",
+        "skills": "Digite uma habilidade e pressione Enter"
+      },
+      "addEntry": "Adicionar em {{section}}",
+      "addSkill": "Adicionar",
+      "remove": "Remover",
+      "moveUp": "Mover para cima",
+      "moveDown": "Mover para baixo",
+      "issues": {
+        "required": "{{field}} é obrigatório",
+        "invalid": "{{field}} não é válido",
+        "tooShort": "{{field}} é muito curto (mínimo de 30 caracteres)",
+        "beforeStart": "{{field}}: a data de término é anterior à de início",
+        "unsupportedCharacters": "{{field}} contém caracteres que o PDF não consegue exibir. Use letras latinas."
+      }
+    },
+    "versions": {
+      "title": "Histórico de versões",
+      "help": "Uma nova versão é salva sempre que você salva. Restaurar uma versão a salva como a mais recente, então nada se perde.",
+      "empty": "Nenhuma versão ainda.",
+      "current": "Atual",
+      "preview": "Visualizar",
+      "restore": "Restaurar",
+      "restored": "Versão {{version}} restaurada",
+      "previewing": "Visualizando a versão {{version}}",
+      "backToCurrent": "Voltar para a atual",
+      "discardChanges": "Restaurar descartará suas alterações não salvas. Continuar?",
+      "loadFailed": "Não foi possível carregar as versões.",
+      "notes": {
+        "created": "Criado",
+        "copied": "Copiado de outro currículo",
+        "saved": "Salvo",
+        "restored": "Restaurado da v{{version}}"
+      }
+    },
+    "pay": {
+      "titleResume": "Gere seu currículo",
+      "titlePremium": "Faça upgrade para Premium",
+      "resumeItem": "Currículo em PDF: {{title}}",
+      "progress": "Progresso do pagamento",
+      "step1": "Verificar e-mail",
+      "step2": "Pagar",
+      "step3": "Concluído",
+      "otpIntro": "Para sua segurança, enviaremos uma senha de uso único ao seu e-mail cadastrado. O pagamento só é liberado depois da verificação.",
+      "sendCode": "Enviar código",
+      "verify": "Verificar",
+      "verified": "E-mail verificado. Agora você pode pagar com segurança.",
+      "verifiedFor": "Verificação válida por {{time}}",
+      "payNow": "Pagar {{price}} com Razorpay",
+      "opening": "Abrindo o Razorpay...",
+      "secureNote": "Os pagamentos são processados com segurança pelo Razorpay.",
+      "confirming": "Confirmando seu pagamento...",
+      "generating": "Pagamento recebido. Gerando seu PDF...",
+      "stillConfirming": "Ainda estamos confirmando seu pagamento com o Razorpay. Você pode fechar esta janela: se o pagamento foi concluído, seu currículo aparecerá automaticamente em Meus currículos e você não será cobrado duas vezes.",
+      "stillConfirmingShort": "Ainda estamos confirmando seu último pagamento. Volte em instantes.",
+      "recovered": "Seu pagamento anterior foi confirmado.",
+      "alreadyPaid": "Este pagamento já foi concluído em outra janela.",
+      "cancelled": "Pagamento cancelado. Você não foi cobrado.",
+      "failed": "O pagamento falhou: {{reason}}",
+      "failedGeneric": "O pagamento falhou. Você não foi cobrado.",
+      "tryAgain": "Tentar novamente",
+      "reverify": "Sua verificação expirou. Verifique seu e-mail novamente.",
+      "scriptFailed": "Não foi possível carregar o Razorpay. Verifique sua conexão e tente novamente.",
+      "successResume": "Seu currículo está pronto! Ele foi salvo no seu perfil e definido como currículo padrão para candidaturas.",
+      "successPremium": "Premium ativo até {{date}}.",
+      "duplicateRefunded": "Você já tinha gerado exatamente este currículo, então este pagamento foi reembolsado. Baixe-o em Meus currículos.",
+      "download": "Baixar PDF",
+      "invoiceNote": "A fatura {{number}} está disponível em Pagamentos e faturas.",
+      "viewMyResumes": "Ir para Meus currículos"
+    },
+    "apply": {
+      "choose": "Currículo a enviar",
+      "none": "Não anexar currículo",
+      "noneYet": "Você ainda não gerou nenhum currículo.",
+      "build": "Crie um com o Criador de Currículos",
+      "loadFailed": "Não foi possível carregar seus currículos.",
+      "changeDefault": "Seu currículo padrão está selecionado.",
+      "manage": "Gerenciar currículos"
+    },
+    "application": {
+      "resume": "Currículo",
+      "none": "Nenhum currículo anexado"
+    },
+    "profile": {
+      "title": "Currículo",
+      "free": "Plano gratuito",
+      "defaultIs": "Currículo padrão: {{title}}",
+      "noDefault": "Nenhum currículo padrão ainda.",
+      "open": "Abrir Criador de Currículos"
+    }
   }
 }

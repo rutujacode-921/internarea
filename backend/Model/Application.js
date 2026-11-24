@@ -14,5 +14,11 @@ const Applicationipschema = new mongoose.Schema({
     default: "pending",
   },
   Application: Object,
+  // The generated resume sent with this application.
+  resume: {
+    id: { type: mongoose.Schema.Types.ObjectId, ref: "GeneratedResume" },
+    title: String,
+    shareToken: String,
+  },
 });
 module.exports = mongoose.model("Application", Applicationipschema);
