@@ -648,5 +648,133 @@
       "noDefault": "No default resume yet.",
       "open": "Open Resume Builder"
     }
+  },
+  "account": {
+    "nav": {
+      "login": "Log in",
+      "signup": "Sign up"
+    },
+    "or": "or",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "passwordRule": "8-72 characters, with at least one letter and one number.",
+    "errors": {
+      "mismatch": "The passwords don't match."
+    },
+    "fields": {
+      "identifier": "Email or mobile number",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Mobile number"
+    },
+    "placeholders": {
+      "identifier": "you@example.com or 98765 43210"
+    },
+    "login": {
+      "title": "Log in",
+      "subtitle": "Welcome back! Log in with your email or mobile number.",
+      "submit": "Log in",
+      "forgot": "Forgot password?",
+      "fillAll": "Please enter your email/mobile number and password.",
+      "noAccount": "Don't have an account?",
+      "alreadySignedIn": "You're already signed in.",
+      "goToProfile": "Go to your profile"
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Sign up with your email address, mobile number, or both.",
+      "submit": "Create account",
+      "success": "Account created. Welcome to InternArea!",
+      "haveAccount": "Already have an account?",
+      "contactHint": "Enter an email, a mobile number, or both. You can reset your password through either.",
+      "errors": {
+        "name": "Please enter your name.",
+        "contact": "Please enter an email address or a mobile number."
+      }
+    },
+    "forgot": {
+      "title": "Forgot password",
+      "subtitle": "Choose how to verify it's you. We'll send a one-time code, then a new password.",
+      "methodLabel": "Reset using",
+      "byEmail": "Email",
+      "byPhone": "Mobile number",
+      "enterEmail": "Please enter your registered email address.",
+      "enterPhone": "Please enter your registered mobile number.",
+      "onceADayNote": "For security, you can use this option only once per day.",
+      "availableAgain": "You can try again after {{date}}.",
+      "sendCode": "Send code",
+      "backToLogin": "Back to log in",
+      "verifyTitle": "Enter the code",
+      "channelEmail": "email",
+      "channelSms": "SMS",
+      "codeSent": "We sent a 6-digit code by {{channel}} to {{destination}}.",
+      "attemptsLeft": "{{count}} attempt(s) left",
+      "verify": "Verify and reset password",
+      "resend": "Resend code ({{count}} left)",
+      "noResends": "No resends left",
+      "requestExpiresIn": "Request expires in {{time}}",
+      "doneTitle": "Password reset",
+      "done": "Your identity is verified. We've sent a new password by {{channel}} to {{destination}}.",
+      "doneNext": "Log in with the new password. You'll be asked to choose your own password straight away.",
+      "goToLogin": "Go to log in",
+      "expired": "This reset request has expired.",
+      "locked": "Too many incorrect codes, so this reset request has been locked.",
+      "oldPasswordWorks": "Your password has not been changed. You can still log in with your current password. You can request another reset after 24 hours.",
+      "startOver": "Start over",
+      "sendingPassword": "Code verified. Sending your new password...",
+      "checkAgain": "Check status",
+      "deliveryFailed": "Your code was verified, but we couldn't send the new password by {{channel}}. Your old password still works.",
+      "retryDelivery": "Send new password again",
+      "noMoreRetries": "We couldn't deliver the new password. Your old password still works; please try again tomorrow."
+    },
+    "change": {
+      "title": "Change password",
+      "subtitle": "Choose a new password for your account.",
+      "required": "For your security, please choose a new password before continuing. Enter the temporary password we sent you, then your new password.",
+      "temporary": "Temporary password",
+      "current": "Current password",
+      "new": "New password",
+      "submit": "Save new password",
+      "success": "Password changed.",
+      "enterCurrent": "Please enter your current password.",
+      "same": "Your new password must be different from the current one.",
+      "signIn": "Please log in to change your password.",
+      "googleAccount": "You signed in with Google, so your account has no password to change."
+    },
+    "profile": {
+      "security": "Password & security",
+      "securityHelp": "Change your password and review password reset activity on your account."
+    },
+    "history": {
+      "title": "Password reset history",
+      "subtitle": "Every password reset request on your account, for security auditing.",
+      "empty": "No password reset requests yet.",
+      "loadFailed": "Couldn't load your password reset history.",
+      "date": "Requested",
+      "method": "Method",
+      "status": "Status",
+      "ip": "IP address",
+      "device": "Browser / device",
+      "wrongCodes": "{{count}} wrong code(s)",
+      "methods": {
+        "email": "Email",
+        "phone": "SMS"
+      },
+      "statuses": {
+        "completed": "Password reset",
+        "otp_sent": "Code sent",
+        "verified": "Code verified",
+        "delivery_failed": "Delivery failed",
+        "send_failed": "Code not sent",
+        "expired": "Expired",
+        "locked": "Locked (wrong codes)",
+        "blocked_daily_limit": "Blocked (once per day)",
+        "invalid_user": "Unknown account",
+        "google_account": "Google account",
+        "rate_limited": "Too many requests"
+      }
+    }
   }
 }

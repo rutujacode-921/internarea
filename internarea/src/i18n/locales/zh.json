@@ -648,5 +648,133 @@
       "noDefault": "暂无默认简历。",
       "open": "打开简历生成器"
     }
+  },
+  "account": {
+    "nav": {
+      "login": "登录",
+      "signup": "注册"
+    },
+    "or": "或",
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码",
+    "passwordRule": "8-72 个字符，至少包含一个字母和一个数字。",
+    "errors": {
+      "mismatch": "两次输入的密码不一致。"
+    },
+    "fields": {
+      "identifier": "邮箱或手机号",
+      "password": "密码",
+      "confirmPassword": "确认密码",
+      "name": "姓名",
+      "email": "邮箱地址",
+      "phone": "手机号码"
+    },
+    "placeholders": {
+      "identifier": "you@example.com 或 98765 43210"
+    },
+    "login": {
+      "title": "登录",
+      "subtitle": "欢迎回来！请使用邮箱或手机号登录。",
+      "submit": "登录",
+      "forgot": "忘记密码？",
+      "fillAll": "请输入邮箱/手机号和密码。",
+      "noAccount": "还没有账户？",
+      "alreadySignedIn": "您已登录。",
+      "goToProfile": "前往个人资料"
+    },
+    "signup": {
+      "title": "创建账户",
+      "subtitle": "使用邮箱、手机号或两者注册。",
+      "submit": "创建账户",
+      "success": "账户已创建，欢迎来到 InternArea！",
+      "haveAccount": "已有账户？",
+      "contactHint": "请输入邮箱、手机号或两者。之后可通过任一方式重置密码。",
+      "errors": {
+        "name": "请输入您的姓名。",
+        "contact": "请输入邮箱地址或手机号码。"
+      }
+    },
+    "forgot": {
+      "title": "忘记密码",
+      "subtitle": "选择验证身份的方式。我们会先发送一次性验证码，再发送新密码。",
+      "methodLabel": "重置方式",
+      "byEmail": "邮箱",
+      "byPhone": "手机号",
+      "enterEmail": "请输入您注册的邮箱地址。",
+      "enterPhone": "请输入您注册的手机号码。",
+      "onceADayNote": "出于安全考虑，此功能每天只能使用一次。",
+      "availableAgain": "您可以在 {{date}} 之后再试。",
+      "sendCode": "发送验证码",
+      "backToLogin": "返回登录",
+      "verifyTitle": "输入验证码",
+      "channelEmail": "邮件",
+      "channelSms": "短信",
+      "codeSent": "我们已通过{{channel}}向 {{destination}} 发送了 6 位验证码。",
+      "attemptsLeft": "还剩 {{count}} 次机会",
+      "verify": "验证并重置密码",
+      "resend": "重新发送验证码（剩余 {{count}} 次）",
+      "noResends": "已无重新发送次数",
+      "requestExpiresIn": "请求将在 {{time}} 后过期",
+      "doneTitle": "密码已重置",
+      "done": "身份已验证。我们已通过{{channel}}向 {{destination}} 发送了新密码。",
+      "doneNext": "请使用新密码登录，系统会立即要求您设置自己的密码。",
+      "goToLogin": "前往登录",
+      "expired": "此重置请求已过期。",
+      "locked": "错误验证码次数过多，此重置请求已被锁定。",
+      "oldPasswordWorks": "您的密码未更改，仍可使用当前密码登录。24 小时后可再次申请重置。",
+      "startOver": "重新开始",
+      "sendingPassword": "验证码已通过，正在发送新密码...",
+      "checkAgain": "查看状态",
+      "deliveryFailed": "验证码已通过，但无法通过{{channel}}发送新密码。您的旧密码仍然有效。",
+      "retryDelivery": "重新发送新密码",
+      "noMoreRetries": "新密码发送失败。您的旧密码仍然有效，请明天再试。"
+    },
+    "change": {
+      "title": "修改密码",
+      "subtitle": "为您的账户设置新密码。",
+      "required": "为保障安全，请先设置新密码再继续。请输入我们发送给您的临时密码，然后输入新密码。",
+      "temporary": "临时密码",
+      "current": "当前密码",
+      "new": "新密码",
+      "submit": "保存新密码",
+      "success": "密码已修改。",
+      "enterCurrent": "请输入当前密码。",
+      "same": "新密码不能与当前密码相同。",
+      "signIn": "请登录后修改密码。",
+      "googleAccount": "您使用 Google 登录，账户没有可修改的密码。"
+    },
+    "profile": {
+      "security": "密码与安全",
+      "securityHelp": "修改密码并查看账户的密码重置记录。"
+    },
+    "history": {
+      "title": "密码重置记录",
+      "subtitle": "您账户的所有密码重置请求，用于安全审计。",
+      "empty": "暂无密码重置请求。",
+      "loadFailed": "无法加载密码重置记录。",
+      "date": "请求时间",
+      "method": "方式",
+      "status": "状态",
+      "ip": "IP 地址",
+      "device": "浏览器 / 设备",
+      "wrongCodes": "{{count}} 次错误验证码",
+      "methods": {
+        "email": "邮件",
+        "phone": "短信"
+      },
+      "statuses": {
+        "completed": "密码已重置",
+        "otp_sent": "验证码已发送",
+        "verified": "验证码已通过",
+        "delivery_failed": "发送失败",
+        "send_failed": "验证码未发送",
+        "expired": "已过期",
+        "locked": "已锁定（验证码错误）",
+        "blocked_daily_limit": "已拦截（每天一次）",
+        "invalid_user": "未知账户",
+        "google_account": "Google 账户",
+        "rate_limited": "请求过多"
+      }
+    }
   }
 }

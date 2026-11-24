@@ -172,13 +172,15 @@ const messages = {
   },
 };
 
-// Resume Builder, Premium and payment messages live in their own file.
-const resumeMessages = require("./resumeMessages");
-for (const [code, extra] of Object.entries(resumeMessages)) {
-  if (!messages[code]) continue;
-  Object.assign(messages[code].errors, extra.errors);
-  messages[code].products = extra.products;
-  messages[code].paymentEmail = extra.paymentEmail;
+// Feature messages live in their own files: errors are merged, and every
+// other section (emails, SMS, product names) is added as-is.
+for (const catalogue of [require("./resumeMessages"), require("./authMessages")]) {
+  for (const [code, extra] of Object.entries(catalogue)) {
+    if (!messages[code]) continue;
+    const { errors, ...sections } = extra;
+    Object.assign(messages[code].errors, errors);
+    Object.assign(messages[code], sections);
+  }
 }
 
 const interpolate = (text, vars = {}) =>

@@ -1,5 +1,5 @@
 import { selectuser } from "@/Feature/Userslice";
-import { ExternalLink, Globe, Mail, User } from "lucide-react";
+import { ExternalLink, Globe, KeyRound, Mail, Phone, User } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 import LanguageSwitcher from "@/Components/LanguageSwitcher";
 import LanguageHistory from "@/Components/LanguageHistory";
 import ResumeProfileCard from "@/Components/ResumeProfileCard";
+import PasswordResetHistory from "@/Components/PasswordResetHistory";
 
 const index = () => {
   const user = useSelector(selectuser);
@@ -45,10 +46,18 @@ const index = () => {
           <div className="pt-16 pb-8 px-6">
             <div className="text-center mb-8">
               <h1 className="text-2xl font-bold text-gray-900">{user?.name}</h1>
-              <div className="mt-2 flex items-center justify-center text-gray-500">
-                <Mail className="h-4 w-4 mr-2" />
-                <span>{user?.email}</span>
-              </div>
+              {user?.email && (
+                <div className="mt-2 flex items-center justify-center text-gray-500">
+                  <Mail className="h-4 w-4 mr-2" />
+                  <span>{user?.email}</span>
+                </div>
+              )}
+              {user?.phoneNumber && (
+                <div className="mt-1 flex items-center justify-center text-gray-500">
+                  <Phone className="h-4 w-4 mr-2" />
+                  <span>{user?.phoneNumber}</span>
+                </div>
+              )}
             </div>
 
             {/* Profile Details */}
@@ -95,6 +104,27 @@ const index = () => {
               </div>
 
               <LanguageHistory />
+
+              {/* Password & security (email/mobile + password accounts) */}
+              {user?.provider === "password" && (
+                <>
+                  <div className="rounded-lg border border-gray-200 p-4">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <h2 className="flex items-center gap-2 font-semibold text-gray-900">
+                          <KeyRound className="h-4 w-4 text-blue-600" />
+                          {t("account.profile.security")}
+                        </h2>
+                        <p className="mt-1 text-sm text-gray-500">{t("account.profile.securityHelp")}</p>
+                      </div>
+                      <Link href="/change-password" className="inline-flex items-center justify-center rounded-lg border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50">
+                        {t("account.change.title")}
+                      </Link>
+                    </div>
+                  </div>
+                  <PasswordResetHistory />
+                </>
+              )}
             </div>
           </div>
         </div>

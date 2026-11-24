@@ -648,5 +648,133 @@
       "noDefault": "Aún no tienes un CV predeterminado.",
       "open": "Abrir Creador de CV"
     }
+  },
+  "account": {
+    "nav": {
+      "login": "Iniciar sesión",
+      "signup": "Registrarse"
+    },
+    "or": "o",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "passwordRule": "De 8 a 72 caracteres, con al menos una letra y un número.",
+    "errors": {
+      "mismatch": "Las contraseñas no coinciden."
+    },
+    "fields": {
+      "identifier": "Correo o número de móvil",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Número de móvil"
+    },
+    "placeholders": {
+      "identifier": "tu@ejemplo.com o 98765 43210"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "subtitle": "¡Hola de nuevo! Inicia sesión con tu correo o número de móvil.",
+      "submit": "Iniciar sesión",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "fillAll": "Introduce tu correo/número de móvil y tu contraseña.",
+      "noAccount": "¿No tienes cuenta?",
+      "alreadySignedIn": "Ya has iniciado sesión.",
+      "goToProfile": "Ir a tu perfil"
+    },
+    "signup": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Regístrate con tu correo, tu número de móvil o ambos.",
+      "submit": "Crear cuenta",
+      "success": "Cuenta creada. ¡Bienvenido a InternArea!",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "contactHint": "Introduce un correo, un número de móvil o ambos. Podrás restablecer tu contraseña con cualquiera de ellos.",
+      "errors": {
+        "name": "Introduce tu nombre.",
+        "contact": "Introduce un correo electrónico o un número de móvil."
+      }
+    },
+    "forgot": {
+      "title": "Olvidé mi contraseña",
+      "subtitle": "Elige cómo verificar tu identidad. Te enviaremos un código de un solo uso y después una nueva contraseña.",
+      "methodLabel": "Restablecer mediante",
+      "byEmail": "Correo",
+      "byPhone": "Número de móvil",
+      "enterEmail": "Introduce tu correo registrado.",
+      "enterPhone": "Introduce tu número de móvil registrado.",
+      "onceADayNote": "Por seguridad, solo puedes usar esta opción una vez al día.",
+      "availableAgain": "Podrás intentarlo de nuevo después del {{date}}.",
+      "sendCode": "Enviar código",
+      "backToLogin": "Volver a iniciar sesión",
+      "verifyTitle": "Introduce el código",
+      "channelEmail": "correo",
+      "channelSms": "SMS",
+      "codeSent": "Enviamos un código de 6 dígitos por {{channel}} a {{destination}}.",
+      "attemptsLeft": "Te quedan {{count}} intento(s)",
+      "verify": "Verificar y restablecer",
+      "resend": "Reenviar código (quedan {{count}})",
+      "noResends": "No quedan reenvíos",
+      "requestExpiresIn": "La solicitud caduca en {{time}}",
+      "doneTitle": "Contraseña restablecida",
+      "done": "Tu identidad está verificada. Enviamos una nueva contraseña por {{channel}} a {{destination}}.",
+      "doneNext": "Inicia sesión con la nueva contraseña. Se te pedirá que elijas tu propia contraseña de inmediato.",
+      "goToLogin": "Ir a iniciar sesión",
+      "expired": "Esta solicitud de restablecimiento ha caducado.",
+      "locked": "Demasiados códigos incorrectos, así que esta solicitud se ha bloqueado.",
+      "oldPasswordWorks": "Tu contraseña no ha cambiado. Puedes seguir iniciando sesión con tu contraseña actual. Podrás solicitar otro restablecimiento pasadas 24 horas.",
+      "startOver": "Empezar de nuevo",
+      "sendingPassword": "Código verificado. Enviando tu nueva contraseña...",
+      "checkAgain": "Comprobar estado",
+      "deliveryFailed": "Tu código se verificó, pero no pudimos enviar la nueva contraseña por {{channel}}. Tu contraseña anterior sigue funcionando.",
+      "retryDelivery": "Enviar la nueva contraseña de nuevo",
+      "noMoreRetries": "No pudimos entregar la nueva contraseña. Tu contraseña anterior sigue funcionando; inténtalo de nuevo mañana."
+    },
+    "change": {
+      "title": "Cambiar contraseña",
+      "subtitle": "Elige una nueva contraseña para tu cuenta.",
+      "required": "Por tu seguridad, elige una nueva contraseña antes de continuar. Introduce la contraseña temporal que te enviamos y luego tu nueva contraseña.",
+      "temporary": "Contraseña temporal",
+      "current": "Contraseña actual",
+      "new": "Nueva contraseña",
+      "submit": "Guardar nueva contraseña",
+      "success": "Contraseña cambiada.",
+      "enterCurrent": "Introduce tu contraseña actual.",
+      "same": "La nueva contraseña debe ser distinta de la actual.",
+      "signIn": "Inicia sesión para cambiar tu contraseña.",
+      "googleAccount": "Iniciaste sesión con Google, así que tu cuenta no tiene contraseña que cambiar."
+    },
+    "profile": {
+      "security": "Contraseña y seguridad",
+      "securityHelp": "Cambia tu contraseña y revisa la actividad de restablecimiento de tu cuenta."
+    },
+    "history": {
+      "title": "Historial de restablecimientos",
+      "subtitle": "Todas las solicitudes de restablecimiento de contraseña de tu cuenta, para auditoría de seguridad.",
+      "empty": "Aún no hay solicitudes de restablecimiento.",
+      "loadFailed": "No se pudo cargar el historial de restablecimientos.",
+      "date": "Solicitado",
+      "method": "Método",
+      "status": "Estado",
+      "ip": "Dirección IP",
+      "device": "Navegador / dispositivo",
+      "wrongCodes": "{{count}} código(s) incorrecto(s)",
+      "methods": {
+        "email": "Correo",
+        "phone": "SMS"
+      },
+      "statuses": {
+        "completed": "Contraseña restablecida",
+        "otp_sent": "Código enviado",
+        "verified": "Código verificado",
+        "delivery_failed": "Fallo de entrega",
+        "send_failed": "Código no enviado",
+        "expired": "Caducado",
+        "locked": "Bloqueado (códigos incorrectos)",
+        "blocked_daily_limit": "Bloqueado (una vez al día)",
+        "invalid_user": "Cuenta desconocida",
+        "google_account": "Cuenta de Google",
+        "rate_limited": "Demasiadas solicitudes"
+      }
+    }
   }
 }

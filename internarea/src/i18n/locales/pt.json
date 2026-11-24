@@ -648,5 +648,133 @@
       "noDefault": "Nenhum currículo padrão ainda.",
       "open": "Abrir Criador de Currículos"
     }
+  },
+  "account": {
+    "nav": {
+      "login": "Entrar",
+      "signup": "Cadastrar-se"
+    },
+    "or": "ou",
+    "showPassword": "Mostrar senha",
+    "hidePassword": "Ocultar senha",
+    "passwordRule": "De 8 a 72 caracteres, com pelo menos uma letra e um número.",
+    "errors": {
+      "mismatch": "As senhas não coincidem."
+    },
+    "fields": {
+      "identifier": "E-mail ou número de celular",
+      "password": "Senha",
+      "confirmPassword": "Confirmar senha",
+      "name": "Nome completo",
+      "email": "E-mail",
+      "phone": "Número de celular"
+    },
+    "placeholders": {
+      "identifier": "voce@exemplo.com ou 98765 43210"
+    },
+    "login": {
+      "title": "Entrar",
+      "subtitle": "Que bom ver você de novo! Entre com seu e-mail ou celular.",
+      "submit": "Entrar",
+      "forgot": "Esqueceu a senha?",
+      "fillAll": "Digite seu e-mail/celular e sua senha.",
+      "noAccount": "Não tem uma conta?",
+      "alreadySignedIn": "Você já está conectado.",
+      "goToProfile": "Ir para o seu perfil"
+    },
+    "signup": {
+      "title": "Crie sua conta",
+      "subtitle": "Cadastre-se com seu e-mail, seu celular ou ambos.",
+      "submit": "Criar conta",
+      "success": "Conta criada. Bem-vindo ao InternArea!",
+      "haveAccount": "Já tem uma conta?",
+      "contactHint": "Digite um e-mail, um celular ou ambos. Você poderá redefinir a senha por qualquer um deles.",
+      "errors": {
+        "name": "Digite seu nome.",
+        "contact": "Digite um e-mail ou um número de celular."
+      }
+    },
+    "forgot": {
+      "title": "Esqueci a senha",
+      "subtitle": "Escolha como confirmar que é você. Enviaremos um código de uso único e depois uma nova senha.",
+      "methodLabel": "Redefinir por",
+      "byEmail": "E-mail",
+      "byPhone": "Celular",
+      "enterEmail": "Digite seu e-mail cadastrado.",
+      "enterPhone": "Digite seu número de celular cadastrado.",
+      "onceADayNote": "Por segurança, você só pode usar esta opção uma vez por dia.",
+      "availableAgain": "Você poderá tentar novamente após {{date}}.",
+      "sendCode": "Enviar código",
+      "backToLogin": "Voltar para o login",
+      "verifyTitle": "Digite o código",
+      "channelEmail": "e-mail",
+      "channelSms": "SMS",
+      "codeSent": "Enviamos um código de 6 dígitos por {{channel}} para {{destination}}.",
+      "attemptsLeft": "{{count}} tentativa(s) restante(s)",
+      "verify": "Verificar e redefinir senha",
+      "resend": "Reenviar código ({{count}} restantes)",
+      "noResends": "Sem reenvios restantes",
+      "requestExpiresIn": "A solicitação expira em {{time}}",
+      "doneTitle": "Senha redefinida",
+      "done": "Sua identidade foi verificada. Enviamos uma nova senha por {{channel}} para {{destination}}.",
+      "doneNext": "Entre com a nova senha. Você deverá escolher sua própria senha imediatamente.",
+      "goToLogin": "Ir para o login",
+      "expired": "Esta solicitação de redefinição expirou.",
+      "locked": "Muitos códigos incorretos, por isso esta solicitação foi bloqueada.",
+      "oldPasswordWorks": "Sua senha não foi alterada. Você ainda pode entrar com a senha atual. Poderá solicitar outra redefinição após 24 horas.",
+      "startOver": "Recomeçar",
+      "sendingPassword": "Código verificado. Enviando sua nova senha...",
+      "checkAgain": "Verificar status",
+      "deliveryFailed": "Seu código foi verificado, mas não conseguimos enviar a nova senha por {{channel}}. Sua senha antiga ainda funciona.",
+      "retryDelivery": "Enviar a nova senha novamente",
+      "noMoreRetries": "Não conseguimos entregar a nova senha. Sua senha antiga ainda funciona; tente novamente amanhã."
+    },
+    "change": {
+      "title": "Alterar senha",
+      "subtitle": "Escolha uma nova senha para sua conta.",
+      "required": "Por segurança, escolha uma nova senha antes de continuar. Digite a senha temporária que enviamos e depois sua nova senha.",
+      "temporary": "Senha temporária",
+      "current": "Senha atual",
+      "new": "Nova senha",
+      "submit": "Salvar nova senha",
+      "success": "Senha alterada.",
+      "enterCurrent": "Digite sua senha atual.",
+      "same": "A nova senha deve ser diferente da atual.",
+      "signIn": "Entre para alterar sua senha.",
+      "googleAccount": "Você entrou com o Google, então sua conta não tem senha para alterar."
+    },
+    "profile": {
+      "security": "Senha e segurança",
+      "securityHelp": "Altere sua senha e confira a atividade de redefinição de senha da sua conta."
+    },
+    "history": {
+      "title": "Histórico de redefinição de senha",
+      "subtitle": "Todas as solicitações de redefinição de senha da sua conta, para auditoria de segurança.",
+      "empty": "Nenhuma solicitação de redefinição ainda.",
+      "loadFailed": "Não foi possível carregar o histórico de redefinições.",
+      "date": "Solicitado em",
+      "method": "Método",
+      "status": "Status",
+      "ip": "Endereço IP",
+      "device": "Navegador / dispositivo",
+      "wrongCodes": "{{count}} código(s) incorreto(s)",
+      "methods": {
+        "email": "E-mail",
+        "phone": "SMS"
+      },
+      "statuses": {
+        "completed": "Senha redefinida",
+        "otp_sent": "Código enviado",
+        "verified": "Código verificado",
+        "delivery_failed": "Falha no envio",
+        "send_failed": "Código não enviado",
+        "expired": "Expirado",
+        "locked": "Bloqueado (códigos incorretos)",
+        "blocked_daily_limit": "Bloqueado (uma vez por dia)",
+        "invalid_user": "Conta desconhecida",
+        "google_account": "Conta Google",
+        "rate_limited": "Muitas solicitações"
+      }
+    }
   }
 }

@@ -50,14 +50,43 @@ async function sendPaymentOtpEmail({ to, code, item, amount, uiLanguage, minutes
   });
 }
 
-// Shared layout for OTP emails. Prints the code to the console in development without SMTP.
-async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore }) {
+// Sends the Forgot Password verification code.
+async function sendResetOtpEmail({ to, code, uiLanguage, minutes }) {
+  const t = (key, vars) => translate(uiLanguage, `resetEmail.${key}`, vars);
+  await sendOtpEmail({
+    to,
+    code,
+    subject: t("subject"),
+    heading: t("heading"),
+    intro: t("intro"),
+    expiry: t("expiry", { minutes }),
+    ignore: t("ignore"),
+  });
+}
+
+// Sends the newly generated password after a verified reset.
+async function sendNewPasswordEmail({ to, password, uiLanguage }) {
+  const t = (key) => translate(uiLanguage, `newPasswordEmail.${key}`);
+  await sendOtpEmail({
+    to,
+    code: password,
+    label: "NEW PASSWORD",
+    subject: t("subject"),
+    heading: t("heading"),
+    intro: t("intro"),
+    expiry: t("mustChange"),
+    ignore: t("notYou"),
+  });
+}
+
+// Shared layout for code emails. Prints the code to the console in development without SMTP.
+async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore, label = "OTP" }) {
   const text = `${heading}\n\n${intro}\n\n${code}\n\n${expiry}\n\n${ignore}`;
   const html = `
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#1f2937">
     <h2 style="color:#2563eb;margin:0 0 16px">${escapeHtml(heading)}</h2>
     <p>${escapeHtml(intro)}</p>
-    <p style="font-size:32px;font-weight:bold;letter-spacing:8px;text-align:center;background:#eff6ff;border-radius:8px;padding:16px;margin:24px 0">${code}</p>
+    <p style="font-family:Consolas,'Courier New',monospace;font-size:${code.length > 6 ? 26 : 32}px;font-weight:bold;letter-spacing:${code.length > 6 ? 3 : 8}px;text-align:center;background:#eff6ff;border-radius:8px;padding:16px;margin:24px 0">${code}</p>
     <p>${escapeHtml(expiry)}</p>
     <p style="color:#6b7280;font-size:13px">${escapeHtml(ignore)}</p>
   </div>`;
@@ -68,7 +97,7 @@ async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore 
       throw new Error("SMTP is not configured");
     }
     // Development fallback so the flow can be tested without an email account.
-    console.log(`\n[DEV EMAIL] To: ${to} | Subject: ${subject} | OTP: ${code}\n`);
+    console.log(`\n[DEV EMAIL] To: ${to} | Subject: ${subject} | ${label}: ${code}\n`);
     return;
   }
 
@@ -81,4 +110,4 @@ async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore 
   });
 }
 
-module.exports = { sendLanguageOtpEmail, sendPaymentOtpEmail };
+module.exports = { sendLanguageOtpEmail, sendPaymentOtpEmail, sendResetOtpEmail, sendNewPasswordEmail };

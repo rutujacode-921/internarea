@@ -10,7 +10,7 @@ import React, {
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { selectuser } from "@/Feature/Userslice";
-import { auth } from "@/firebase/firebase";
+import { hasActiveSession } from "@/lib/session";
 import { api, getApiError, isNetworkError, setApiUiLanguage } from "@/lib/api";
 import LanguageOtpModal from "@/Components/LanguageOtpModal";
 import en from "./locales/en.json";
@@ -110,7 +110,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // follows them across devices. Changes made offline are pushed first.
   const syncWithServer = useCallback(async () => {
     const currentUid = uidRef.current;
-    if (!currentUid || !auth.currentUser) return;
+    if (!currentUid || !hasActiveSession()) return;
 
     const pending = readPendingSync();
     if (pending && pending.uid === currentUid) {
@@ -192,7 +192,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       if (language === stateRef.current.language) return "unchanged";
 
       const info = getLanguageInfo(language);
-      if (info.requiresOtp && (!uidRef.current || !auth.currentUser)) {
+      if (info.requiresOtp && (!uidRef.current || !hasActiveSession())) {
         toast.info(tNow("language.loginRequired", { language: info.nativeName }));
         return "login_required";
       }
@@ -215,7 +215,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         }
 
         let savedOffline = false;
-        if (uidRef.current && auth.currentUser) {
+        if (uidRef.current && hasActiveSession()) {
           try {
             await api.put("/api/language/preference", { language, method: "direct" });
             clearPendingSync();
