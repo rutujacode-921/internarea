@@ -617,7 +617,16 @@
       "duplicateRefunded": "You had already generated this exact resume, so this payment has been refunded. Download it from My Resumes.",
       "download": "Download PDF",
       "invoiceNote": "Invoice {{number}} is available under Payments & invoices.",
-      "viewMyResumes": "Go to My Resumes"
+      "viewMyResumes": "Go to My Resumes",
+      "mock": {
+        "title": "Test payment (simulated)",
+        "note": "Test mode: this replaces the Razorpay checkout because no Razorpay keys are configured. No money is charged.",
+        "pay": "Simulate successful payment of {{price}}",
+        "fail": "Simulate failure",
+        "cancel": "Cancel payment",
+        "banner": "Test payment mode is on: payments are simulated and no money is charged. Add Razorpay keys and remove PAYMENT_MODE=mock to use real Razorpay checkout.",
+        "tag": "Test"
+      }
     },
     "apply": {
       "choose": "Resume to send",

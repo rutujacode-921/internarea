@@ -36,6 +36,9 @@ function renderInvoicePdf(payment) {
     .text(`Invoice no: ${payment.invoice.number}`, { width, align: "right" })
     .text(`Date: ${formatDate(payment.invoice.issuedAt)}`, { width, align: "right" })
     .text(`Status: ${payment.status === "refunded" ? "REFUNDED" : "PAID"}`, { width, align: "right" });
+  if (payment.gateway === "mock") {
+    doc.font("Helvetica-Bold").fillColor("#b45309").text("TEST INVOICE - NOT A REAL PAYMENT", { width, align: "right" });
+  }
 
   doc.moveDown(2);
   doc.font("Helvetica-Bold").fontSize(11).fillColor("#111827").text("Billed to", left);
@@ -77,7 +80,7 @@ function renderInvoicePdf(payment) {
   doc.text(`Payment ID: ${payment.razorpayPaymentId}`);
   doc.text(`Order ID: ${payment.razorpayOrderId}`);
   if (payment.method) doc.text(`Method: ${payment.method}`);
-  doc.text("Processed by Razorpay");
+  doc.text(payment.gateway === "mock" ? "Simulated test payment - no money was charged" : "Processed by Razorpay");
 
   doc.moveDown(3);
   doc.fontSize(9).fillColor("#6b7280").text("This is a computer-generated invoice and does not need a signature.", left, doc.y, { width, align: "center" });

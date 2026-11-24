@@ -617,7 +617,16 @@
       "duplicateRefunded": "您之前已生成过完全相同的简历，因此本次付款已退款。请在“我的简历”中下载。",
       "download": "下载 PDF",
       "invoiceNote": "发票 {{number}} 可在“付款与发票”中查看。",
-      "viewMyResumes": "前往我的简历"
+      "viewMyResumes": "前往我的简历",
+      "mock": {
+        "title": "测试付款（模拟）",
+        "note": "测试模式：由于未配置 Razorpay 密钥，此处代替 Razorpay 结账页面。不会产生任何扣款。",
+        "pay": "模拟成功支付 {{price}}",
+        "fail": "模拟失败",
+        "cancel": "取消付款",
+        "banner": "测试付款模式已开启：付款为模拟，不会扣款。添加 Razorpay 密钥并删除 PAYMENT_MODE=mock 即可使用真实的 Razorpay 结账。",
+        "tag": "测试"
+      }
     },
     "apply": {
       "choose": "要发送的简历",

@@ -28,6 +28,19 @@ const PAYMENT_SETTINGS = {
   maxOrdersPerVerification: intFromEnv("PAYMENT_MAX_ORDERS_PER_VERIFICATION", 3),
 };
 
+// PAYMENT_MODE=mock swaps Razorpay for a simulated checkout, for local demos
+// without Razorpay keys. It is refused in production so it can never be used
+// to skip a real payment.
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+const MOCK_REQUESTED = (process.env.PAYMENT_MODE || "").toLowerCase() === "mock";
+if (MOCK_REQUESTED && IS_PRODUCTION) {
+  console.error("PAYMENT_MODE=mock is ignored because NODE_ENV=production. Using Razorpay.");
+}
+const PAYMENT_MODE = MOCK_REQUESTED && !IS_PRODUCTION ? "mock" : "razorpay";
+if (PAYMENT_MODE === "mock") {
+  console.warn("Payments are SIMULATED (PAYMENT_MODE=mock). No real money is charged. Do not use in production.");
+}
+
 const isPurpose = (value) => value === "premium" || value === "resume";
 
-module.exports = { CURRENCY, PRODUCTS, PAYMENT_SETTINGS, isPurpose };
+module.exports = { CURRENCY, PRODUCTS, PAYMENT_SETTINGS, PAYMENT_MODE, isPurpose };

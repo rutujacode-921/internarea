@@ -6,6 +6,7 @@ export type TransactionStatus = "created" | "paid" | "failed" | "cancelled" | "e
 export interface Transaction {
   transactionId: string;
   purpose: Purpose;
+  gateway: "razorpay" | "mock";
   status: TransactionStatus;
   amount: number;
   currency: string;
@@ -29,6 +30,7 @@ export interface Transaction {
 
 export interface Plans {
   configured: boolean;
+  mode: "razorpay" | "mock";
   currency: string;
   premium: { price: number; durationDays: number };
   resume: { price: number };

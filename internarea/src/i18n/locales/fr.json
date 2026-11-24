@@ -617,7 +617,16 @@
       "duplicateRefunded": "Vous aviez déjà généré exactement ce CV, ce paiement a donc été remboursé. Téléchargez-le depuis Mes CV.",
       "download": "Télécharger le PDF",
       "invoiceNote": "La facture {{number}} est disponible dans Paiements et factures.",
-      "viewMyResumes": "Aller à Mes CV"
+      "viewMyResumes": "Aller à Mes CV",
+      "mock": {
+        "title": "Paiement de test (simulé)",
+        "note": "Mode test : remplace le paiement Razorpay car aucune clé Razorpay n'est configurée. Aucun montant n'est débité.",
+        "pay": "Simuler un paiement réussi de {{price}}",
+        "fail": "Simuler un échec",
+        "cancel": "Annuler le paiement",
+        "banner": "Le mode de paiement de test est activé : les paiements sont simulés et aucun montant n'est débité. Ajoutez les clés Razorpay et supprimez PAYMENT_MODE=mock pour utiliser le vrai paiement Razorpay.",
+        "tag": "Test"
+      }
     },
     "apply": {
       "choose": "CV à envoyer",

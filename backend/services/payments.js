@@ -4,13 +4,15 @@ const Razorpay = require("razorpay");
 const User = require("../Model/User");
 const { Payment, Counter } = require("../Model/Payment");
 const { GeneratedResume } = require("../Model/Resume");
-const { PRODUCTS } = require("../config/payments");
+const { PRODUCTS, PAYMENT_MODE } = require("../config/payments");
+const { mockRazorpay, MOCK_SECRET } = require("./mockGateway");
 const { renderResumePdf } = require("../utils/resumePdf");
 
 let client = null;
 
 // The Razorpay client, or null when keys are not configured.
 function getRazorpay() {
+  if (PAYMENT_MODE === "mock") return mockRazorpay;
   if (client) return client;
   const { RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET } = process.env;
   if (!RAZORPAY_KEY_ID || !RAZORPAY_KEY_SECRET) return null;
@@ -29,7 +31,7 @@ const safeEqualHex = (a, b) => {
 
 // Checkout success handler signature: HMAC(order_id|payment_id, key_secret).
 function isValidCheckoutSignature(orderId, paymentId, signature) {
-  const secret = process.env.RAZORPAY_KEY_SECRET;
+  const secret = PAYMENT_MODE === "mock" ? MOCK_SECRET : process.env.RAZORPAY_KEY_SECRET;
   if (!secret) return false;
   return safeEqualHex(hmacHex(secret, `${orderId}|${paymentId}`), signature);
 }

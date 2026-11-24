@@ -243,6 +243,12 @@ export default function ResumeHome() {
           </div>
         ) : (
           <>
+            {plans?.mode === "mock" && (
+              <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900" role="note">
+                {t("resume.pay.mock.banner")}
+              </div>
+            )}
+
             {/* Premium */}
             {plans && !premium?.active && (
               <div className="mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
@@ -440,7 +446,12 @@ export default function ResumeHome() {
                           <tr key={tx.transactionId} className="align-top">
                             <td className="whitespace-nowrap px-4 py-3 text-gray-700">{dateTime(tx.paidAt || tx.createdAt)}</td>
                             <td className="px-4 py-3 text-gray-900">
-                              <div className="font-medium">{t(`resume.payments.purposes.${tx.purpose}`)}</div>
+                              <div className="font-medium">
+                                {t(`resume.payments.purposes.${tx.purpose}`)}
+                                {tx.gateway === "mock" && (
+                                  <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-800">{t("resume.pay.mock.tag")}</span>
+                                )}
+                              </div>
                               {tx.resumeTitle && <div className="text-xs text-gray-500">{tx.resumeTitle}</div>}
                               {tx.duplicate && <div className="text-xs text-amber-700">{t("resume.payments.duplicateRefunded")}</div>}
                               {tx.refundStatus === "failed" && <div className="text-xs text-red-700">{t("resume.payments.refundPending")}</div>}

@@ -617,7 +617,16 @@
       "duplicateRefunded": "Você já tinha gerado exatamente este currículo, então este pagamento foi reembolsado. Baixe-o em Meus currículos.",
       "download": "Baixar PDF",
       "invoiceNote": "A fatura {{number}} está disponível em Pagamentos e faturas.",
-      "viewMyResumes": "Ir para Meus currículos"
+      "viewMyResumes": "Ir para Meus currículos",
+      "mock": {
+        "title": "Pagamento de teste (simulado)",
+        "note": "Modo de teste: substitui o checkout do Razorpay porque não há chaves do Razorpay configuradas. Nenhum valor é cobrado.",
+        "pay": "Simular pagamento bem-sucedido de {{price}}",
+        "fail": "Simular falha",
+        "cancel": "Cancelar pagamento",
+        "banner": "O modo de pagamento de teste está ativo: os pagamentos são simulados e nada é cobrado. Adicione as chaves do Razorpay e remova PAYMENT_MODE=mock para usar o checkout real do Razorpay.",
+        "tag": "Teste"
+      }
     },
     "apply": {
       "choose": "Currículo a enviar",

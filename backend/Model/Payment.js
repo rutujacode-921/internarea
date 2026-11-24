@@ -50,6 +50,8 @@ const PaymentSchema = new mongoose.Schema(
       index: true,
     },
     otpId: { type: mongoose.Schema.Types.ObjectId, ref: "PaymentOtp", required: true },
+    // "mock" for simulated test payments (PAYMENT_MODE=mock).
+    gateway: { type: String, enum: ["razorpay", "mock"], default: "razorpay" },
 
     // For resume payments: the exact content paid for, frozen at order time.
     resumeId: { type: mongoose.Schema.Types.ObjectId, ref: "Resume", default: null },

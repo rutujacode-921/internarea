@@ -14,8 +14,9 @@ const { buildResumeSnapshot } = require("../utils/resumeSnapshot");
 const { renderInvoicePdf } = require("../utils/invoicePdf");
 const { translate, getRequestLanguage } = require("../i18n/messages");
 const { OTP_SETTINGS } = require("../config/languages");
-const { CURRENCY, PRODUCTS, PAYMENT_SETTINGS, isPurpose } = require("../config/payments");
+const { CURRENCY, PRODUCTS, PAYMENT_SETTINGS, PAYMENT_MODE, isPurpose } = require("../config/payments");
 const payments = require("../services/payments");
+const { completeMockCheckout } = require("../services/mockGateway");
 
 const formatAmount = (paise) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: CURRENCY }).format(paise / 100);
@@ -26,6 +27,7 @@ function serialize(payment) {
   return {
     transactionId: payment._id,
     purpose: payment.purpose,
+    gateway: payment.gateway || "razorpay",
     status: payment.status,
     amount: payment.amount,
     currency: payment.currency,
@@ -131,6 +133,7 @@ router.get(
     const user = await getOrCreateUser(req.authUser);
     res.json({
       configured: Boolean(payments.getRazorpay()),
+      mode: PAYMENT_MODE,
       currency: CURRENCY,
       premium: { price: PRODUCTS.premium.amount, durationDays: PRODUCTS.premium.durationDays },
       resume: { price: PRODUCTS.resume.amount },
@@ -275,7 +278,8 @@ router.post(
       res.json({
         transaction: serialize(payment),
         checkout: {
-          keyId: process.env.RAZORPAY_KEY_ID,
+          mode: PAYMENT_MODE,
+          keyId: PAYMENT_MODE === "mock" ? "mock" : process.env.RAZORPAY_KEY_ID,
           orderId: payment.razorpayOrderId,
           amount: payment.amount,
           currency: payment.currency,
@@ -349,6 +353,7 @@ router.post(
       resumeSnapshot: prep.snapshot || null,
       contentHash: prep.contentHash || null,
       razorpayOrderId: order.id,
+      gateway: PAYMENT_MODE,
       expiresAt: new Date(Date.now() + PAYMENT_SETTINGS.orderTtlMinutes * 60 * 1000),
       events: [{ type: "created", detail: order.id }],
     });
@@ -390,6 +395,21 @@ router.post(
       if (error.code) return sendError(req, res, 400, error.code);
       throw error;
     }
+  })
+);
+
+// POST /api/payments/mock/complete - the simulated checkout's Pay / Fail
+// buttons (PAYMENT_MODE=mock only). Returns what Razorpay Checkout would.
+router.post(
+  "/mock/complete",
+  asyncHandler(async (req, res) => {
+    if (PAYMENT_MODE !== "mock") return sendError(req, res, 404, "PAYMENT_NOT_FOUND");
+    const { orderId, outcome } = req.body || {};
+    const payment = await Payment.findOne({ razorpayOrderId: orderId, uid: req.authUser.uid });
+    if (!payment) return sendError(req, res, 404, "PAYMENT_NOT_FOUND");
+    const result = completeMockCheckout(orderId, outcome === "success" ? "success" : "fail");
+    if (!result) return sendError(req, res, 410, "PAYMENT_VERIFICATION_EXPIRED");
+    res.json(result);
   })
 );
 

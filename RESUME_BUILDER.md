@@ -17,6 +17,8 @@ Every payment goes through **email OTP verification first, then Razorpay**.
 Prices and durations can be changed with `PREMIUM_PRICE_PAISE`, `PREMIUM_DURATION_DAYS` and `RESUME_PRICE_PAISE`.
 Without Razorpay keys, the pay buttons are disabled and a notice is shown.
 
+**No Razorpay keys? Use the simulated checkout.** Razorpay may ask for KYC before giving out keys. For local demos, start the backend with `PAYMENT_MODE=mock`, either in `backend/.env` or as `PAYMENT_MODE=mock npm start`. A clearly labelled test checkout with **Pay**, **Fail** and **Cancel** buttons then replaces Razorpay. Everything else runs exactly as with Razorpay: the email OTP, signature and amount checks, PDF generation, history, and invoices (marked "TEST INVOICE"). Mock mode is ignored when `NODE_ENV=production`. Remove the setting to use real Razorpay.
+
 **Testing payments:** in Test Mode, use Razorpay's test card `4111 1111 1111 1111` (any future expiry and any CVV) or the test UPI ID `success@razorpay`.
 
 ### Frontend (`internarea/`)

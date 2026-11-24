@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, CreditCard, Download, Loader2, Lock, Mail, ShieldCheck, X, XCircle } from "lucide-react";
+import { CheckCircle2, CreditCard, Download, FlaskConical, Loader2, Lock, Mail, ShieldCheck, X, XCircle } from "lucide-react";
 import { toast } from "react-toastify";
 import { api, getApiError } from "@/lib/api";
 import { useLanguage } from "@/i18n/LanguageProvider";
@@ -35,6 +35,7 @@ type Phase =
   | "verified" // OTP accepted; payment unlocked
   | "creating" // creating the order / loading checkout
   | "checkout" // Razorpay window open
+  | "mockCheckout" // simulated checkout (PAYMENT_MODE=mock, local demos only)
   | "confirming" // checking the payment with the server
   | "success"
   | "failed"
@@ -66,6 +67,8 @@ export default function PaymentFlowModal({ purpose, resumeId, price, itemLabel, 
   const [error, setError] = useState<string | null>(null);
   const [transaction, setTransaction] = useState<Transaction | null>(null);
   const [downloading, setDownloading] = useState(false);
+  const [mockOrder, setMockOrder] = useState<{ transactionId: string; orderId: string } | null>(null);
+  const [mockBusy, setMockBusy] = useState(false);
   const [now, setNow] = useState(() => Date.now());
   const mounted = useRef(true);
   const started = useRef(false);
@@ -268,13 +271,6 @@ export default function PaymentFlowModal({ purpose, resumeId, price, itemLabel, 
     }
     setPhase("creating");
     setError(null);
-    try {
-      await loadRazorpay();
-    } catch {
-      if (!mounted.current) return;
-      setError(t("resume.pay.scriptFailed"));
-      return setPhase("verified");
-    }
 
     let order: { transaction: Transaction; checkout: Record<string, unknown> & { prefill: Record<string, string> } };
     try {
@@ -303,6 +299,24 @@ export default function PaymentFlowModal({ purpose, resumeId, price, itemLabel, 
 
     const transactionId = order.transaction.transactionId;
     rememberPendingPayment(transactionId, purpose);
+
+    // Simulated checkout for local demos without Razorpay keys.
+    if (order.checkout.mode === "mock") {
+      setMockOrder({ transactionId, orderId: String(order.checkout.orderId) });
+      return setPhase("mockCheckout");
+    }
+
+    try {
+      await loadRazorpay();
+    } catch {
+      if (!mounted.current) return;
+      // The order stays unpaid and expires on its own; the student can retry.
+      forgetPendingPayment(transactionId);
+      setError(t("resume.pay.scriptFailed"));
+      return setPhase("verified");
+    }
+    if (!mounted.current) return;
+
     let handled = false;
     let lastError: RazorpayError | null = null;
     try {
@@ -339,13 +353,33 @@ export default function PaymentFlowModal({ purpose, resumeId, price, itemLabel, 
     }
   };
 
+  const finishMock = async (outcome: "success" | "fail" | "cancel") => {
+    if (!mockOrder || mockBusy) return;
+    const { transactionId, orderId } = mockOrder;
+    if (outcome === "cancel") {
+      setMockOrder(null);
+      return cancelPayment(transactionId, null);
+    }
+    setMockBusy(true);
+    try {
+      const { data } = await api.post("/api/payments/mock/complete", { orderId, outcome });
+      setMockOrder(null);
+      if (data.error) return cancelPayment(transactionId, data.error);
+      return confirmPayment(transactionId, data);
+    } catch (e) {
+      setError(messageFor(e));
+    } finally {
+      setMockBusy(false);
+    }
+  };
+
   const tryAgain = () => {
     setError(null);
     if (otp && Date.now() < verifiedUntil) startPayment();
     else sendCode();
   };
 
-  const busy = BUSY.includes(phase) || phase === "checkout";
+  const busy = BUSY.includes(phase) || phase === "checkout" || phase === "mockCheckout";
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape" && !busy) onClose();
@@ -492,6 +526,38 @@ export default function PaymentFlowModal({ purpose, resumeId, price, itemLabel, 
                 <Lock className="h-3 w-3" />
                 {t("resume.pay.secureNote")}
               </p>
+            </div>
+          )}
+
+          {phase === "mockCheckout" && (
+            <div className="space-y-3 rounded-lg border-2 border-dashed border-amber-300 bg-amber-50 p-4">
+              <p className="flex items-center gap-2 font-semibold text-amber-900">
+                <FlaskConical className="h-5 w-5" />
+                {t("resume.pay.mock.title")}
+              </p>
+              <p className="text-sm text-amber-900">{t("resume.pay.mock.note")}</p>
+              {error && (
+                <p role="alert" className="rounded bg-red-50 p-2 text-sm text-red-700">
+                  {error}
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={() => finishMock("success")}
+                disabled={mockBusy}
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-2 font-medium text-white hover:bg-green-700 disabled:opacity-60"
+              >
+                {mockBusy && <Loader2 className="h-4 w-4 animate-spin" />}
+                {t("resume.pay.mock.pay", { price: priceLabel })}
+              </button>
+              <div className="grid grid-cols-2 gap-2">
+                <button type="button" onClick={() => finishMock("fail")} disabled={mockBusy} className="rounded-lg border border-red-300 bg-white px-3 py-2 text-sm text-red-700 hover:bg-red-50 disabled:opacity-60">
+                  {t("resume.pay.mock.fail")}
+                </button>
+                <button type="button" onClick={() => finishMock("cancel")} disabled={mockBusy} className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-60">
+                  {t("resume.pay.mock.cancel")}
+                </button>
+              </div>
             </div>
           )}
 
