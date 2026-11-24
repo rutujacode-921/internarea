@@ -20,6 +20,13 @@ const UserSchema = new mongoose.Schema(
     // The generated resume sent with internship and job applications.
     defaultResumeId: { type: mongoose.Schema.Types.ObjectId, ref: "GeneratedResume", default: null },
 
+    // ---- Public Space ---------------------------------------------------------
+    // Unique handle for @mentions and profile links (lowercase a-z, 0-9, _ and .).
+    username: { type: String, default: null },
+    // Profile photo (from Google for Google accounts).
+    photo: { type: String, default: null },
+    bio: { type: String, default: "" },
+
     // ---- Password sign-in ----------------------------------------------------
     authProvider: { type: String, enum: ["google", "password"], default: "google" },
     // E.164 format, e.g. +919876543210.
@@ -48,6 +55,8 @@ UserSchema.index(
   { phone: 1 },
   { unique: true, partialFilterExpression: { authProvider: "password", phone: { $type: "string" } } }
 );
+
+UserSchema.index({ username: 1 }, { unique: true, partialFilterExpression: { username: { $type: "string" } } });
 
 UserSchema.methods.isPremium = function isPremium(now = new Date()) {
   return Boolean(this.premiumUntil && this.premiumUntil > now);

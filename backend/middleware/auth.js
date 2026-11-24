@@ -55,6 +55,7 @@ async function requireAuth(req, res, next) {
       email: decoded.email || null,
       emailVerified: Boolean(decoded.email_verified),
       name: decoded.name || null,
+      photo: decoded.picture || null,
       provider: "google",
     };
     next();

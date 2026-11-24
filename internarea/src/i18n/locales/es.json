@@ -776,5 +776,186 @@
         "rate_limited": "Demasiadas solicitudes"
       }
     }
+  },
+  "space": {
+    "title": "Espacio Público",
+    "signIn": "Inicia sesión para ver publicaciones de estudiantes, compartir las tuyas y conectar con amigos.",
+    "backToFeed": "Volver al inicio",
+    "trendingTags": "Hashtags en tendencia",
+    "noTags": "Aún no hay hashtags en tendencia.",
+    "tagEmpty": "Aún no hay publicaciones con #{{tag}}.",
+    "savedEmpty": "Aún no has guardado ninguna publicación.",
+    "nav": {
+      "link": "Espacio Público",
+      "feed": "Inicio",
+      "friends": "Amigos",
+      "notifications": "Notificaciones",
+      "saved": "Guardados",
+      "profile": "Mi perfil"
+    },
+    "rules": {
+      "title": "Tu límite de publicaciones",
+      "yourFriends": "Tienes {{count}} amigo(s).",
+      "none": "0 amigos: aún no puedes publicar",
+      "one": "1 amigo: 1 publicación al día",
+      "few": "2-5 amigos: 2 publicaciones al día",
+      "many": "6-10 amigos: 5 publicaciones al día",
+      "unlimited": "Más de 10 amigos: sin límite diario"
+    },
+    "feed": {
+      "friends": "De tus amigos",
+      "trending": "Tendencias",
+      "recent": "Publicaciones recientes",
+      "empty": "Aún no hay nada aquí. Añade amigos o vuelve más tarde.",
+      "end": "Estás al día."
+    },
+    "composer": {
+      "placeholder": "Comparte algo con la comunidad... Usa #hashtags y @menciona a personas.",
+      "addMedia": "Foto/Vídeo",
+      "post": "Publicar",
+      "uploading": "Subiendo {{percent}}%",
+      "posted": "¡Publicado!",
+      "empty": "Escribe algo o añade una foto o un vídeo.",
+      "removeFile": "Quitar archivo",
+      "badType": "Solo se permiten fotos JPG, PNG, WebP o GIF y vídeos MP4, WebM o MOV.",
+      "oneVideo": "Añade hasta 4 fotos o un vídeo, no ambos.",
+      "maxImages": "Puedes añadir hasta {{count}} fotos.",
+      "imageTooBig": "Cada foto debe pesar {{mb}} MB o menos.",
+      "videoTooBig": "El vídeo debe pesar {{mb}} MB o menos.",
+      "remaining": "Te quedan {{remaining}} de {{limit}} publicación(es) hoy ({{friends}} amigos).",
+      "unlimited": "Sin límite diario: tienes {{friends}} amigos.",
+      "limitReached": "Ya usaste tus {{limit}} publicación(es) de hoy. Podrás publicar de nuevo después de las {{time}}.",
+      "lockedTitle": "Haz amigos para empezar a publicar",
+      "lockedBody": "Publicar en el Espacio Público se desbloquea con tu primer amigo: 1 amigo permite 1 publicación al día, y más amigos permiten más publicaciones. Aun así puedes dar me gusta, comentar y compartir.",
+      "findFriends": "Buscar amigos"
+    },
+    "privacy": {
+      "label": "Visible para",
+      "public": "Todos",
+      "friends": "Solo amigos"
+    },
+    "post": {
+      "more": "Más opciones",
+      "edit": "Editar publicación",
+      "delete": "Eliminar publicación",
+      "report": "Denunciar publicación",
+      "reported": "Denunciada",
+      "changeUntil": "Puedes editar o eliminar hasta las {{time}}.",
+      "windowPassed": "Ya pasó el plazo para editar o eliminar esta publicación.",
+      "confirmDelete": "¿Eliminar esta publicación? No se puede deshacer.",
+      "deleted": "Publicación eliminada.",
+      "edited": "Publicación actualizada.",
+      "editedLabel": "editado",
+      "saveChanges": "Guardar cambios",
+      "editableUntil": "Puedes editar esta publicación hasta las {{time}}.",
+      "hiddenNotice": "Esta publicación se ocultó tras varias denuncias y solo tú la ves mientras se revisa.",
+      "like": "Me gusta",
+      "liked": "Te gusta",
+      "comment": "Comentar",
+      "share": "Compartir",
+      "save": "Guardar",
+      "savedLabel": "Guardado",
+      "saved": "Guardado en tu colección.",
+      "unsaved": "Quitado de guardados.",
+      "likes": "{{count}} me gusta",
+      "comments": "{{count}} comentarios",
+      "shares": "{{count}} veces compartido",
+      "views": "{{count}} vistas",
+      "photoAlt": "Foto {{n}} de {{name}}",
+      "videoUnsupported": "Tu navegador no puede reproducir este vídeo."
+    },
+    "comments": {
+      "placeholder": "Escribe un comentario...",
+      "send": "Enviar comentario",
+      "more": "Ver más comentarios",
+      "delete": "Eliminar comentario",
+      "confirmDelete": "¿Eliminar este comentario?"
+    },
+    "share": {
+      "title": "Compartir publicación",
+      "link": "Enlace de la publicación",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "more": "Compartir con...",
+      "toFriend": "Enviar a un amigo",
+      "noFriends": "Añade amigos para compartir publicaciones con ellos.",
+      "send": "Enviar",
+      "sentShort": "Enviado",
+      "sent": "Compartido con {{name}}."
+    },
+    "report": {
+      "title": "Denunciar publicación",
+      "why": "¿Por qué denuncias esta publicación?",
+      "details": "Más detalles (opcional)",
+      "submit": "Enviar denuncia",
+      "chooseReason": "Elige un motivo.",
+      "thanks": "Gracias. Revisaremos esta publicación.",
+      "reasons": {
+        "spam": "Spam o engañoso",
+        "inappropriate": "Inapropiado u ofensivo",
+        "harassment": "Acoso o intimidación",
+        "violence": "Violencia o contenido peligroso",
+        "misinformation": "Información falsa",
+        "other": "Otro motivo"
+      }
+    },
+    "friends": {
+      "tabs": {
+        "friends": "Amigos",
+        "requests": "Solicitudes",
+        "find": "Buscar personas"
+      },
+      "add": "Añadir amigo",
+      "cancelRequest": "Cancelar solicitud",
+      "accept": "Aceptar",
+      "decline": "Rechazar",
+      "unfriend": "Eliminar amigo",
+      "requestSent": "Solicitud de amistad enviada.",
+      "accepted": "Ahora sois amigos.",
+      "confirmUnfriend": "¿Eliminar a este amigo? Tu límite diario de publicaciones puede bajar.",
+      "incoming": "Solicitudes para ti",
+      "outgoing": "Solicitudes enviadas",
+      "noFriends": "Aún no tienes amigos. Busca personas para conectar.",
+      "noIncoming": "No hay solicitudes pendientes.",
+      "noOutgoing": "No has enviado solicitudes.",
+      "searchLabel": "Buscar personas",
+      "searchPlaceholder": "Busca por nombre o @usuario",
+      "searchHint": "Escribe al menos 2 caracteres para buscar.",
+      "noResults": "No se encontró a nadie."
+    },
+    "follow": {
+      "follow": "Seguir",
+      "following": "Siguiendo",
+      "followsYou": "Te sigue"
+    },
+    "profile": {
+      "posts": "Publicaciones",
+      "friends": "Amigos",
+      "followers": "Seguidores",
+      "following": "Siguiendo",
+      "edit": "Editar perfil",
+      "noPosts": "No hay publicaciones para mostrar.",
+      "username": "Nombre de usuario",
+      "usernameHint": "3-20 caracteres: minúsculas, números, _ o .",
+      "bio": "Biografía",
+      "save": "Guardar perfil",
+      "saved": "Perfil actualizado."
+    },
+    "notifications": {
+      "markAll": "Marcar todo como leído",
+      "empty": "Aún no hay notificaciones.",
+      "more": "Ver más",
+      "unread": "No leída",
+      "bellUnread": "{{count}} notificaciones sin leer",
+      "types": {
+        "like": "le dio me gusta a tu publicación",
+        "comment": "comentó tu publicación",
+        "share": "compartió tu publicación",
+        "share_to_you": "compartió una publicación contigo",
+        "friend_request": "te envió una solicitud de amistad",
+        "friend_accept": "aceptó tu solicitud de amistad",
+        "mention": "te mencionó"
+      }
+    }
   }
 }

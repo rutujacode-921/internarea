@@ -776,5 +776,186 @@
         "rate_limited": "Trop de demandes"
       }
     }
+  },
+  "space": {
+    "title": "Espace public",
+    "signIn": "Connectez-vous pour voir les publications des étudiants, partager les vôtres et vous connecter avec des amis.",
+    "backToFeed": "Retour au fil",
+    "trendingTags": "Hashtags tendance",
+    "noTags": "Pas encore de hashtags tendance.",
+    "tagEmpty": "Aucune publication avec #{{tag}} pour l'instant.",
+    "savedEmpty": "Vous n'avez encore enregistré aucune publication.",
+    "nav": {
+      "link": "Espace public",
+      "feed": "Fil",
+      "friends": "Amis",
+      "notifications": "Notifications",
+      "saved": "Enregistrés",
+      "profile": "Mon profil"
+    },
+    "rules": {
+      "title": "Votre limite de publications",
+      "yourFriends": "Vous avez {{count}} ami(s).",
+      "none": "0 ami : publication impossible pour l'instant",
+      "one": "1 ami : 1 publication par jour",
+      "few": "2 à 5 amis : 2 publications par jour",
+      "many": "6 à 10 amis : 5 publications par jour",
+      "unlimited": "Plus de 10 amis : aucune limite quotidienne"
+    },
+    "feed": {
+      "friends": "De vos amis",
+      "trending": "Tendances",
+      "recent": "Publications récentes",
+      "empty": "Rien ici pour l'instant. Ajoutez des amis ou revenez plus tard.",
+      "end": "Vous êtes à jour."
+    },
+    "composer": {
+      "placeholder": "Partagez quelque chose avec la communauté... Utilisez des #hashtags et @mentionnez des personnes.",
+      "addMedia": "Photo/Vidéo",
+      "post": "Publier",
+      "uploading": "Envoi {{percent}} %",
+      "posted": "Publié !",
+      "empty": "Écrivez quelque chose ou ajoutez une photo ou une vidéo.",
+      "removeFile": "Retirer le fichier",
+      "badType": "Seules les photos JPG, PNG, WebP ou GIF et les vidéos MP4, WebM ou MOV sont acceptées.",
+      "oneVideo": "Ajoutez jusqu'à 4 photos ou une vidéo, pas les deux.",
+      "maxImages": "Vous pouvez ajouter jusqu'à {{count}} photos.",
+      "imageTooBig": "Chaque photo doit faire {{mb}} Mo au maximum.",
+      "videoTooBig": "La vidéo doit faire {{mb}} Mo au maximum.",
+      "remaining": "Il vous reste {{remaining}} publication(s) sur {{limit}} aujourd'hui ({{friends}} amis).",
+      "unlimited": "Aucune limite quotidienne : vous avez {{friends}} amis.",
+      "limitReached": "Vous avez utilisé vos {{limit}} publication(s) du jour. Vous pourrez republier après {{time}}.",
+      "lockedTitle": "Faites-vous des amis pour publier",
+      "lockedBody": "La publication dans l'Espace public se débloque avec votre premier ami : 1 ami permet 1 publication par jour, et plus d'amis permettent davantage. Vous pouvez toujours aimer, commenter et partager.",
+      "findFriends": "Trouver des amis"
+    },
+    "privacy": {
+      "label": "Visible par",
+      "public": "Tout le monde",
+      "friends": "Amis uniquement"
+    },
+    "post": {
+      "more": "Plus d'options",
+      "edit": "Modifier la publication",
+      "delete": "Supprimer la publication",
+      "report": "Signaler la publication",
+      "reported": "Signalée",
+      "changeUntil": "Vous pouvez modifier ou supprimer jusqu'à {{time}}.",
+      "windowPassed": "Le délai pour modifier ou supprimer cette publication est dépassé.",
+      "confirmDelete": "Supprimer cette publication ? Cette action est irréversible.",
+      "deleted": "Publication supprimée.",
+      "edited": "Publication mise à jour.",
+      "editedLabel": "modifié",
+      "saveChanges": "Enregistrer",
+      "editableUntil": "Vous pouvez modifier cette publication jusqu'à {{time}}.",
+      "hiddenNotice": "Cette publication a été masquée après plusieurs signalements ; elle n'est visible que par vous pendant son examen.",
+      "like": "J'aime",
+      "liked": "Aimé",
+      "comment": "Commenter",
+      "share": "Partager",
+      "save": "Enregistrer",
+      "savedLabel": "Enregistré",
+      "saved": "Ajouté à votre collection.",
+      "unsaved": "Retiré des enregistrements.",
+      "likes": "{{count}} j'aime",
+      "comments": "{{count}} commentaires",
+      "shares": "{{count}} partages",
+      "views": "{{count}} vues",
+      "photoAlt": "Photo {{n}} de {{name}}",
+      "videoUnsupported": "Votre navigateur ne peut pas lire cette vidéo."
+    },
+    "comments": {
+      "placeholder": "Écrire un commentaire...",
+      "send": "Envoyer le commentaire",
+      "more": "Afficher plus de commentaires",
+      "delete": "Supprimer le commentaire",
+      "confirmDelete": "Supprimer ce commentaire ?"
+    },
+    "share": {
+      "title": "Partager la publication",
+      "link": "Lien de la publication",
+      "copy": "Copier",
+      "copied": "Copié",
+      "more": "Partager via...",
+      "toFriend": "Envoyer à un ami",
+      "noFriends": "Ajoutez des amis pour partager des publications avec eux.",
+      "send": "Envoyer",
+      "sentShort": "Envoyé",
+      "sent": "Partagé avec {{name}}."
+    },
+    "report": {
+      "title": "Signaler la publication",
+      "why": "Pourquoi signalez-vous cette publication ?",
+      "details": "Plus de détails (facultatif)",
+      "submit": "Envoyer le signalement",
+      "chooseReason": "Veuillez choisir un motif.",
+      "thanks": "Merci. Nous allons examiner cette publication.",
+      "reasons": {
+        "spam": "Spam ou trompeur",
+        "inappropriate": "Inapproprié ou offensant",
+        "harassment": "Harcèlement ou intimidation",
+        "violence": "Violence ou contenu dangereux",
+        "misinformation": "Fausse information",
+        "other": "Autre chose"
+      }
+    },
+    "friends": {
+      "tabs": {
+        "friends": "Amis",
+        "requests": "Demandes",
+        "find": "Trouver des personnes"
+      },
+      "add": "Ajouter en ami",
+      "cancelRequest": "Annuler la demande",
+      "accept": "Accepter",
+      "decline": "Refuser",
+      "unfriend": "Retirer des amis",
+      "requestSent": "Demande d'ami envoyée.",
+      "accepted": "Vous êtes maintenant amis.",
+      "confirmUnfriend": "Retirer cet ami ? Votre limite quotidienne de publications peut baisser.",
+      "incoming": "Demandes reçues",
+      "outgoing": "Demandes envoyées",
+      "noFriends": "Pas encore d'amis. Trouvez des personnes avec qui vous connecter.",
+      "noIncoming": "Aucune demande en attente.",
+      "noOutgoing": "Vous n'avez envoyé aucune demande.",
+      "searchLabel": "Rechercher des personnes",
+      "searchPlaceholder": "Rechercher par nom ou @nomutilisateur",
+      "searchHint": "Saisissez au moins 2 caractères pour rechercher.",
+      "noResults": "Personne trouvé."
+    },
+    "follow": {
+      "follow": "Suivre",
+      "following": "Abonné",
+      "followsYou": "Vous suit"
+    },
+    "profile": {
+      "posts": "Publications",
+      "friends": "Amis",
+      "followers": "Abonnés",
+      "following": "Abonnements",
+      "edit": "Modifier le profil",
+      "noPosts": "Aucune publication à afficher.",
+      "username": "Nom d'utilisateur",
+      "usernameHint": "3 à 20 caractères : minuscules, chiffres, _ ou .",
+      "bio": "Bio",
+      "save": "Enregistrer le profil",
+      "saved": "Profil mis à jour."
+    },
+    "notifications": {
+      "markAll": "Tout marquer comme lu",
+      "empty": "Pas encore de notifications.",
+      "more": "Afficher plus",
+      "unread": "Non lue",
+      "bellUnread": "{{count}} notifications non lues",
+      "types": {
+        "like": "a aimé votre publication",
+        "comment": "a commenté votre publication",
+        "share": "a partagé votre publication",
+        "share_to_you": "a partagé une publication avec vous",
+        "friend_request": "vous a envoyé une demande d'ami",
+        "friend_accept": "a accepté votre demande d'ami",
+        "mention": "vous a mentionné"
+      }
+    }
   }
 }

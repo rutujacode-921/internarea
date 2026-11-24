@@ -776,5 +776,186 @@
         "rate_limited": "Too many requests"
       }
     }
+  },
+  "space": {
+    "title": "Public Space",
+    "signIn": "Log in to see posts from students, share your own, and connect with friends.",
+    "backToFeed": "Back to the feed",
+    "trendingTags": "Trending hashtags",
+    "noTags": "No trending hashtags yet.",
+    "tagEmpty": "No posts with #{{tag}} yet.",
+    "savedEmpty": "You haven't saved any posts yet.",
+    "nav": {
+      "link": "Public Space",
+      "feed": "Feed",
+      "friends": "Friends",
+      "notifications": "Notifications",
+      "saved": "Saved",
+      "profile": "My profile"
+    },
+    "rules": {
+      "title": "Your posting limit",
+      "yourFriends": "You have {{count}} friend(s).",
+      "none": "0 friends: can't post yet",
+      "one": "1 friend: 1 post a day",
+      "few": "2-5 friends: 2 posts a day",
+      "many": "6-10 friends: 5 posts a day",
+      "unlimited": "More than 10 friends: no daily limit"
+    },
+    "feed": {
+      "friends": "From your friends",
+      "trending": "Trending",
+      "recent": "Recent posts",
+      "empty": "Nothing here yet. Add friends or check back later.",
+      "end": "You're all caught up."
+    },
+    "composer": {
+      "placeholder": "Share something with the community... Use #hashtags and @mention people.",
+      "addMedia": "Photo/Video",
+      "post": "Post",
+      "uploading": "Uploading {{percent}}%",
+      "posted": "Posted!",
+      "empty": "Write something or add a photo or video.",
+      "removeFile": "Remove file",
+      "badType": "Only JPG, PNG, WebP or GIF photos and MP4, WebM or MOV videos are allowed.",
+      "oneVideo": "Add up to 4 photos or one video, not both.",
+      "maxImages": "You can add up to {{count}} photos.",
+      "imageTooBig": "Each photo must be {{mb}} MB or smaller.",
+      "videoTooBig": "The video must be {{mb}} MB or smaller.",
+      "remaining": "{{remaining}} of {{limit}} post(s) left today ({{friends}} friends).",
+      "unlimited": "No daily limit: you have {{friends}} friends.",
+      "limitReached": "You've used today's {{limit}} post(s). You can post again after {{time}}.",
+      "lockedTitle": "Make friends to start posting",
+      "lockedBody": "Posting in the Public Space unlocks with your first friend: 1 friend allows 1 post a day, and more friends allow more posts. You can still like, comment and share.",
+      "findFriends": "Find friends"
+    },
+    "privacy": {
+      "label": "Visible to",
+      "public": "Everyone",
+      "friends": "Friends only"
+    },
+    "post": {
+      "more": "More options",
+      "edit": "Edit post",
+      "delete": "Delete post",
+      "report": "Report post",
+      "reported": "Reported",
+      "changeUntil": "You can edit or delete until {{time}}.",
+      "windowPassed": "The time to edit or delete this post has passed.",
+      "confirmDelete": "Delete this post? This can't be undone.",
+      "deleted": "Post deleted.",
+      "edited": "Post updated.",
+      "editedLabel": "edited",
+      "saveChanges": "Save changes",
+      "editableUntil": "You can edit this post until {{time}}.",
+      "hiddenNotice": "This post was hidden after several reports and is only visible to you while it's reviewed.",
+      "like": "Like",
+      "liked": "Liked",
+      "comment": "Comment",
+      "share": "Share",
+      "save": "Save",
+      "savedLabel": "Saved",
+      "saved": "Saved to your collection.",
+      "unsaved": "Removed from saved.",
+      "likes": "{{count}} likes",
+      "comments": "{{count}} comments",
+      "shares": "{{count}} shares",
+      "views": "{{count}} views",
+      "photoAlt": "Photo {{n}} by {{name}}",
+      "videoUnsupported": "Your browser can't play this video."
+    },
+    "comments": {
+      "placeholder": "Write a comment...",
+      "send": "Send comment",
+      "more": "Show more comments",
+      "delete": "Delete comment",
+      "confirmDelete": "Delete this comment?"
+    },
+    "share": {
+      "title": "Share post",
+      "link": "Post link",
+      "copy": "Copy",
+      "copied": "Copied",
+      "more": "Share via...",
+      "toFriend": "Send to a friend",
+      "noFriends": "Add friends to share posts with them.",
+      "send": "Send",
+      "sentShort": "Sent",
+      "sent": "Shared with {{name}}."
+    },
+    "report": {
+      "title": "Report post",
+      "why": "Why are you reporting this post?",
+      "details": "More details (optional)",
+      "submit": "Submit report",
+      "chooseReason": "Please choose a reason.",
+      "thanks": "Thanks. We'll review this post.",
+      "reasons": {
+        "spam": "Spam or misleading",
+        "inappropriate": "Inappropriate or offensive",
+        "harassment": "Harassment or bullying",
+        "violence": "Violence or dangerous content",
+        "misinformation": "False information",
+        "other": "Something else"
+      }
+    },
+    "friends": {
+      "tabs": {
+        "friends": "Friends",
+        "requests": "Requests",
+        "find": "Find people"
+      },
+      "add": "Add friend",
+      "cancelRequest": "Cancel request",
+      "accept": "Accept",
+      "decline": "Decline",
+      "unfriend": "Unfriend",
+      "requestSent": "Friend request sent.",
+      "accepted": "You're now friends.",
+      "confirmUnfriend": "Remove this friend? Your daily posting limit may go down.",
+      "incoming": "Requests for you",
+      "outgoing": "Requests you sent",
+      "noFriends": "No friends yet. Find people to connect with.",
+      "noIncoming": "No pending requests.",
+      "noOutgoing": "You haven't sent any requests.",
+      "searchLabel": "Search people",
+      "searchPlaceholder": "Search by name or @username",
+      "searchHint": "Type at least 2 characters to search.",
+      "noResults": "No one found."
+    },
+    "follow": {
+      "follow": "Follow",
+      "following": "Following",
+      "followsYou": "Follows you"
+    },
+    "profile": {
+      "posts": "Posts",
+      "friends": "Friends",
+      "followers": "Followers",
+      "following": "Following",
+      "edit": "Edit profile",
+      "noPosts": "No posts to show.",
+      "username": "Username",
+      "usernameHint": "3-20 characters: lowercase letters, numbers, _ or .",
+      "bio": "Bio",
+      "save": "Save profile",
+      "saved": "Profile updated."
+    },
+    "notifications": {
+      "markAll": "Mark all as read",
+      "empty": "No notifications yet.",
+      "more": "Show more",
+      "unread": "Unread",
+      "bellUnread": "{{count}} unread notifications",
+      "types": {
+        "like": "liked your post",
+        "comment": "commented on your post",
+        "share": "shared your post",
+        "share_to_you": "shared a post with you",
+        "friend_request": "sent you a friend request",
+        "friend_accept": "accepted your friend request",
+        "mention": "mentioned you"
+      }
+    }
   }
 }

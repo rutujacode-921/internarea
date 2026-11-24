@@ -776,5 +776,186 @@
         "rate_limited": "请求过多"
       }
     }
+  },
+  "space": {
+    "title": "公共空间",
+    "signIn": "登录后即可查看同学们的帖子、分享你的内容并与好友互动。",
+    "backToFeed": "返回动态",
+    "trendingTags": "热门话题",
+    "noTags": "暂无热门话题。",
+    "tagEmpty": "暂无带有 #{{tag}} 的帖子。",
+    "savedEmpty": "你还没有收藏任何帖子。",
+    "nav": {
+      "link": "公共空间",
+      "feed": "动态",
+      "friends": "好友",
+      "notifications": "通知",
+      "saved": "收藏",
+      "profile": "我的主页"
+    },
+    "rules": {
+      "title": "你的发帖额度",
+      "yourFriends": "你有 {{count}} 位好友。",
+      "none": "0 位好友：暂不能发帖",
+      "one": "1 位好友：每天 1 条",
+      "few": "2-5 位好友：每天 2 条",
+      "many": "6-10 位好友：每天 5 条",
+      "unlimited": "超过 10 位好友：不限条数"
+    },
+    "feed": {
+      "friends": "好友动态",
+      "trending": "热门",
+      "recent": "最新帖子",
+      "empty": "这里还没有内容。添加好友或稍后再来看看。",
+      "end": "已经看完了。"
+    },
+    "composer": {
+      "placeholder": "和大家分享点什么……可以使用 #话题 和 @提及 他人。",
+      "addMedia": "照片/视频",
+      "post": "发布",
+      "uploading": "上传中 {{percent}}%",
+      "posted": "发布成功！",
+      "empty": "请输入内容，或添加照片或视频。",
+      "removeFile": "移除文件",
+      "badType": "仅支持 JPG、PNG、WebP、GIF 图片和 MP4、WebM、MOV 视频。",
+      "oneVideo": "最多添加 4 张照片或 1 个视频，不能同时添加。",
+      "maxImages": "最多可添加 {{count}} 张照片。",
+      "imageTooBig": "每张照片不能超过 {{mb}} MB。",
+      "videoTooBig": "视频不能超过 {{mb}} MB。",
+      "remaining": "今天还可发 {{remaining}}/{{limit}} 条（{{friends}} 位好友）。",
+      "unlimited": "不限条数：你有 {{friends}} 位好友。",
+      "limitReached": "今天的 {{limit}} 条已用完，{{time}} 之后可以再发。",
+      "lockedTitle": "添加好友后即可发帖",
+      "lockedBody": "有了第一位好友就能在公共空间发帖：1 位好友每天可发 1 条，好友越多可发越多。你仍然可以点赞、评论和分享。",
+      "findFriends": "查找好友"
+    },
+    "privacy": {
+      "label": "可见范围",
+      "public": "所有人",
+      "friends": "仅好友"
+    },
+    "post": {
+      "more": "更多选项",
+      "edit": "编辑帖子",
+      "delete": "删除帖子",
+      "report": "举报帖子",
+      "reported": "已举报",
+      "changeUntil": "你可以在 {{time}} 之前编辑或删除。",
+      "windowPassed": "已超过编辑或删除此帖子的时限。",
+      "confirmDelete": "删除这条帖子？此操作无法撤销。",
+      "deleted": "帖子已删除。",
+      "edited": "帖子已更新。",
+      "editedLabel": "已编辑",
+      "saveChanges": "保存更改",
+      "editableUntil": "你可以在 {{time}} 之前编辑此帖子。",
+      "hiddenNotice": "此帖子因多次被举报已被隐藏，审核期间仅你可见。",
+      "like": "点赞",
+      "liked": "已赞",
+      "comment": "评论",
+      "share": "分享",
+      "save": "收藏",
+      "savedLabel": "已收藏",
+      "saved": "已加入收藏。",
+      "unsaved": "已取消收藏。",
+      "likes": "{{count}} 个赞",
+      "comments": "{{count}} 条评论",
+      "shares": "{{count}} 次分享",
+      "views": "{{count}} 次浏览",
+      "photoAlt": "{{name}} 的照片 {{n}}",
+      "videoUnsupported": "你的浏览器无法播放此视频。"
+    },
+    "comments": {
+      "placeholder": "写评论……",
+      "send": "发送评论",
+      "more": "查看更多评论",
+      "delete": "删除评论",
+      "confirmDelete": "删除这条评论？"
+    },
+    "share": {
+      "title": "分享帖子",
+      "link": "帖子链接",
+      "copy": "复制",
+      "copied": "已复制",
+      "more": "通过其他方式分享……",
+      "toFriend": "发送给好友",
+      "noFriends": "添加好友后即可分享给他们。",
+      "send": "发送",
+      "sentShort": "已发送",
+      "sent": "已分享给 {{name}}。"
+    },
+    "report": {
+      "title": "举报帖子",
+      "why": "你为什么举报这条帖子？",
+      "details": "更多说明（可选）",
+      "submit": "提交举报",
+      "chooseReason": "请选择举报原因。",
+      "thanks": "谢谢，我们会审核这条帖子。",
+      "reasons": {
+        "spam": "垃圾信息或误导",
+        "inappropriate": "不当或冒犯性内容",
+        "harassment": "骚扰或欺凌",
+        "violence": "暴力或危险内容",
+        "misinformation": "虚假信息",
+        "other": "其他"
+      }
+    },
+    "friends": {
+      "tabs": {
+        "friends": "好友",
+        "requests": "请求",
+        "find": "查找用户"
+      },
+      "add": "加好友",
+      "cancelRequest": "取消请求",
+      "accept": "接受",
+      "decline": "拒绝",
+      "unfriend": "删除好友",
+      "requestSent": "好友请求已发送。",
+      "accepted": "你们已成为好友。",
+      "confirmUnfriend": "删除这位好友？你的每日发帖额度可能会降低。",
+      "incoming": "收到的请求",
+      "outgoing": "发出的请求",
+      "noFriends": "还没有好友，去查找想认识的人吧。",
+      "noIncoming": "没有待处理的请求。",
+      "noOutgoing": "你还没有发出请求。",
+      "searchLabel": "查找用户",
+      "searchPlaceholder": "按姓名或 @用户名 搜索",
+      "searchHint": "至少输入 2 个字符进行搜索。",
+      "noResults": "未找到用户。"
+    },
+    "follow": {
+      "follow": "关注",
+      "following": "已关注",
+      "followsYou": "关注了你"
+    },
+    "profile": {
+      "posts": "帖子",
+      "friends": "好友",
+      "followers": "粉丝",
+      "following": "关注",
+      "edit": "编辑资料",
+      "noPosts": "暂无可显示的帖子。",
+      "username": "用户名",
+      "usernameHint": "3-20 个字符：小写字母、数字、_ 或 .",
+      "bio": "简介",
+      "save": "保存资料",
+      "saved": "资料已更新。"
+    },
+    "notifications": {
+      "markAll": "全部标为已读",
+      "empty": "暂无通知。",
+      "more": "显示更多",
+      "unread": "未读",
+      "bellUnread": "{{count}} 条未读通知",
+      "types": {
+        "like": "赞了你的帖子",
+        "comment": "评论了你的帖子",
+        "share": "分享了你的帖子",
+        "share_to_you": "向你分享了一条帖子",
+        "friend_request": "向你发送了好友请求",
+        "friend_accept": "接受了你的好友请求",
+        "mention": "提到了你"
+      }
+    }
   }
 }

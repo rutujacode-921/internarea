@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { selectuser } from "@/Feature/Userslice";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import LanguageSwitcher from "./LanguageSwitcher";
+import NotificationBell from "@/space/NotificationBell";
 
 const Navbar = () => {
   const user = useSelector(selectuser);
@@ -40,6 +41,11 @@ const Navbar = () => {
                 </Link>
               </button>
               <button className="flex items-center space-x-1 text-gray-700 hover:text-blue-600">
+                <Link href={"/space"}>
+                  <span>{t("space.nav.link")}</span>
+                </Link>
+              </button>
+              <button className="flex items-center space-x-1 text-gray-700 hover:text-blue-600">
                 <Link href={"/resume"}>
                   <span>{t("resume.nav")}</span>
                 </Link>
@@ -58,7 +64,8 @@ const Navbar = () => {
             <div className="flex items-center space-x-4">
               <LanguageSwitcher />
               {user ? (
-                <div className="relative flex">
+                <div className="relative flex items-center">
+                  <NotificationBell />
                   <button className="flex items-center space-x-2" aria-label={t("nav.profile")}>
                     <Link href={"/profile"}>
                       {user.photo ? (
