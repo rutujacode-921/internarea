@@ -174,7 +174,7 @@ const messages = {
 
 // Feature messages live in their own files: errors are merged, and every
 // other section (emails, SMS, product names) is added as-is.
-for (const catalogue of [require("./resumeMessages"), require("./authMessages"), require("./spaceMessages")]) {
+for (const catalogue of [require("./resumeMessages"), require("./authMessages"), require("./spaceMessages"), require("./loginMessages")]) {
   for (const [code, extra] of Object.entries(catalogue)) {
     if (!messages[code]) continue;
     const { errors, ...sections } = extra;

@@ -957,5 +957,113 @@
         "mention": "mentioned you"
       }
     }
+  },
+  "security": {
+    "otp": {
+      "title": "Verify it's you",
+      "subtitle": "Signing in from Google Chrome needs a one-time code.",
+      "chromeTitle": "Extra check for Google Chrome",
+      "sentEmail": "We sent a 6-digit code to your email {{destination}}.",
+      "sentSms": "We sent a 6-digit code by SMS to {{destination}}.",
+      "resent": "A new code has been sent. The previous code no longer works.",
+      "locked": "Too many incorrect codes. Please log in again to get a new code.",
+      "expired": "This verification has expired. Please log in again.",
+      "startOver": "Log in again",
+      "codeExpired": "This code has expired. Request a new one.",
+      "attemptsLeft": "{{count}} attempt(s) left",
+      "verify": "Verify and sign in",
+      "noResends": "No resends left",
+      "resend": "Resend code ({{count}} left)",
+      "windowHint": "You have {{time}} to finish signing in."
+    },
+    "mobileBlockedTitle": "Mobile sign-in not available right now",
+    "mobileBlocked": "Signing in from a mobile phone is only allowed between 10:00 AM and 1:00 PM IST.",
+    "deviceTypes": {
+      "desktop": "Desktop",
+      "laptop": "Laptop",
+      "tablet": "Tablet",
+      "mobile": "Mobile"
+    },
+    "locationUnknown": "Location unknown",
+    "unknownBrowser": "Unknown browser",
+    "thisDevice": "This device",
+    "viaGoogle": "Google",
+    "viaPassword": "Password",
+    "loadFailed": "Couldn't load this section. Please try again.",
+    "history": {
+      "title": "Login History",
+      "subtitle": "Every sign-in attempt on your account, with the browser, device, IP address and approximate location.",
+      "empty": "No sign-ins recorded yet.",
+      "log": "Verification log",
+      "loadMore": "Show older"
+    },
+    "statuses": {
+      "success": "Signed in",
+      "otp_pending": "Waiting for code",
+      "failed_password": "Wrong password",
+      "otp_locked": "Too many wrong codes",
+      "account_locked": "Account locked",
+      "blocked_mobile_hours": "Blocked: mobile hours",
+      "otp_expired": "Not verified (expired)",
+      "otp_send_failed": "Code not sent",
+      "unknown_account": "Unknown account"
+    },
+    "flags": {
+      "newDevice": "New device",
+      "newBrowser": "New browser",
+      "newIp": "New IP address",
+      "newCountry": "New country",
+      "otpVerified": "OTP verified",
+      "otpRequired": "OTP required",
+      "trusted": "Trusted device",
+      "ipChanged": "IP changed {{count}}×"
+    },
+    "endReasons": {
+      "signed_out": "Signed out",
+      "revoked": "Signed out remotely",
+      "password_changed": "Ended: password changed",
+      "password_reset": "Ended: password reset",
+      "mobile_hours_ended": "Ended: mobile hours over",
+      "session_limit": "Ended: too many sessions",
+      "expired": "Expired"
+    },
+    "events": {
+      "credentials_ok": "Password / Google account verified",
+      "failed_password": "Wrong password",
+      "account_locked": "Blocked: account locked",
+      "blocked_mobile_hours": "Blocked: outside mobile hours",
+      "otp_sent": "Code sent",
+      "otp_resent": "Code resent",
+      "otp_failed": "Wrong code entered",
+      "otp_locked": "Locked after too many wrong codes",
+      "otp_expired": "Verification expired",
+      "otp_code_expired": "Code expired",
+      "otp_send_failed": "Code could not be sent",
+      "otp_verified": "Code verified",
+      "otp_step_resumed": "Verification resumed",
+      "session_started": "Session started",
+      "revoked": "Signed out",
+      "ip_changed": "IP address changed",
+      "device_mismatch": "Used from another browser (refused)"
+    },
+    "sessions": {
+      "title": "Active sessions",
+      "subtitle": "Devices currently signed in to your account. Sign out any you don't recognise.",
+      "signedIn": "Signed in {{date}}",
+      "lastActive": "Last active {{date}}",
+      "signOut": "Sign out",
+      "signedOutOne": "That device has been signed out.",
+      "signedOutAll": "All other devices have been signed out.",
+      "signOutOthers": "Sign out all other devices ({{count}})",
+      "onlyThis": "You're only signed in on this device."
+    },
+    "devices": {
+      "title": "Trusted devices",
+      "subtitle": "Browsers that completed a verified sign-in. Removing one signs it out and treats its next sign-in as new.",
+      "trustedOn": "Trusted {{date}}",
+      "lastUsed": "last used {{date}}",
+      "remove": "Remove trusted device",
+      "removed": "Device removed."
+    }
   }
 }

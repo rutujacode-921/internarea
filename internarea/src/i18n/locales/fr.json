@@ -957,5 +957,113 @@
         "mention": "vous a mentionné"
       }
     }
+  },
+  "security": {
+    "otp": {
+      "title": "Confirmez qu'il s'agit bien de vous",
+      "subtitle": "La connexion depuis Google Chrome nécessite un code à usage unique.",
+      "chromeTitle": "Vérification supplémentaire pour Google Chrome",
+      "sentEmail": "Nous avons envoyé un code à 6 chiffres à votre e-mail {{destination}}.",
+      "sentSms": "Nous avons envoyé un code à 6 chiffres par SMS au {{destination}}.",
+      "resent": "Un nouveau code a été envoyé. L'ancien ne fonctionne plus.",
+      "locked": "Trop de codes incorrects. Reconnectez-vous pour recevoir un nouveau code.",
+      "expired": "Cette vérification a expiré. Veuillez vous reconnecter.",
+      "startOver": "Se reconnecter",
+      "codeExpired": "Ce code a expiré. Demandez-en un nouveau.",
+      "attemptsLeft": "{{count}} tentative(s) restante(s)",
+      "verify": "Vérifier et se connecter",
+      "noResends": "Plus de renvois disponibles",
+      "resend": "Renvoyer le code ({{count}} restant(s))",
+      "windowHint": "Vous avez {{time}} pour terminer la connexion."
+    },
+    "mobileBlockedTitle": "Connexion mobile indisponible pour le moment",
+    "mobileBlocked": "La connexion depuis un téléphone mobile n'est autorisée qu'entre 10 h 00 et 13 h 00 (IST).",
+    "deviceTypes": {
+      "desktop": "Ordinateur de bureau",
+      "laptop": "Ordinateur portable",
+      "tablet": "Tablette",
+      "mobile": "Mobile"
+    },
+    "locationUnknown": "Lieu inconnu",
+    "unknownBrowser": "Navigateur inconnu",
+    "thisDevice": "Cet appareil",
+    "viaGoogle": "Google",
+    "viaPassword": "Mot de passe",
+    "loadFailed": "Impossible de charger cette section. Veuillez réessayer.",
+    "history": {
+      "title": "Historique de connexion",
+      "subtitle": "Chaque tentative de connexion à votre compte, avec le navigateur, l'appareil, l'adresse IP et le lieu approximatif.",
+      "empty": "Aucune connexion enregistrée pour le moment.",
+      "log": "Journal de vérification",
+      "loadMore": "Afficher les plus anciennes"
+    },
+    "statuses": {
+      "success": "Connecté",
+      "otp_pending": "Code en attente",
+      "failed_password": "Mot de passe incorrect",
+      "otp_locked": "Trop de codes incorrects",
+      "account_locked": "Compte verrouillé",
+      "blocked_mobile_hours": "Bloqué : horaires mobiles",
+      "otp_expired": "Non vérifié (expiré)",
+      "otp_send_failed": "Code non envoyé",
+      "unknown_account": "Compte inconnu"
+    },
+    "flags": {
+      "newDevice": "Nouvel appareil",
+      "newBrowser": "Nouveau navigateur",
+      "newIp": "Nouvelle IP",
+      "newCountry": "Nouveau pays",
+      "otpVerified": "OTP vérifié",
+      "otpRequired": "OTP requis",
+      "trusted": "Appareil de confiance",
+      "ipChanged": "IP changée {{count}}×"
+    },
+    "endReasons": {
+      "signed_out": "Déconnecté",
+      "revoked": "Déconnecté à distance",
+      "password_changed": "Terminée : mot de passe changé",
+      "password_reset": "Terminée : mot de passe réinitialisé",
+      "mobile_hours_ended": "Terminée : fin des horaires mobiles",
+      "session_limit": "Terminée : trop de sessions",
+      "expired": "Expirée"
+    },
+    "events": {
+      "credentials_ok": "Mot de passe / compte Google vérifié",
+      "failed_password": "Mot de passe incorrect",
+      "account_locked": "Bloqué : compte verrouillé",
+      "blocked_mobile_hours": "Bloqué : hors horaires mobiles",
+      "otp_sent": "Code envoyé",
+      "otp_resent": "Code renvoyé",
+      "otp_failed": "Code incorrect saisi",
+      "otp_locked": "Verrouillé après trop de codes incorrects",
+      "otp_expired": "Vérification expirée",
+      "otp_code_expired": "Code expiré",
+      "otp_send_failed": "Impossible d'envoyer le code",
+      "otp_verified": "Code vérifié",
+      "otp_step_resumed": "Vérification reprise",
+      "session_started": "Session ouverte",
+      "revoked": "Déconnecté",
+      "ip_changed": "Adresse IP modifiée",
+      "device_mismatch": "Utilisée depuis un autre navigateur (refusée)"
+    },
+    "sessions": {
+      "title": "Sessions actives",
+      "subtitle": "Appareils actuellement connectés à votre compte. Déconnectez ceux que vous ne reconnaissez pas.",
+      "signedIn": "Connecté le {{date}}",
+      "lastActive": "Dernière activité {{date}}",
+      "signOut": "Déconnecter",
+      "signedOutOne": "Cet appareil a été déconnecté.",
+      "signedOutAll": "Tous les autres appareils ont été déconnectés.",
+      "signOutOthers": "Déconnecter tous les autres appareils ({{count}})",
+      "onlyThis": "Vous n'êtes connecté que sur cet appareil."
+    },
+    "devices": {
+      "title": "Appareils de confiance",
+      "subtitle": "Navigateurs ayant terminé une connexion vérifiée. En retirer un le déconnecte et sa prochaine connexion sera considérée comme nouvelle.",
+      "trustedOn": "De confiance depuis le {{date}}",
+      "lastUsed": "dernière utilisation {{date}}",
+      "remove": "Retirer l'appareil de confiance",
+      "removed": "Appareil retiré."
+    }
   }
 }

@@ -957,5 +957,113 @@
         "mention": "提到了你"
       }
     }
+  },
+  "security": {
+    "otp": {
+      "title": "确认是您本人",
+      "subtitle": "通过 Google Chrome 登录需要一次性验证码。",
+      "chromeTitle": "Google Chrome 额外验证",
+      "sentEmail": "我们已向您的邮箱 {{destination}} 发送了 6 位验证码。",
+      "sentSms": "我们已通过短信向 {{destination}} 发送了 6 位验证码。",
+      "resent": "新验证码已发送，之前的验证码已失效。",
+      "locked": "错误验证码次数过多，请重新登录以获取新验证码。",
+      "expired": "此验证已过期，请重新登录。",
+      "startOver": "重新登录",
+      "codeExpired": "该验证码已过期，请重新获取。",
+      "attemptsLeft": "还剩 {{count}} 次机会",
+      "verify": "验证并登录",
+      "noResends": "已无重发次数",
+      "resend": "重新发送验证码（剩余 {{count}} 次）",
+      "windowHint": "您有 {{time}} 完成登录。"
+    },
+    "mobileBlockedTitle": "当前无法通过手机登录",
+    "mobileBlocked": "仅允许在印度标准时间 10:00 至 13:00 之间通过手机登录。",
+    "deviceTypes": {
+      "desktop": "台式机",
+      "laptop": "笔记本电脑",
+      "tablet": "平板",
+      "mobile": "手机"
+    },
+    "locationUnknown": "位置未知",
+    "unknownBrowser": "未知浏览器",
+    "thisDevice": "此设备",
+    "viaGoogle": "Google",
+    "viaPassword": "密码",
+    "loadFailed": "无法加载此部分，请重试。",
+    "history": {
+      "title": "登录历史",
+      "subtitle": "您账户的每次登录尝试，包括浏览器、设备、IP 地址和大致位置。",
+      "empty": "暂无登录记录。",
+      "log": "验证日志",
+      "loadMore": "显示更早记录"
+    },
+    "statuses": {
+      "success": "已登录",
+      "otp_pending": "等待验证码",
+      "failed_password": "密码错误",
+      "otp_locked": "错误验证码过多",
+      "account_locked": "账户已锁定",
+      "blocked_mobile_hours": "已阻止：手机时段",
+      "otp_expired": "未验证（已过期）",
+      "otp_send_failed": "验证码未发送",
+      "unknown_account": "未知账户"
+    },
+    "flags": {
+      "newDevice": "新设备",
+      "newBrowser": "新浏览器",
+      "newIp": "新 IP 地址",
+      "newCountry": "新国家/地区",
+      "otpVerified": "OTP 已验证",
+      "otpRequired": "需要 OTP",
+      "trusted": "受信任设备",
+      "ipChanged": "IP 变更 {{count}} 次"
+    },
+    "endReasons": {
+      "signed_out": "已退出",
+      "revoked": "已被远程退出",
+      "password_changed": "已结束：密码已修改",
+      "password_reset": "已结束：密码已重置",
+      "mobile_hours_ended": "已结束：手机时段结束",
+      "session_limit": "已结束：会话过多",
+      "expired": "已过期"
+    },
+    "events": {
+      "credentials_ok": "密码 / Google 账户已验证",
+      "failed_password": "密码错误",
+      "account_locked": "已阻止：账户已锁定",
+      "blocked_mobile_hours": "已阻止：不在手机时段内",
+      "otp_sent": "验证码已发送",
+      "otp_resent": "验证码已重发",
+      "otp_failed": "输入了错误验证码",
+      "otp_locked": "错误次数过多已锁定",
+      "otp_expired": "验证已过期",
+      "otp_code_expired": "验证码已过期",
+      "otp_send_failed": "验证码发送失败",
+      "otp_verified": "验证码已验证",
+      "otp_step_resumed": "验证已恢复",
+      "session_started": "会话已开始",
+      "revoked": "已退出",
+      "ip_changed": "IP 地址已变更",
+      "device_mismatch": "在其他浏览器中使用（已拒绝）"
+    },
+    "sessions": {
+      "title": "活跃会话",
+      "subtitle": "当前登录您账户的设备。请退出您不认识的设备。",
+      "signedIn": "登录于 {{date}}",
+      "lastActive": "最近活跃 {{date}}",
+      "signOut": "退出",
+      "signedOutOne": "该设备已退出登录。",
+      "signedOutAll": "所有其他设备均已退出登录。",
+      "signOutOthers": "退出所有其他设备（{{count}}）",
+      "onlyThis": "您仅在此设备上登录。"
+    },
+    "devices": {
+      "title": "受信任设备",
+      "subtitle": "已完成验证登录的浏览器。移除后该设备将退出登录，下次登录会被视为新设备。",
+      "trustedOn": "{{date}} 起受信任",
+      "lastUsed": "最近使用 {{date}}",
+      "remove": "移除受信任设备",
+      "removed": "设备已移除。"
+    }
   }
 }

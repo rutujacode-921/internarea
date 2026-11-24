@@ -6,11 +6,12 @@ import { store } from "../store/store";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { signOut } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
-import { login, logout, selectuser } from "@/Feature/Userslice";
-import { api, PASSWORD_CHANGE_EVENT } from "@/lib/api";
-import { applyPasswordUser, dropPasswordSession, getSessionToken } from "@/lib/session";
-import { ToastContainer } from "react-toastify";
+import { logout, selectuser } from "@/Feature/Userslice";
+import { api, PASSWORD_CHANGE_EVENT, SESSION_ENDED_EVENT } from "@/lib/api";
+import { applySessionUser, getSessionToken } from "@/lib/session";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 
@@ -20,35 +21,36 @@ function AuthListener() {
   const user = useSelector(selectuser) as { mustChangePassword?: boolean } | null;
 
   useEffect(() => {
-    // Email/mobile + password accounts: restore the session on page load.
+    // Every account (password or Google) has a server session: restore it.
     if (getSessionToken()) {
       api
         .get("/api/auth/me")
-        .then(({ data }) => applyPasswordUser(data.user))
+        .then(({ data }) => applySessionUser(data.user))
         .catch(() => {
-          // A revoked session is cleared by the API client; when offline, keep it.
+          // An ended session is cleared by the API client; when offline, keep it.
         });
+    } else {
+      dispatch(logout());
     }
-    // Google accounts.
-    const unsubscribe = auth.onAuthStateChanged((authuser) => {
-      if (authuser) {
-        dropPasswordSession(); // Signing in with Google replaces a password session.
-        dispatch(
-          login({
-            uid: authuser.uid,
-            photo: authuser.photoURL,
-            name: authuser.displayName,
-            email: authuser.email,
-            phoneNumber: authuser.phoneNumber,
-            provider: "google",
-          })
-        );
-      } else if (!getSessionToken()) {
-        dispatch(logout());
-      }
+    // Firebase is only used for the Google popup. A Firebase sign-in left over
+    // from before server sessions (or an unfinished popup) is cleared.
+    auth.authStateReady().then(() => {
+      if (auth.currentUser && !getSessionToken()) signOut(auth).catch(() => undefined);
     });
-    return unsubscribe;
   }, [dispatch]);
+
+  // Signed out by the server: from another device, mobile hours over, etc.
+  useEffect(() => {
+    const ended = (event: Event) => {
+      const message = (event as CustomEvent<string>).detail;
+      toast.warn(message || "Your session has ended. Please sign in again.", { toastId: "session-ended" });
+      if (!["/login", "/signup", "/forgot-password"].includes(router.pathname)) {
+        router.push(`/login?next=${encodeURIComponent(router.asPath)}`);
+      }
+    };
+    window.addEventListener(SESSION_ENDED_EVENT, ended);
+    return () => window.removeEventListener(SESSION_ENDED_EVENT, ended);
+  }, [router]);
 
   // After a password reset, the user must change the password before anything else.
   useEffect(() => {

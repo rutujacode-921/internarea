@@ -32,8 +32,10 @@ function passwordProblem(password) {
   return null;
 }
 
-// ---- Sessions for password accounts -------------------------------------------
-// Signed with HS256, so they can't be confused with Firebase's RS256 tokens.
+// ---- Session tokens ------------------------------------------------------------
+// Used by every account (password and Google). Signed with HS256, so they can't
+// be confused with Firebase's RS256 tokens.
+// "sid" is the LoginActivity session: signing out or revoking it ends the token.
 // "pv" is the password version: changing the password signs out old sessions.
 
 const JWT_SECRET =
@@ -43,12 +45,20 @@ const JWT_SECRET =
     return crypto.randomBytes(48).toString("hex");
   })();
 
-const signSession = (user) =>
-  jwt.sign({ sub: user.uid, pv: user.passwordVersion }, JWT_SECRET, {
-    algorithm: "HS256",
-    expiresIn: `${LOGIN_SETTINGS.sessionDays}d`,
-    issuer: "internarea",
-  });
+// expiresAt is the session's end, so a re-issued token never outlives its session.
+const signSession = (user, sessionId, expiresAt) =>
+  jwt.sign(
+    {
+      sub: user.uid,
+      sid: String(sessionId),
+      pv: user.passwordVersion || 0,
+      exp: Math.floor(new Date(expiresAt).getTime() / 1000),
+    },
+    JWT_SECRET,
+    { algorithm: "HS256", issuer: "internarea" }
+  );
+
+const sessionLifetimeMs = () => LOGIN_SETTINGS.sessionDays * 24 * 60 * 60 * 1000;
 
 function verifySession(token) {
   try {
@@ -58,4 +68,12 @@ function verifySession(token) {
   }
 }
 
-module.exports = { generateLetterPassword, hashPassword, checkPassword, passwordProblem, signSession, verifySession };
+module.exports = {
+  generateLetterPassword,
+  hashPassword,
+  checkPassword,
+  passwordProblem,
+  signSession,
+  verifySession,
+  sessionLifetimeMs,
+};

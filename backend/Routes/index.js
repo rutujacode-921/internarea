@@ -8,6 +8,7 @@ const language = require("./language");
 const resume = require("./resume");
 const payment = require("./payment");
 const auth = require("./auth");
+const sessions = require("./sessions");
 const spaceRoutes = require("./space");
 
 router.use("/admin", admin);
@@ -18,6 +19,7 @@ router.use("/language", language);
 router.use("/resumes", resume);
 router.use("/payments", payment);
 router.use("/auth", auth);
+router.use("/auth", sessions);
 router.use("/space", spaceRoutes);
 
 

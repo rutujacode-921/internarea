@@ -8,6 +8,8 @@ import LanguageSwitcher from "@/Components/LanguageSwitcher";
 import LanguageHistory from "@/Components/LanguageHistory";
 import ResumeProfileCard from "@/Components/ResumeProfileCard";
 import PasswordResetHistory from "@/Components/PasswordResetHistory";
+import ActiveSessions from "@/Components/security/ActiveSessions";
+import LoginHistory from "@/Components/security/LoginHistory";
 
 const index = () => {
   const user = useSelector(selectuser);
@@ -125,6 +127,10 @@ const index = () => {
                   <PasswordResetHistory />
                 </>
               )}
+
+              {/* Login security (every account) */}
+              <ActiveSessions />
+              <LoginHistory />
             </div>
           </div>
         </div>

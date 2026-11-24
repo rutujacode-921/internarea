@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
 import { Loader2 } from "lucide-react";
-import { api, getApiError } from "@/lib/api";
-import { startPasswordSession } from "@/lib/session";
+import { requestSignIn } from "@/lib/signIn";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import GoogleSignInButton from "@/Components/GoogleSignInButton";
+import { useSignInFlow } from "@/Components/SignInFlow";
 import { AuthCard, Field, fieldClass, FormError, isStrongPassword, PasswordInput } from "@/Components/AuthLayout";
 
 // Create an account with email and/or mobile number + password.
 export default function SignupPage() {
   const { t } = useLanguage();
-  const router = useRouter();
+  const flow = useSignInFlow({ successMessage: t("account.signup.success") });
   const [form, setForm] = useState({ name: "", email: "", phone: "", password: "", confirm: "" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,6 +18,7 @@ export default function SignupPage() {
 
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (busy) return;
     if (form.name.trim().length < 2) return setError(t("account.signup.errors.name"));
     if (!form.email.trim() && !form.phone.trim()) return setError(t("account.signup.errors.contact"));
     if (!isStrongPassword(form.password)) return setError(t("account.passwordRule"));
@@ -27,22 +26,27 @@ export default function SignupPage() {
     setBusy(true);
     setError(null);
     try {
-      const { data } = await api.post("/api/auth/register", {
+      const data = await requestSignIn("/api/auth/register", {
         name: form.name.trim(),
         email: form.email.trim(),
         phone: form.phone.trim(),
         password: form.password,
       });
-      startPasswordSession(data.token, data.user);
-      toast.success(t("account.signup.success"));
-      router.push("/");
+      flow.handleResult(data);
     } catch (e) {
-      const err = getApiError(e);
-      setError(err.code === "NETWORK" ? t("errors.network") : err.message || t("errors.generic"));
+      setError(flow.describeError(e));
     } finally {
       setBusy(false);
     }
   };
+
+  if (flow.pending) {
+    return (
+      <AuthCard title={t("security.otp.title")} subtitle={t("security.otp.subtitle")}>
+        {flow.otpStep}
+      </AuthCard>
+    );
+  }
 
   return (
     <AuthCard title={t("account.signup.title")} subtitle={t("account.signup.subtitle")}>
@@ -62,6 +66,7 @@ export default function SignupPage() {
         <Field id="confirm" label={t("account.fields.confirmPassword")}>
           <PasswordInput id="confirm" value={form.confirm} onChange={set("confirm")} autoComplete="new-password" />
         </Field>
+        {flow.blockedNotice}
         <FormError message={error} />
         <button type="submit" disabled={busy} className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-60">
           {busy && <Loader2 className="h-4 w-4 animate-spin" />}
@@ -73,7 +78,7 @@ export default function SignupPage() {
         {t("account.or")}
         <span className="h-px flex-1 bg-gray-200" />
       </div>
-      <GoogleSignInButton onSignedIn={() => router.push("/")} />
+      <GoogleSignInButton onResult={flow.handleResult} onError={(e) => setError(flow.describeError(e))} disabled={busy} />
       <p className="mt-6 text-center text-sm text-gray-600">
         {t("account.signup.haveAccount")}{" "}
         <Link href="/login" className="font-medium text-blue-600 hover:text-blue-700">

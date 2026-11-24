@@ -18,21 +18,13 @@ const {
   passwordProblem,
   signSession,
 } = require("../utils/passwords");
+const LoginActivity = require("../Model/LoginActivity");
+const { beginSignIn, recordAttempt, revokeSessions, publicUser } = require("../services/loginSecurity");
 const { translate, getRequestLanguage } = require("../i18n/messages");
 const { RESET_SETTINGS: R, LOGIN_SETTINGS } = require("../config/auth");
 
 const HOUR = 60 * 60 * 1000;
 const secondsUntil = (date) => Math.max(0, Math.ceil((new Date(date).getTime() - Date.now()) / 1000));
-
-const publicUser = (user) => ({
-  uid: user.uid,
-  name: user.name,
-  email: user.email || null,
-  phone: user.phone || null,
-  provider: "password",
-  mustChangePassword: Boolean(user.mustChangePassword),
-  passwordChangedAt: user.passwordChangedAt,
-});
 
 // "email" or "phone" depending on what was typed.
 function parseIdentifier(value) {
@@ -91,28 +83,34 @@ router.post(
       if (error?.code === 11000) return sendError(req, res, 409, "ACCOUNT_EXISTS");
       throw error;
     }
-    res.status(201).json({ token: signSession(user), user: publicUser(user) });
+    // The new account's first session follows the same rules as any login.
+    return beginSignIn(req, res, { user, kind: "signup", client: body.client, requestId: body.requestId });
   })
 );
 
-// POST /api/auth/login - email or mobile number + password.
+// POST /api/auth/login - email or mobile number + password. The password is
+// checked here; the login environment rules (Chrome OTP, mobile hours) are
+// applied by beginSignIn.
 router.post(
   "/login",
   asyncHandler(async (req, res) => {
-    const { identifier, password } = req.body || {};
+    const { identifier, password, client, requestId } = req.body || {};
     const parsed = parseIdentifier(identifier);
     if (!parsed || typeof password !== "string" || !password) {
       return sendError(req, res, 401, "INVALID_CREDENTIALS");
     }
     const user = await User.findOne({ authProvider: "password", [parsed.field]: parsed.value });
     if (!user) return sendError(req, res, 401, "INVALID_CREDENTIALS");
+    const attempt = { uid: user.uid, provider: "password", requestId };
 
     if (user.lockedUntil && user.lockedUntil > new Date()) {
       const minutes = Math.ceil(secondsUntil(user.lockedUntil) / 60);
+      await recordAttempt(req, { ...attempt, status: "account_locked" }, client);
       return sendError(req, res, 429, "LOGIN_LOCKED", { minutes }, { retryAfter: minutes * 60 });
     }
 
     if (!(await checkPassword(password, user.passwordHash))) {
+      await recordAttempt(req, { ...attempt, status: "failed_password" }, client);
       // Lock the account for a while after repeated failures.
       const failed = await User.findOneAndUpdate({ _id: user._id }, { $inc: { failedLoginCount: 1 } }, { new: true });
       if (failed.failedLoginCount >= LOGIN_SETTINGS.maxFailedAttempts) {
@@ -125,17 +123,16 @@ router.post(
       return sendError(req, res, 401, "INVALID_CREDENTIALS");
     }
 
-    await User.updateOne({ _id: user._id }, { $set: { failedLoginCount: 0, lockedUntil: null } });
-    res.json({ token: signSession(user), user: publicUser(user), mustChangePassword: user.mustChangePassword });
+    const fresh = await User.findOneAndUpdate({ _id: user._id }, { $set: { failedLoginCount: 0, lockedUntil: null } }, { new: true });
+    return beginSignIn(req, res, { user: fresh, client, requestId });
   })
 );
 
-// GET /api/auth/me - the signed-in password account.
+// GET /api/auth/me - the signed-in account (password or Google).
 router.get(
   "/me",
   requireAuth,
   asyncHandler(async (req, res) => {
-    if (req.authUser.provider !== "password") return sendError(req, res, 400, "NOT_PASSWORD_ACCOUNT");
     const user = await User.findOne({ uid: req.authUser.uid });
     res.json({ user: publicUser(user) });
   })
@@ -165,7 +162,9 @@ router.post(
       },
       { new: true }
     );
-    res.json({ token: signSession(updated), user: publicUser(updated) });
+    await revokeSessions({ uid: user.uid, _id: { $ne: req.sessionId } }, "password_changed");
+    const session = await LoginActivity.findById(req.sessionId).select("expiresAt");
+    res.json({ token: signSession(updated, req.sessionId, session.expiresAt), user: publicUser(updated) });
   })
 );
 
@@ -287,6 +286,7 @@ async function deliverNewPassword(req, res, reset) {
       $inc: { passwordVersion: 1 },
     }
   );
+  await revokeSessions({ uid: user.uid }, "password_reset");
   const done = await PasswordReset.findOneAndUpdate(
     { _id: reset._id },
     { $set: { status: "completed", completedAt: new Date() }, $push: { events: { type: "completed", at: new Date() } } },

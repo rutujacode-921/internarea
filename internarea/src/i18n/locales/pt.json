@@ -957,5 +957,113 @@
         "mention": "mencionou você"
       }
     }
+  },
+  "security": {
+    "otp": {
+      "title": "Confirme que é você",
+      "subtitle": "Entrar pelo Google Chrome exige um código de uso único.",
+      "chromeTitle": "Verificação extra para o Google Chrome",
+      "sentEmail": "Enviamos um código de 6 dígitos para seu e-mail {{destination}}.",
+      "sentSms": "Enviamos um código de 6 dígitos por SMS para {{destination}}.",
+      "resent": "Um novo código foi enviado. O anterior não funciona mais.",
+      "locked": "Muitos códigos incorretos. Faça login novamente para receber um novo código.",
+      "expired": "Esta verificação expirou. Faça login novamente.",
+      "startOver": "Fazer login novamente",
+      "codeExpired": "Este código expirou. Solicite um novo.",
+      "attemptsLeft": "{{count}} tentativa(s) restante(s)",
+      "verify": "Verificar e entrar",
+      "noResends": "Sem reenvios restantes",
+      "resend": "Reenviar código ({{count}} restantes)",
+      "windowHint": "Você tem {{time}} para concluir o login."
+    },
+    "mobileBlockedTitle": "Login pelo celular indisponível agora",
+    "mobileBlocked": "O login pelo celular só é permitido entre 10:00 e 13:00 IST.",
+    "deviceTypes": {
+      "desktop": "Computador",
+      "laptop": "Notebook",
+      "tablet": "Tablet",
+      "mobile": "Celular"
+    },
+    "locationUnknown": "Local desconhecido",
+    "unknownBrowser": "Navegador desconhecido",
+    "thisDevice": "Este dispositivo",
+    "viaGoogle": "Google",
+    "viaPassword": "Senha",
+    "loadFailed": "Não foi possível carregar esta seção. Tente novamente.",
+    "history": {
+      "title": "Histórico de login",
+      "subtitle": "Cada tentativa de login na sua conta, com navegador, dispositivo, endereço IP e local aproximado.",
+      "empty": "Nenhum login registrado ainda.",
+      "log": "Registro de verificação",
+      "loadMore": "Mostrar anteriores"
+    },
+    "statuses": {
+      "success": "Login realizado",
+      "otp_pending": "Aguardando código",
+      "failed_password": "Senha incorreta",
+      "otp_locked": "Muitos códigos incorretos",
+      "account_locked": "Conta bloqueada",
+      "blocked_mobile_hours": "Bloqueado: horário móvel",
+      "otp_expired": "Não verificado (expirado)",
+      "otp_send_failed": "Código não enviado",
+      "unknown_account": "Conta desconhecida"
+    },
+    "flags": {
+      "newDevice": "Novo dispositivo",
+      "newBrowser": "Novo navegador",
+      "newIp": "Novo IP",
+      "newCountry": "Novo país",
+      "otpVerified": "OTP verificado",
+      "otpRequired": "OTP exigido",
+      "trusted": "Dispositivo confiável",
+      "ipChanged": "IP mudou {{count}}×"
+    },
+    "endReasons": {
+      "signed_out": "Desconectado",
+      "revoked": "Desconectado remotamente",
+      "password_changed": "Encerrada: senha alterada",
+      "password_reset": "Encerrada: senha redefinida",
+      "mobile_hours_ended": "Encerrada: fim do horário móvel",
+      "session_limit": "Encerrada: sessões demais",
+      "expired": "Expirada"
+    },
+    "events": {
+      "credentials_ok": "Senha / conta Google verificada",
+      "failed_password": "Senha incorreta",
+      "account_locked": "Bloqueado: conta bloqueada",
+      "blocked_mobile_hours": "Bloqueado: fora do horário móvel",
+      "otp_sent": "Código enviado",
+      "otp_resent": "Código reenviado",
+      "otp_failed": "Código incorreto",
+      "otp_locked": "Bloqueado após muitos códigos incorretos",
+      "otp_expired": "Verificação expirada",
+      "otp_code_expired": "Código expirado",
+      "otp_send_failed": "Não foi possível enviar o código",
+      "otp_verified": "Código verificado",
+      "otp_step_resumed": "Verificação retomada",
+      "session_started": "Sessão iniciada",
+      "revoked": "Desconectado",
+      "ip_changed": "Endereço IP alterado",
+      "device_mismatch": "Usada em outro navegador (recusada)"
+    },
+    "sessions": {
+      "title": "Sessões ativas",
+      "subtitle": "Dispositivos conectados à sua conta agora. Desconecte os que você não reconhece.",
+      "signedIn": "Entrou em {{date}}",
+      "lastActive": "Ativo por último em {{date}}",
+      "signOut": "Desconectar",
+      "signedOutOne": "Esse dispositivo foi desconectado.",
+      "signedOutAll": "Todos os outros dispositivos foram desconectados.",
+      "signOutOthers": "Desconectar todos os outros dispositivos ({{count}})",
+      "onlyThis": "Você só está conectado neste dispositivo."
+    },
+    "devices": {
+      "title": "Dispositivos confiáveis",
+      "subtitle": "Navegadores que concluíram um login verificado. Remover um o desconecta e trata o próximo login como novo.",
+      "trustedOn": "Confiável desde {{date}}",
+      "lastUsed": "último uso {{date}}",
+      "remove": "Remover dispositivo confiável",
+      "removed": "Dispositivo removido."
+    }
   }
 }

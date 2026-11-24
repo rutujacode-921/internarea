@@ -3,29 +3,37 @@ import { auth } from "@/firebase/firebase";
 import { store } from "@/store/store";
 import { login, logout } from "@/Feature/Userslice";
 
-// Sessions for email/mobile + password accounts. Google accounts keep using
-// Firebase; this token is only set for password accounts.
+// Server sessions for every account. Password accounts log in with
+// /api/auth/login; Google accounts exchange their Firebase ID token at
+// /api/auth/google. Either way the API is called with this session token, so
+// the server can apply the login rules and sign out other devices.
 
 const TOKEN_KEY = "internarea.session";
+let memoryToken: string | null = null;
 
-export interface PasswordUser {
+export interface SessionUser {
   uid: string;
-  name: string;
+  name: string | null;
   email: string | null;
   phone: string | null;
-  provider: "password";
+  photo: string | null;
+  provider: "password" | "google";
   mustChangePassword: boolean;
 }
+/** @deprecated use SessionUser */
+export type PasswordUser = SessionUser;
 
 export function getSessionToken(): string | null {
+  if (typeof window === "undefined") return null;
   try {
-    return typeof window === "undefined" ? null : window.localStorage.getItem(TOKEN_KEY);
+    return window.localStorage.getItem(TOKEN_KEY) || memoryToken;
   } catch {
-    return null;
+    return memoryToken;
   }
 }
 
 function setSessionToken(token: string | null) {
+  memoryToken = token;
   try {
     if (token) window.localStorage.setItem(TOKEN_KEY, token);
     else window.localStorage.removeItem(TOKEN_KEY);
@@ -34,43 +42,62 @@ function setSessionToken(token: string | null) {
   }
 }
 
-// True when signed in either way.
-export const hasActiveSession = () => Boolean(auth.currentUser || getSessionToken());
+export const hasActiveSession = () => Boolean(getSessionToken());
 
-const toReduxUser = (user: PasswordUser) => ({
+const toReduxUser = (user: SessionUser) => ({
   uid: user.uid,
   name: user.name,
   email: user.email,
   phoneNumber: user.phone,
-  photo: null,
-  provider: "password",
+  photo: user.photo,
+  provider: user.provider,
   mustChangePassword: user.mustChangePassword,
 });
 
-// Called after logging in, signing up or changing the password.
-export function startPasswordSession(token: string, user: PasswordUser) {
-  setSessionToken(token);
-  store.dispatch(login(toReduxUser(user)));
-}
-
-// Refreshes the signed-in user (e.g. on page load).
-export function applyPasswordUser(user: PasswordUser) {
-  store.dispatch(login(toReduxUser(user)));
-}
-
-export async function endSession() {
-  setSessionToken(null);
+// Firebase is only used for the Google popup; the server session takes over.
+async function leaveFirebase() {
   try {
     if (auth.currentUser) await signOut(auth);
   } catch {
     // Already signed out.
   }
+}
+
+// Called after logging in, signing up, verifying the login code or changing the password.
+export function startSession(token: string, user: SessionUser) {
+  setSessionToken(token);
+  store.dispatch(login(toReduxUser(user)));
+  leaveFirebase();
+}
+export const startPasswordSession = startSession;
+
+// Refreshes the signed-in user (e.g. on page load).
+export function applySessionUser(user: SessionUser) {
+  store.dispatch(login(toReduxUser(user)));
+}
+export const applyPasswordUser = applySessionUser;
+
+// "Log out": ends the session on the server too, so it disappears from Active sessions.
+export async function endSession() {
+  const token = getSessionToken();
+  if (token) {
+    try {
+      // Imported lazily to avoid a circular import with the API client.
+      const { api } = await import("@/lib/api");
+      await api.post("/api/auth/logout", null, { timeout: 5000 });
+    } catch {
+      // Offline or already signed out: the session still ends locally.
+    }
+  }
+  setSessionToken(null);
+  await leaveFirebase();
   store.dispatch(logout());
 }
 
-// Signs out locally without calling the server (e.g. the token was revoked).
-export function dropPasswordSession() {
+// Signs out locally without calling the server (e.g. the session was revoked).
+export function dropSession() {
   if (!getSessionToken()) return;
   setSessionToken(null);
-  if (!auth.currentUser) store.dispatch(logout());
+  store.dispatch(logout());
 }
+export const dropPasswordSession = dropSession;

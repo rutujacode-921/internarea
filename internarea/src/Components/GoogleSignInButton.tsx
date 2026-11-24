@@ -1,24 +1,43 @@
 import React, { useState } from "react";
-import { signInWithPopup } from "firebase/auth";
-import { toast } from "react-toastify";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { auth, provider } from "@/firebase/firebase";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { requestSignIn, SignInResult } from "@/lib/signIn";
 
-// "Continue with Google" (Firebase). Used on the log-in and sign-up pages.
-export default function GoogleSignInButton({ onSignedIn }: { onSignedIn?: () => void }) {
+// "Continue with Google". Firebase shows Google's popup; the resulting ID token
+// is then exchanged for a server session, which applies the same login rules
+// as password sign-in (Chrome OTP, mobile hours) and shows up in Login History.
+export default function GoogleSignInButton({
+  onResult,
+  onError,
+  disabled,
+}: {
+  onResult: (data: SignInResult) => void;
+  onError: (error: unknown) => void;
+  disabled?: boolean;
+}) {
   const { t } = useLanguage();
   const [busy, setBusy] = useState(false);
 
   const signIn = async () => {
+    if (busy) return;
     setBusy(true);
+    let popupDone = false;
     try {
-      await signInWithPopup(auth, provider);
-      toast.success(t("auth.loginSuccess"));
-      onSignedIn?.();
+      const credential = await signInWithPopup(auth, provider);
+      popupDone = true;
+      const idToken = await credential.user.getIdToken();
+      const data = await requestSignIn("/api/auth/google", { idToken });
+      onResult(data);
     } catch (error) {
+      const code = (error as { code?: string })?.code || "";
+      // Closing the popup isn't an error worth reporting.
+      if (!popupDone && /popup-closed|cancelled-popup/.test(code)) return;
       console.error(error);
-      toast.error(t("auth.loginFailed"));
+      onError(popupDone ? error : new Error(t("auth.loginFailed")));
     } finally {
+      // The server session replaces Firebase's; nothing else uses it.
+      if (auth.currentUser) signOut(auth).catch(() => undefined);
       setBusy(false);
     }
   };
@@ -27,7 +46,7 @@ export default function GoogleSignInButton({ onSignedIn }: { onSignedIn?: () => 
     <button
       type="button"
       onClick={signIn}
-      disabled={busy}
+      disabled={busy || disabled}
       className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 hover:bg-gray-50 disabled:opacity-60"
     >
       <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">

@@ -957,5 +957,113 @@
         "mention": "te mencionó"
       }
     }
+  },
+  "security": {
+    "otp": {
+      "title": "Confirma que eres tú",
+      "subtitle": "Iniciar sesión desde Google Chrome requiere un código de un solo uso.",
+      "chromeTitle": "Comprobación adicional para Google Chrome",
+      "sentEmail": "Enviamos un código de 6 dígitos a tu correo {{destination}}.",
+      "sentSms": "Enviamos un código de 6 dígitos por SMS a {{destination}}.",
+      "resent": "Se envió un código nuevo. El anterior ya no funciona.",
+      "locked": "Demasiados códigos incorrectos. Vuelve a iniciar sesión para recibir un código nuevo.",
+      "expired": "Esta verificación ha caducado. Vuelve a iniciar sesión.",
+      "startOver": "Iniciar sesión de nuevo",
+      "codeExpired": "Este código ha caducado. Solicita uno nuevo.",
+      "attemptsLeft": "Te quedan {{count}} intento(s)",
+      "verify": "Verificar e iniciar sesión",
+      "noResends": "No quedan reenvíos",
+      "resend": "Reenviar código (quedan {{count}})",
+      "windowHint": "Tienes {{time}} para terminar de iniciar sesión."
+    },
+    "mobileBlockedTitle": "Inicio de sesión móvil no disponible ahora",
+    "mobileBlocked": "Solo se puede iniciar sesión desde un teléfono móvil entre las 10:00 y las 13:00 IST.",
+    "deviceTypes": {
+      "desktop": "Ordenador",
+      "laptop": "Portátil",
+      "tablet": "Tableta",
+      "mobile": "Móvil"
+    },
+    "locationUnknown": "Ubicación desconocida",
+    "unknownBrowser": "Navegador desconocido",
+    "thisDevice": "Este dispositivo",
+    "viaGoogle": "Google",
+    "viaPassword": "Contraseña",
+    "loadFailed": "No se pudo cargar esta sección. Inténtalo de nuevo.",
+    "history": {
+      "title": "Historial de inicios de sesión",
+      "subtitle": "Cada intento de inicio de sesión en tu cuenta, con navegador, dispositivo, dirección IP y ubicación aproximada.",
+      "empty": "Aún no hay inicios de sesión registrados.",
+      "log": "Registro de verificación",
+      "loadMore": "Mostrar anteriores"
+    },
+    "statuses": {
+      "success": "Sesión iniciada",
+      "otp_pending": "Esperando código",
+      "failed_password": "Contraseña incorrecta",
+      "otp_locked": "Demasiados códigos incorrectos",
+      "account_locked": "Cuenta bloqueada",
+      "blocked_mobile_hours": "Bloqueado: horario móvil",
+      "otp_expired": "No verificado (caducado)",
+      "otp_send_failed": "Código no enviado",
+      "unknown_account": "Cuenta desconocida"
+    },
+    "flags": {
+      "newDevice": "Dispositivo nuevo",
+      "newBrowser": "Navegador nuevo",
+      "newIp": "IP nueva",
+      "newCountry": "País nuevo",
+      "otpVerified": "OTP verificado",
+      "otpRequired": "OTP requerido",
+      "trusted": "Dispositivo de confianza",
+      "ipChanged": "IP cambiada {{count}}×"
+    },
+    "endReasons": {
+      "signed_out": "Sesión cerrada",
+      "revoked": "Cerrada a distancia",
+      "password_changed": "Finalizada: contraseña cambiada",
+      "password_reset": "Finalizada: contraseña restablecida",
+      "mobile_hours_ended": "Finalizada: fin del horario móvil",
+      "session_limit": "Finalizada: demasiadas sesiones",
+      "expired": "Caducada"
+    },
+    "events": {
+      "credentials_ok": "Contraseña / cuenta de Google verificada",
+      "failed_password": "Contraseña incorrecta",
+      "account_locked": "Bloqueado: cuenta bloqueada",
+      "blocked_mobile_hours": "Bloqueado: fuera del horario móvil",
+      "otp_sent": "Código enviado",
+      "otp_resent": "Código reenviado",
+      "otp_failed": "Código incorrecto",
+      "otp_locked": "Bloqueado tras demasiados códigos incorrectos",
+      "otp_expired": "Verificación caducada",
+      "otp_code_expired": "Código caducado",
+      "otp_send_failed": "No se pudo enviar el código",
+      "otp_verified": "Código verificado",
+      "otp_step_resumed": "Verificación reanudada",
+      "session_started": "Sesión iniciada",
+      "revoked": "Sesión cerrada",
+      "ip_changed": "Dirección IP cambiada",
+      "device_mismatch": "Usada desde otro navegador (rechazada)"
+    },
+    "sessions": {
+      "title": "Sesiones activas",
+      "subtitle": "Dispositivos con sesión iniciada en tu cuenta. Cierra la sesión en los que no reconozcas.",
+      "signedIn": "Inició sesión el {{date}}",
+      "lastActive": "Última actividad {{date}}",
+      "signOut": "Cerrar sesión",
+      "signedOutOne": "Se cerró la sesión en ese dispositivo.",
+      "signedOutAll": "Se cerró la sesión en todos los demás dispositivos.",
+      "signOutOthers": "Cerrar sesión en los demás dispositivos ({{count}})",
+      "onlyThis": "Solo tienes la sesión iniciada en este dispositivo."
+    },
+    "devices": {
+      "title": "Dispositivos de confianza",
+      "subtitle": "Navegadores que completaron un inicio de sesión verificado. Al quitar uno se cierra su sesión y su próximo inicio se trata como nuevo.",
+      "trustedOn": "De confianza desde {{date}}",
+      "lastUsed": "último uso {{date}}",
+      "remove": "Quitar dispositivo de confianza",
+      "removed": "Dispositivo eliminado."
+    }
   }
 }

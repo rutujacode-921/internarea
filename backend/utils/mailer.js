@@ -79,6 +79,41 @@ async function sendNewPasswordEmail({ to, password, uiLanguage }) {
   });
 }
 
+// Sends the OTP required to finish signing in from Google Chrome.
+async function sendLoginOtpEmail({ to, code, uiLanguage, minutes, where }) {
+  const t = (key, vars) => translate(uiLanguage, `loginOtpEmail.${key}`, vars);
+  await sendOtpEmail({
+    to,
+    code,
+    subject: t("subject"),
+    heading: t("heading"),
+    intro: t("intro", { where }),
+    expiry: t("expiry", { minutes }),
+    ignore: t("ignore"),
+  });
+}
+
+// Tells the account owner about a sign-in from a device or browser not seen before.
+async function sendNewSignInAlertEmail({ to, uiLanguage, where, when, ip }) {
+  const t = (key, vars) => translate(uiLanguage, `newSignInEmail.${key}`, vars);
+  const subject = t("subject");
+  const lines = [t("intro"), `${where}\n${when}\nIP: ${ip}`, t("notYou")];
+  const html = `
+  <div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#1f2937">
+    <h2 style="color:#2563eb;margin:0 0 16px">${escapeHtml(t("heading"))}</h2>
+    <p>${escapeHtml(lines[0])}</p>
+    <p style="background:#eff6ff;border-radius:8px;padding:16px;margin:24px 0;white-space:pre-line">${escapeHtml(lines[1])}</p>
+    <p style="color:#6b7280;font-size:13px">${escapeHtml(lines[2])}</p>
+  </div>`;
+  const smtp = getTransporter();
+  if (!smtp) {
+    if (process.env.NODE_ENV === "production") throw new Error("SMTP is not configured");
+    console.log(`\n[DEV EMAIL] To: ${to} | Subject: ${subject} | ${lines[1].replace(/\n/g, " | ")}\n`);
+    return;
+  }
+  await smtp.sendMail({ from: process.env.MAIL_FROM || process.env.SMTP_USER, to, subject, text: lines.join("\n\n"), html });
+}
+
 // Shared layout for code emails. Prints the code to the console in development without SMTP.
 async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore, label = "OTP" }) {
   const text = `${heading}\n\n${intro}\n\n${code}\n\n${expiry}\n\n${ignore}`;
@@ -110,4 +145,11 @@ async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore,
   });
 }
 
-module.exports = { sendLanguageOtpEmail, sendPaymentOtpEmail, sendResetOtpEmail, sendNewPasswordEmail };
+module.exports = {
+  sendLanguageOtpEmail,
+  sendPaymentOtpEmail,
+  sendResetOtpEmail,
+  sendNewPasswordEmail,
+  sendLoginOtpEmail,
+  sendNewSignInAlertEmail,
+};

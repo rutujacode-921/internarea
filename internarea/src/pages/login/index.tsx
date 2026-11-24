@@ -1,49 +1,50 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import { Loader2 } from "lucide-react";
 import { selectuser } from "@/Feature/Userslice";
-import { api, getApiError } from "@/lib/api";
-import { startPasswordSession } from "@/lib/session";
+import { requestSignIn } from "@/lib/signIn";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import GoogleSignInButton from "@/Components/GoogleSignInButton";
+import { useSignInFlow } from "@/Components/SignInFlow";
 import { AuthCard, Field, fieldClass, FormError, PasswordInput } from "@/Components/AuthLayout";
 
-// Log in with email or mobile number + password, or with Google.
+// Log in with email or mobile number + password, or with Google. Signing in
+// from Google Chrome adds an email OTP step; mobile phones are only allowed
+// in the configured hours (both decided by the server).
 export default function LoginPage() {
   const { t } = useLanguage();
-  const router = useRouter();
   const user = useSelector(selectuser);
+  const flow = useSignInFlow({ successMessage: t("auth.loginSuccess") });
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const goNext = () => {
-    const next = typeof router.query.next === "string" && router.query.next.startsWith("/") ? router.query.next : "/";
-    router.push(next);
-  };
-
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (busy) return;
     if (!identifier.trim() || !password) return setError(t("account.login.fillAll"));
     setBusy(true);
     setError(null);
     try {
-      const { data } = await api.post("/api/auth/login", { identifier: identifier.trim(), password });
-      startPasswordSession(data.token, data.user);
-      toast.success(t("auth.loginSuccess"));
-      if (data.user.mustChangePassword) router.replace("/change-password");
-      else goNext();
+      const data = await requestSignIn("/api/auth/login", { identifier: identifier.trim(), password });
+      setPassword("");
+      flow.handleResult(data);
     } catch (e) {
-      const err = getApiError(e);
-      setError(err.code === "NETWORK" ? t("errors.network") : err.message || t("errors.generic"));
+      setError(flow.describeError(e));
     } finally {
       setBusy(false);
     }
   };
+
+  if (flow.pending) {
+    return (
+      <AuthCard title={t("security.otp.title")} subtitle={t("security.otp.subtitle")}>
+        {flow.otpStep}
+      </AuthCard>
+    );
+  }
 
   if (user) {
     return (
@@ -77,6 +78,7 @@ export default function LoginPage() {
             {t("account.login.forgot")}
           </Link>
         </div>
+        {flow.blockedNotice}
         <FormError message={error} />
         <button type="submit" disabled={busy} className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:opacity-60">
           {busy && <Loader2 className="h-4 w-4 animate-spin" />}
@@ -88,7 +90,7 @@ export default function LoginPage() {
         {t("account.or")}
         <span className="h-px flex-1 bg-gray-200" />
       </div>
-      <GoogleSignInButton onSignedIn={goNext} />
+      <GoogleSignInButton onResult={flow.handleResult} onError={(e) => setError(flow.describeError(e))} disabled={busy} />
       <p className="mt-6 text-center text-sm text-gray-600">
         {t("account.login.noAccount")}{" "}
         <Link href="/signup" className="font-medium text-blue-600 hover:text-blue-700">
