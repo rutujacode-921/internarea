@@ -1065,5 +1065,158 @@
       "remove": "Remover dispositivo confiável",
       "removed": "Dispositivo removido."
     }
+  },
+  "plans": {
+    "nav": "Planos",
+    "title": "Escolha seu plano",
+    "subtitle": "Candidate-se a mais estágios todo mês. Faça upgrade, downgrade ou cancele quando quiser.",
+    "signIn": "Faça login para ver e gerenciar seu plano.",
+    "loadFailed": "Não foi possível carregar seu plano.",
+    "recovered": "Seu pagamento anterior foi concluído e seu plano foi atualizado.",
+    "paymentsOff": "Pagamentos indisponíveis no momento. Tente mais tarde.",
+    "mockMode": "Modo de teste: os pagamentos são simulados e nada é cobrado.",
+    "noEmail": "Sua conta não tem e-mail, então não podemos enviar faturas. Apenas contas com e-mail podem comprar planos.",
+    "yourPlan": "Seu plano",
+    "popular": "Popular",
+    "perMonthShort": "/ mês",
+    "pricePerMonth": "{{price}} / mês",
+    "unlimited": "Ilimitado",
+    "perMonth": "{{count}} por mês",
+    "howItWorks": "Planos pagos duram 30 dias e não renovam automaticamente. Renove nos últimos {{days}} dias; upgrades começam na hora, com crédito pelos dias não usados.",
+    "names": {
+      "free": "Grátis",
+      "bronze": "Bronze",
+      "silver": "Prata",
+      "gold": "Ouro"
+    },
+    "kinds": {
+      "new": "Nova assinatura",
+      "upgrade": "Upgrade",
+      "renewal": "Renovação"
+    },
+    "statuses": {
+      "paid": "Pago",
+      "created": "Pendente",
+      "failed": "Falhou",
+      "cancelled": "Cancelado",
+      "expired": "Expirado",
+      "refunded": "Reembolsado"
+    },
+    "window": {
+      "open": "Os pagamentos estão abertos agora.",
+      "closed": "Os pagamentos estão fechados agora.",
+      "hours": "Os planos podem ser comprados entre {{start}} e {{end}} {{zone}} todos os dias."
+    },
+    "features": {
+      "unlimited": "Candidaturas a estágio ilimitadas",
+      "limit": "{{count}} candidatura(s) a estágio por mês",
+      "period": "Válido por {{days}} dias",
+      "monthly": "Reinicia no dia 1 de cada mês",
+      "jobs": "Candidaturas a empregos sem limite",
+      "invoice": "Fatura por e-mail"
+    },
+    "actions": {
+      "current": "Plano atual",
+      "freeViaCancel": "Cancele seu plano para mudar",
+      "renewed": "Próximo período pago",
+      "renew": "Renovar por {{price}}",
+      "scheduled": "Começa na renovação",
+      "renewFrom": "Renovação abre em {{date}}",
+      "choose": "Escolher por {{price}}",
+      "upgrade": "Fazer upgrade",
+      "downgrade": "Downgrade na renovação",
+      "keep": "Manter {{plan}}",
+      "cancel": "Cancelar plano"
+    },
+    "toast": {
+      "downgradeScheduled": "Downgrade agendado para a próxima renovação.",
+      "kept": "Seu plano vai continuar.",
+      "cancelled": "Plano cancelado. Ele fica ativo até o fim do período."
+    },
+    "confirm": {
+      "downgrade": "Mudar para {{plan}} na próxima renovação ({{date}})? Você mantém o plano atual até lá.",
+      "cancel": "Cancelar seu plano? Ele fica ativo até {{date}} e depois você passa para Grátis. Não há reembolso do período atual.",
+      "cancelRefund": "Cancelar seu plano? Ele fica ativo até {{date}} e depois você passa para Grátis. O próximo período que você já pagou será reembolsado."
+    },
+    "overview": {
+      "title": "Seu plano",
+      "upgrade": "Fazer upgrade",
+      "manage": "Gerenciar plano",
+      "applications": "Candidaturas a estágio neste ciclo",
+      "remaining": "{{remaining}} de {{limit}} restantes",
+      "exhausted": "Você usou todas as suas candidaturas. Faça upgrade agora ou espere até {{date}}.",
+      "freeResets": "A cota grátis reinicia em {{date}}",
+      "endsOn": "Termina em {{date}}",
+      "renewsOn": "Renovação em {{date}}",
+      "scheduled": "Mudando para {{plan}} na renovação ({{date}})",
+      "nextPaid": "{{plan}} pago para o próximo período, a partir de {{date}}",
+      "cancelled": "Cancelado: você passará para Grátis quando este período acabar."
+    },
+    "checkout": {
+      "title": "Plano {{plan}}",
+      "type": "Tipo",
+      "applications": "Candidaturas a estágio",
+      "validity": "Validade",
+      "price": "Preço do plano",
+      "credit": "Crédito por dias não usados",
+      "total": "Total",
+      "renewalNote": "O próximo período começa quando o atual terminar.",
+      "mockTitle": "Checkout simulado (modo de teste)",
+      "mockNote": "Nenhum pagamento real é feito. Escolha o que deve acontecer:",
+      "mockPay": "Pagar {{amount}} (sucesso)",
+      "mockFail": "Falhar pagamento",
+      "mockCancel": "Cancelar",
+      "confirming": "Confirmando seu pagamento...",
+      "inCheckout": "Conclua o pagamento na janela do Razorpay.",
+      "creating": "Preparando o checkout seguro...",
+      "success": "Seu plano {{plan}} está ativo!",
+      "successRenewal": "Seu plano {{plan}} foi renovado!",
+      "emailSent": "Um e-mail de confirmação com sua fatura está a caminho.",
+      "transactionId": "ID da transação: {{id}}",
+      "pending": "Ainda estamos confirmando seu pagamento com o banco. Ele será atualizado sozinho; você não será cobrado duas vezes.",
+      "cancelled": "Pagamento cancelado. Nada foi cobrado.",
+      "pay": "Pagar {{amount}}",
+      "tryAgain": "Tentar novamente",
+      "secure": "Pagamento seguro pelo Razorpay. Os pagamentos são verificados no nosso servidor.",
+      "failed": "O pagamento falhou. Nada foi cobrado.",
+      "failedReason": "O pagamento falhou: {{reason}}",
+      "verifyFailed": "Não foi possível verificar este pagamento, então seu plano não mudou.",
+      "scriptFailed": "Não foi possível carregar a janela de pagamento. Verifique sua conexão e tente novamente.",
+      "refundedDuplicate": "Seu plano já tinha sido atualizado por outro pagamento, então este foi reembolsado."
+    },
+    "history": {
+      "payments": "Pagamentos e faturas",
+      "paymentsHelp": "Cada pagamento de plano, com o ID da transação e a fatura.",
+      "noPayments": "Nenhum pagamento de plano ainda.",
+      "test": "Teste",
+      "valid": "Válido {{from}} – {{to}}",
+      "refunded": "Reembolsado",
+      "invoice": "Fatura",
+      "activity": "Histórico da assinatura",
+      "noActivity": "Nenhuma alteração ainda.",
+      "until": "até {{date}}"
+    },
+    "events": {
+      "payment_blocked": "Pagamento bloqueado: fora do horário de pagamentos",
+      "activated": "Plano {{to}} ativado",
+      "upgraded": "Upgrade de {{from}} para {{to}}",
+      "renewed": "Renovado: {{to}} pago para o próximo período",
+      "renewal_started": "Novo período {{to}} iniciado",
+      "downgrade_scheduled": "Downgrade de {{from}} para {{to}} agendado",
+      "downgrade_undone": "Downgrade agendado desfeito",
+      "cancelled": "Plano {{from}} cancelado",
+      "cancellation_undone": "Cancelamento desfeito",
+      "cancellation_effective": "Plano {{from}} encerrado (cancelado), agora Grátis",
+      "expired": "Plano {{from}} expirou, agora Grátis",
+      "quota_reset": "Cota de candidaturas reiniciada ({{count}} usadas no ciclo anterior)",
+      "duplicate_payment": "Pagamento duplicado reembolsado"
+    },
+    "quota": {
+      "unlimited": "Plano {{plan}}: candidaturas a estágio ilimitadas.",
+      "exhausted": "Você usou todas as {{limit}} candidatura(s) do plano {{plan}}. Faça upgrade agora ou espere até {{date}}.",
+      "upgrade": "Faça upgrade do seu plano",
+      "left": "Restam {{remaining}} de {{limit}} candidatura(s) a estágio no seu plano {{plan}}.",
+      "seePlans": "Ver planos"
+    }
   }
 }

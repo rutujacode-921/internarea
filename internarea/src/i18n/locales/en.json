@@ -1065,5 +1065,158 @@
       "remove": "Remove trusted device",
       "removed": "Device removed."
     }
+  },
+  "plans": {
+    "nav": "Plans",
+    "title": "Choose your plan",
+    "subtitle": "Apply to more internships every month. Upgrade, downgrade or cancel any time.",
+    "signIn": "Please sign in to see and manage your plan.",
+    "loadFailed": "Couldn't load your plan.",
+    "recovered": "Your earlier payment went through, and your plan is updated.",
+    "paymentsOff": "Payments aren't available right now. Please try again later.",
+    "mockMode": "Test mode: payments are simulated and no money is charged.",
+    "noEmail": "Your account has no email address, so we can't send invoices. Plans can only be bought by accounts with an email.",
+    "yourPlan": "Your plan",
+    "popular": "Popular",
+    "perMonthShort": "/ month",
+    "pricePerMonth": "{{price}} / month",
+    "unlimited": "Unlimited",
+    "perMonth": "{{count}} per month",
+    "howItWorks": "Paid plans last 30 days and don't renew automatically. Renew in the last {{days}} days; upgrades start immediately with credit for unused days.",
+    "names": {
+      "free": "Free",
+      "bronze": "Bronze",
+      "silver": "Silver",
+      "gold": "Gold"
+    },
+    "kinds": {
+      "new": "New subscription",
+      "upgrade": "Upgrade",
+      "renewal": "Renewal"
+    },
+    "statuses": {
+      "paid": "Paid",
+      "created": "Pending",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "expired": "Expired",
+      "refunded": "Refunded"
+    },
+    "window": {
+      "open": "Payments are open now.",
+      "closed": "Payments are closed right now.",
+      "hours": "Plans can be bought between {{start}} and {{end}} {{zone}} every day."
+    },
+    "features": {
+      "unlimited": "Unlimited internship applications",
+      "limit": "{{count}} internship application(s) per month",
+      "period": "Valid for {{days}} days",
+      "monthly": "Resets on the 1st of every month",
+      "jobs": "Job applications not limited",
+      "invoice": "Invoice by email"
+    },
+    "actions": {
+      "current": "Current plan",
+      "freeViaCancel": "Cancel your plan to switch",
+      "renewed": "Next period paid",
+      "renew": "Renew for {{price}}",
+      "scheduled": "Starts at renewal",
+      "renewFrom": "Renewal opens on {{date}}",
+      "choose": "Choose for {{price}}",
+      "upgrade": "Upgrade",
+      "downgrade": "Downgrade at renewal",
+      "keep": "Keep {{plan}}",
+      "cancel": "Cancel plan"
+    },
+    "toast": {
+      "downgradeScheduled": "Downgrade scheduled for your next renewal.",
+      "kept": "Your plan will continue.",
+      "cancelled": "Plan cancelled. It stays active until the end of the period."
+    },
+    "confirm": {
+      "downgrade": "Switch to {{plan}} at your next renewal ({{date}})? You keep your current plan until then.",
+      "cancel": "Cancel your plan? It stays active until {{date}}, then you move to Free. There's no refund for the current period.",
+      "cancelRefund": "Cancel your plan? It stays active until {{date}}, then you move to Free. The next period you already paid for will be refunded."
+    },
+    "overview": {
+      "title": "Your plan",
+      "upgrade": "Upgrade plan",
+      "manage": "Manage plan",
+      "applications": "Internship applications this cycle",
+      "remaining": "{{remaining}} of {{limit}} left",
+      "exhausted": "You've used all your applications. Upgrade now, or wait until {{date}}.",
+      "freeResets": "Free quota resets on {{date}}",
+      "endsOn": "Ends on {{date}}",
+      "renewsOn": "Renewal due on {{date}}",
+      "scheduled": "Switching to {{plan}} at renewal ({{date}})",
+      "nextPaid": "{{plan}} paid for the next period, starting {{date}}",
+      "cancelled": "Cancelled: you'll move to Free when this period ends."
+    },
+    "checkout": {
+      "title": "{{plan}} plan",
+      "type": "Type",
+      "applications": "Internship applications",
+      "validity": "Valid",
+      "price": "Plan price",
+      "credit": "Credit for unused days",
+      "total": "Total",
+      "renewalNote": "Your next period starts when the current one ends.",
+      "mockTitle": "Simulated checkout (test mode)",
+      "mockNote": "No real payment is made. Choose what should happen:",
+      "mockPay": "Pay {{amount}} (success)",
+      "mockFail": "Fail payment",
+      "mockCancel": "Cancel",
+      "confirming": "Confirming your payment...",
+      "inCheckout": "Complete the payment in the Razorpay window.",
+      "creating": "Preparing secure checkout...",
+      "success": "Your {{plan}} plan is active!",
+      "successRenewal": "Your {{plan}} plan is renewed!",
+      "emailSent": "A confirmation email with your invoice is on its way.",
+      "transactionId": "Transaction ID: {{id}}",
+      "pending": "We're still confirming your payment with the bank. It will update on its own; you won't be charged twice.",
+      "cancelled": "Payment cancelled. You haven't been charged.",
+      "pay": "Pay {{amount}}",
+      "tryAgain": "Try again",
+      "secure": "Secure payment by Razorpay. Payments are verified on our server.",
+      "failed": "The payment failed. You haven't been charged.",
+      "failedReason": "The payment failed: {{reason}}",
+      "verifyFailed": "We couldn't verify this payment, so your plan wasn't changed.",
+      "scriptFailed": "Couldn't load the payment window. Check your connection and try again.",
+      "refundedDuplicate": "Your plan had already been updated by another payment, so this one has been refunded."
+    },
+    "history": {
+      "payments": "Payments & invoices",
+      "paymentsHelp": "Every plan payment, with its transaction ID and invoice.",
+      "noPayments": "No plan payments yet.",
+      "test": "Test",
+      "valid": "Valid {{from}} – {{to}}",
+      "refunded": "Refunded",
+      "invoice": "Invoice",
+      "activity": "Subscription history",
+      "noActivity": "No changes yet.",
+      "until": "until {{date}}"
+    },
+    "events": {
+      "payment_blocked": "Payment blocked: outside payment hours",
+      "activated": "{{to}} plan activated",
+      "upgraded": "Upgraded from {{from}} to {{to}}",
+      "renewed": "Renewed: {{to}} paid for the next period",
+      "renewal_started": "New {{to}} period started",
+      "downgrade_scheduled": "Downgrade from {{from}} to {{to}} scheduled",
+      "downgrade_undone": "Scheduled downgrade undone",
+      "cancelled": "{{from}} plan cancelled",
+      "cancellation_undone": "Cancellation undone",
+      "cancellation_effective": "{{from}} plan ended (cancelled), moved to Free",
+      "expired": "{{from}} plan expired, moved to Free",
+      "quota_reset": "Application quota reset ({{count}} used last cycle)",
+      "duplicate_payment": "Duplicate payment refunded"
+    },
+    "quota": {
+      "unlimited": "{{plan}} plan: unlimited internship applications.",
+      "exhausted": "You've used all {{limit}} application(s) in your {{plan}} plan. Upgrade now, or wait until {{date}}.",
+      "upgrade": "Upgrade your plan",
+      "left": "{{remaining}} of {{limit}} internship application(s) left on your {{plan}} plan.",
+      "seePlans": "See plans"
+    }
   }
 }

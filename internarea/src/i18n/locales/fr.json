@@ -1065,5 +1065,158 @@
       "remove": "Retirer l'appareil de confiance",
       "removed": "Appareil retiré."
     }
+  },
+  "plans": {
+    "nav": "Forfaits",
+    "title": "Choisissez votre forfait",
+    "subtitle": "Postulez à plus de stages chaque mois. Passez à un forfait supérieur ou inférieur, ou annulez à tout moment.",
+    "signIn": "Connectez-vous pour voir et gérer votre forfait.",
+    "loadFailed": "Impossible de charger votre forfait.",
+    "recovered": "Votre paiement précédent a abouti et votre forfait est à jour.",
+    "paymentsOff": "Les paiements ne sont pas disponibles pour le moment. Réessayez plus tard.",
+    "mockMode": "Mode test : les paiements sont simulés et aucun argent n'est débité.",
+    "noEmail": "Votre compte n'a pas d'adresse e-mail, nous ne pouvons donc pas envoyer de factures. Seuls les comptes avec e-mail peuvent acheter un forfait.",
+    "yourPlan": "Votre forfait",
+    "popular": "Populaire",
+    "perMonthShort": "/ mois",
+    "pricePerMonth": "{{price}} / mois",
+    "unlimited": "Illimité",
+    "perMonth": "{{count}} par mois",
+    "howItWorks": "Les forfaits payants durent 30 jours et ne se renouvellent pas automatiquement. Renouvelez pendant les {{days}} derniers jours ; les passages à un forfait supérieur prennent effet immédiatement avec un crédit pour les jours non utilisés.",
+    "names": {
+      "free": "Gratuit",
+      "bronze": "Bronze",
+      "silver": "Argent",
+      "gold": "Or"
+    },
+    "kinds": {
+      "new": "Nouvel abonnement",
+      "upgrade": "Forfait supérieur",
+      "renewal": "Renouvellement"
+    },
+    "statuses": {
+      "paid": "Payé",
+      "created": "En attente",
+      "failed": "Échoué",
+      "cancelled": "Annulé",
+      "expired": "Expiré",
+      "refunded": "Remboursé"
+    },
+    "window": {
+      "open": "Les paiements sont ouverts.",
+      "closed": "Les paiements sont fermés pour le moment.",
+      "hours": "Les forfaits peuvent être achetés entre {{start}} et {{end}} {{zone}} chaque jour."
+    },
+    "features": {
+      "unlimited": "Candidatures de stage illimitées",
+      "limit": "{{count}} candidature(s) de stage par mois",
+      "period": "Valable {{days}} jours",
+      "monthly": "Réinitialisé le 1er de chaque mois",
+      "jobs": "Candidatures d'emploi illimitées",
+      "invoice": "Facture par e-mail"
+    },
+    "actions": {
+      "current": "Forfait actuel",
+      "freeViaCancel": "Annulez votre forfait pour changer",
+      "renewed": "Prochaine période payée",
+      "renew": "Renouveler pour {{price}}",
+      "scheduled": "Commence au renouvellement",
+      "renewFrom": "Renouvellement possible dès le {{date}}",
+      "choose": "Choisir pour {{price}}",
+      "upgrade": "Passer au supérieur",
+      "downgrade": "Passer à l'inférieur au renouvellement",
+      "keep": "Garder {{plan}}",
+      "cancel": "Annuler le forfait"
+    },
+    "toast": {
+      "downgradeScheduled": "Changement programmé pour votre prochain renouvellement.",
+      "kept": "Votre forfait continue.",
+      "cancelled": "Forfait annulé. Il reste actif jusqu'à la fin de la période."
+    },
+    "confirm": {
+      "downgrade": "Passer à {{plan}} lors de votre prochain renouvellement ({{date}}) ? Vous gardez votre forfait actuel d'ici là.",
+      "cancel": "Annuler votre forfait ? Il reste actif jusqu'au {{date}}, puis vous passez à Gratuit. La période en cours n'est pas remboursée.",
+      "cancelRefund": "Annuler votre forfait ? Il reste actif jusqu'au {{date}}, puis vous passez à Gratuit. La prochaine période déjà payée sera remboursée."
+    },
+    "overview": {
+      "title": "Votre forfait",
+      "upgrade": "Améliorer le forfait",
+      "manage": "Gérer le forfait",
+      "applications": "Candidatures de stage sur ce cycle",
+      "remaining": "{{remaining}} sur {{limit}} restante(s)",
+      "exhausted": "Vous avez utilisé toutes vos candidatures. Passez à un forfait supérieur ou attendez le {{date}}.",
+      "freeResets": "Le quota gratuit se réinitialise le {{date}}",
+      "endsOn": "Se termine le {{date}}",
+      "renewsOn": "Renouvellement le {{date}}",
+      "scheduled": "Passage à {{plan}} au renouvellement ({{date}})",
+      "nextPaid": "{{plan}} payé pour la prochaine période, à partir du {{date}}",
+      "cancelled": "Annulé : vous passerez à Gratuit à la fin de cette période."
+    },
+    "checkout": {
+      "title": "Forfait {{plan}}",
+      "type": "Type",
+      "applications": "Candidatures de stage",
+      "validity": "Validité",
+      "price": "Prix du forfait",
+      "credit": "Crédit pour jours non utilisés",
+      "total": "Total",
+      "renewalNote": "Votre prochaine période commence à la fin de la période actuelle.",
+      "mockTitle": "Paiement simulé (mode test)",
+      "mockNote": "Aucun paiement réel n'est effectué. Choisissez le résultat :",
+      "mockPay": "Payer {{amount}} (succès)",
+      "mockFail": "Faire échouer le paiement",
+      "mockCancel": "Annuler",
+      "confirming": "Confirmation de votre paiement...",
+      "inCheckout": "Terminez le paiement dans la fenêtre Razorpay.",
+      "creating": "Préparation du paiement sécurisé...",
+      "success": "Votre forfait {{plan}} est actif !",
+      "successRenewal": "Votre forfait {{plan}} est renouvelé !",
+      "emailSent": "Un e-mail de confirmation avec votre facture est en route.",
+      "transactionId": "ID de transaction : {{id}}",
+      "pending": "Nous confirmons encore votre paiement avec la banque. Il se mettra à jour tout seul ; vous ne serez pas débité deux fois.",
+      "cancelled": "Paiement annulé. Vous n'avez pas été débité.",
+      "pay": "Payer {{amount}}",
+      "tryAgain": "Réessayer",
+      "secure": "Paiement sécurisé par Razorpay. Les paiements sont vérifiés sur notre serveur.",
+      "failed": "Le paiement a échoué. Vous n'avez pas été débité.",
+      "failedReason": "Le paiement a échoué : {{reason}}",
+      "verifyFailed": "Nous n'avons pas pu vérifier ce paiement, votre forfait n'a donc pas changé.",
+      "scriptFailed": "Impossible de charger la fenêtre de paiement. Vérifiez votre connexion et réessayez.",
+      "refundedDuplicate": "Votre forfait avait déjà été mis à jour par un autre paiement ; celui-ci a donc été remboursé."
+    },
+    "history": {
+      "payments": "Paiements et factures",
+      "paymentsHelp": "Chaque paiement de forfait, avec son ID de transaction et sa facture.",
+      "noPayments": "Aucun paiement de forfait pour le moment.",
+      "test": "Test",
+      "valid": "Valable {{from}} – {{to}}",
+      "refunded": "Remboursé",
+      "invoice": "Facture",
+      "activity": "Historique de l'abonnement",
+      "noActivity": "Aucun changement pour le moment.",
+      "until": "jusqu'au {{date}}"
+    },
+    "events": {
+      "payment_blocked": "Paiement bloqué : hors des horaires de paiement",
+      "activated": "Forfait {{to}} activé",
+      "upgraded": "Passage de {{from}} à {{to}}",
+      "renewed": "Renouvelé : {{to}} payé pour la prochaine période",
+      "renewal_started": "Nouvelle période {{to}} commencée",
+      "downgrade_scheduled": "Passage de {{from}} à {{to}} programmé",
+      "downgrade_undone": "Changement programmé annulé",
+      "cancelled": "Forfait {{from}} annulé",
+      "cancellation_undone": "Annulation retirée",
+      "cancellation_effective": "Forfait {{from}} terminé (annulé), passage à Gratuit",
+      "expired": "Forfait {{from}} expiré, passage à Gratuit",
+      "quota_reset": "Quota de candidatures réinitialisé ({{count}} utilisée(s) au cycle précédent)",
+      "duplicate_payment": "Paiement en double remboursé"
+    },
+    "quota": {
+      "unlimited": "Forfait {{plan}} : candidatures de stage illimitées.",
+      "exhausted": "Vous avez utilisé les {{limit}} candidature(s) de votre forfait {{plan}}. Passez à un forfait supérieur ou attendez le {{date}}.",
+      "upgrade": "Améliorer votre forfait",
+      "left": "Il vous reste {{remaining}} sur {{limit}} candidature(s) de stage avec le forfait {{plan}}.",
+      "seePlans": "Voir les forfaits"
+    }
   }
 }

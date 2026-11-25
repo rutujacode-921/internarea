@@ -16,7 +16,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectuser } from "@/Feature/Userslice";
-import { api, API_BASE_URL } from "@/lib/api";
+import { api, API_BASE_URL, getApiError } from "@/lib/api";
 import ResumePicker from "@/Components/ResumePicker";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -80,7 +80,8 @@ const index = () => {
       router.push("/job");
     } catch (error) {
       console.error(error);
-      toast.error(t("apply.failed"));
+      const err = getApiError(error);
+      toast.error(err.code === "NETWORK" ? t("errors.network") : err.message || t("apply.failed"));
     }
   };
   return (

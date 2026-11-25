@@ -77,6 +77,14 @@ function renderInvoicePdf(payment) {
   doc.font("Helvetica-Bold").fontSize(11).fillColor("#111827").text("Payment details", left);
   doc.font("Helvetica").fontSize(10).fillColor("#374151");
   doc.text(`Paid on: ${formatDate(payment.paidAt || payment.invoice.issuedAt)}`);
+  if (payment.purpose === "subscription" && payment.subscription?.plan) {
+    const sub = payment.subscription;
+    const planName = sub.plan.charAt(0).toUpperCase() + sub.plan.slice(1);
+    doc.text(`Plan: ${planName} (${sub.kind === "upgrade" ? "upgrade" : sub.kind === "renewal" ? "renewal" : "new subscription"})`);
+    if (sub.periodStart && sub.periodEnd) doc.text(`Valid: ${formatDate(sub.periodStart)} to ${formatDate(sub.periodEnd)}`);
+    if (sub.credit) doc.text(`Includes credit for unused days of the previous plan: ${money(sub.credit, payment.currency)} (full price ${money(sub.fullPrice, payment.currency)})`);
+  }
+  doc.text(`Transaction ID: ${payment._id}`);
   doc.text(`Payment ID: ${payment.razorpayPaymentId}`);
   doc.text(`Order ID: ${payment.razorpayOrderId}`);
   if (payment.method) doc.text(`Method: ${payment.method}`);

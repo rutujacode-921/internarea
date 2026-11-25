@@ -1065,5 +1065,158 @@
       "remove": "Quitar dispositivo de confianza",
       "removed": "Dispositivo eliminado."
     }
+  },
+  "plans": {
+    "nav": "Planes",
+    "title": "Elige tu plan",
+    "subtitle": "Postúlate a más prácticas cada mes. Mejora, reduce o cancela cuando quieras.",
+    "signIn": "Inicia sesión para ver y gestionar tu plan.",
+    "loadFailed": "No se pudo cargar tu plan.",
+    "recovered": "Tu pago anterior se completó y tu plan está actualizado.",
+    "paymentsOff": "Los pagos no están disponibles ahora. Inténtalo más tarde.",
+    "mockMode": "Modo de prueba: los pagos son simulados y no se cobra dinero.",
+    "noEmail": "Tu cuenta no tiene correo electrónico, así que no podemos enviar facturas. Solo las cuentas con correo pueden comprar planes.",
+    "yourPlan": "Tu plan",
+    "popular": "Popular",
+    "perMonthShort": "/ mes",
+    "pricePerMonth": "{{price}} / mes",
+    "unlimited": "Ilimitadas",
+    "perMonth": "{{count}} al mes",
+    "howItWorks": "Los planes de pago duran 30 días y no se renuevan automáticamente. Renueva en los últimos {{days}} días; las mejoras empiezan al momento con crédito por los días no usados.",
+    "names": {
+      "free": "Gratis",
+      "bronze": "Bronce",
+      "silver": "Plata",
+      "gold": "Oro"
+    },
+    "kinds": {
+      "new": "Nueva suscripción",
+      "upgrade": "Mejora",
+      "renewal": "Renovación"
+    },
+    "statuses": {
+      "paid": "Pagado",
+      "created": "Pendiente",
+      "failed": "Fallido",
+      "cancelled": "Cancelado",
+      "expired": "Caducado",
+      "refunded": "Reembolsado"
+    },
+    "window": {
+      "open": "Los pagos están abiertos ahora.",
+      "closed": "Los pagos están cerrados ahora.",
+      "hours": "Los planes se pueden comprar entre las {{start}} y las {{end}} {{zone}} todos los días."
+    },
+    "features": {
+      "unlimited": "Solicitudes de prácticas ilimitadas",
+      "limit": "{{count}} solicitud(es) de prácticas al mes",
+      "period": "Válido durante {{days}} días",
+      "monthly": "Se reinicia el día 1 de cada mes",
+      "jobs": "Solicitudes de empleo sin límite",
+      "invoice": "Factura por correo"
+    },
+    "actions": {
+      "current": "Plan actual",
+      "freeViaCancel": "Cancela tu plan para cambiar",
+      "renewed": "Próximo periodo pagado",
+      "renew": "Renovar por {{price}}",
+      "scheduled": "Empieza en la renovación",
+      "renewFrom": "La renovación abre el {{date}}",
+      "choose": "Elegir por {{price}}",
+      "upgrade": "Mejorar",
+      "downgrade": "Reducir en la renovación",
+      "keep": "Mantener {{plan}}",
+      "cancel": "Cancelar plan"
+    },
+    "toast": {
+      "downgradeScheduled": "Reducción programada para tu próxima renovación.",
+      "kept": "Tu plan continuará.",
+      "cancelled": "Plan cancelado. Sigue activo hasta el final del periodo."
+    },
+    "confirm": {
+      "downgrade": "¿Cambiar a {{plan}} en tu próxima renovación ({{date}})? Mantienes tu plan actual hasta entonces.",
+      "cancel": "¿Cancelar tu plan? Sigue activo hasta el {{date}} y luego pasas a Gratis. No hay reembolso del periodo actual.",
+      "cancelRefund": "¿Cancelar tu plan? Sigue activo hasta el {{date}} y luego pasas a Gratis. Se reembolsará el próximo periodo que ya pagaste."
+    },
+    "overview": {
+      "title": "Tu plan",
+      "upgrade": "Mejorar plan",
+      "manage": "Gestionar plan",
+      "applications": "Solicitudes de prácticas en este ciclo",
+      "remaining": "Quedan {{remaining}} de {{limit}}",
+      "exhausted": "Has usado todas tus solicitudes. Mejora ahora o espera hasta el {{date}}.",
+      "freeResets": "La cuota gratuita se reinicia el {{date}}",
+      "endsOn": "Termina el {{date}}",
+      "renewsOn": "Renovación el {{date}}",
+      "scheduled": "Cambio a {{plan}} en la renovación ({{date}})",
+      "nextPaid": "{{plan}} pagado para el próximo periodo, desde el {{date}}",
+      "cancelled": "Cancelado: pasarás a Gratis cuando termine este periodo."
+    },
+    "checkout": {
+      "title": "Plan {{plan}}",
+      "type": "Tipo",
+      "applications": "Solicitudes de prácticas",
+      "validity": "Validez",
+      "price": "Precio del plan",
+      "credit": "Crédito por días no usados",
+      "total": "Total",
+      "renewalNote": "Tu próximo periodo empieza cuando termine el actual.",
+      "mockTitle": "Pago simulado (modo de prueba)",
+      "mockNote": "No se realiza ningún pago real. Elige qué debe pasar:",
+      "mockPay": "Pagar {{amount}} (éxito)",
+      "mockFail": "Hacer fallar el pago",
+      "mockCancel": "Cancelar",
+      "confirming": "Confirmando tu pago...",
+      "inCheckout": "Completa el pago en la ventana de Razorpay.",
+      "creating": "Preparando el pago seguro...",
+      "success": "¡Tu plan {{plan}} está activo!",
+      "successRenewal": "¡Tu plan {{plan}} se ha renovado!",
+      "emailSent": "Te enviaremos un correo de confirmación con tu factura.",
+      "transactionId": "ID de transacción: {{id}}",
+      "pending": "Seguimos confirmando tu pago con el banco. Se actualizará solo; no se te cobrará dos veces.",
+      "cancelled": "Pago cancelado. No se te ha cobrado.",
+      "pay": "Pagar {{amount}}",
+      "tryAgain": "Intentar de nuevo",
+      "secure": "Pago seguro con Razorpay. Los pagos se verifican en nuestro servidor.",
+      "failed": "El pago falló. No se te ha cobrado.",
+      "failedReason": "El pago falló: {{reason}}",
+      "verifyFailed": "No pudimos verificar este pago, así que tu plan no cambió.",
+      "scriptFailed": "No se pudo cargar la ventana de pago. Revisa tu conexión e inténtalo de nuevo.",
+      "refundedDuplicate": "Tu plan ya se había actualizado con otro pago, así que este se ha reembolsado."
+    },
+    "history": {
+      "payments": "Pagos y facturas",
+      "paymentsHelp": "Cada pago de plan, con su ID de transacción y factura.",
+      "noPayments": "Aún no hay pagos de planes.",
+      "test": "Prueba",
+      "valid": "Válido {{from}} – {{to}}",
+      "refunded": "Reembolsado",
+      "invoice": "Factura",
+      "activity": "Historial de suscripción",
+      "noActivity": "Aún no hay cambios.",
+      "until": "hasta el {{date}}"
+    },
+    "events": {
+      "payment_blocked": "Pago bloqueado: fuera del horario de pagos",
+      "activated": "Plan {{to}} activado",
+      "upgraded": "Mejora de {{from}} a {{to}}",
+      "renewed": "Renovado: {{to}} pagado para el próximo periodo",
+      "renewal_started": "Nuevo periodo {{to}} iniciado",
+      "downgrade_scheduled": "Reducción de {{from}} a {{to}} programada",
+      "downgrade_undone": "Reducción programada anulada",
+      "cancelled": "Plan {{from}} cancelado",
+      "cancellation_undone": "Cancelación anulada",
+      "cancellation_effective": "Plan {{from}} finalizado (cancelado), ahora Gratis",
+      "expired": "Plan {{from}} caducado, ahora Gratis",
+      "quota_reset": "Cuota de solicitudes reiniciada ({{count}} usadas en el ciclo anterior)",
+      "duplicate_payment": "Pago duplicado reembolsado"
+    },
+    "quota": {
+      "unlimited": "Plan {{plan}}: solicitudes de prácticas ilimitadas.",
+      "exhausted": "Has usado las {{limit}} solicitud(es) de tu plan {{plan}}. Mejora ahora o espera hasta el {{date}}.",
+      "upgrade": "Mejora tu plan",
+      "left": "Te quedan {{remaining}} de {{limit}} solicitud(es) de prácticas en tu plan {{plan}}.",
+      "seePlans": "Ver planes"
+    }
   }
 }

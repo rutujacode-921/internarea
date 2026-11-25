@@ -10,6 +10,7 @@ import ResumeProfileCard from "@/Components/ResumeProfileCard";
 import PasswordResetHistory from "@/Components/PasswordResetHistory";
 import ActiveSessions from "@/Components/security/ActiveSessions";
 import LoginHistory from "@/Components/security/LoginHistory";
+import ProfileSubscription from "@/Components/subscription/ProfileSubscription";
 
 const index = () => {
   const user = useSelector(selectuser);
@@ -86,6 +87,9 @@ const index = () => {
                   <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
               </div>
+
+              {/* Internship application plan (Task 6) */}
+              <ProfileSubscription />
 
               <ResumeProfileCard />
 

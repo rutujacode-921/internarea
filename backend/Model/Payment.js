@@ -39,7 +39,7 @@ const PaymentSchema = new mongoose.Schema(
     uid: { type: String, required: true, index: true },
     email: String,
     name: String,
-    purpose: { type: String, enum: ["premium", "resume"], required: true },
+    purpose: { type: String, enum: ["premium", "resume", "subscription"], required: true },
     description: String,
     amount: { type: Number, required: true }, // paise
     currency: { type: String, default: "INR" },
@@ -49,7 +49,33 @@ const PaymentSchema = new mongoose.Schema(
       default: "created",
       index: true,
     },
-    otpId: { type: mongoose.Schema.Types.ObjectId, ref: "PaymentOtp", required: true },
+    // Premium and resume payments need a verified email OTP first; plan purchases don't.
+    otpId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "PaymentOtp",
+      required: function requiredOtp() {
+        return this.purpose !== "subscription";
+      },
+    },
+
+    // For plan purchases (Task 6).
+    subscription: {
+      plan: { type: String, default: null },
+      // new | upgrade | renewal
+      kind: { type: String, default: null },
+      // Unused days of the previous plan taken off an upgrade (paise).
+      credit: { type: Number, default: 0 },
+      fullPrice: { type: Number, default: null },
+      // The subscription this order was priced against. If it has changed by
+      // the time the payment arrives (e.g. another tab paid first), the payment
+      // is a duplicate and is refunded.
+      basisPlan: { type: String, default: null },
+      basisPeriodEnd: { type: Date, default: null },
+      // The period it bought (filled in when activated).
+      periodStart: { type: Date, default: null },
+      periodEnd: { type: Date, default: null },
+    },
+    confirmationEmailAt: { type: Date, default: null },
     // "mock" for simulated test payments (PAYMENT_MODE=mock).
     gateway: { type: String, enum: ["razorpay", "mock"], default: "razorpay" },
 
@@ -92,6 +118,11 @@ PaymentSchema.index(
   { unique: true, partialFilterExpression: { razorpayPaymentId: { $type: "string" } } }
 );
 PaymentSchema.index({ uid: 1, createdAt: -1 });
+// At most one unpaid plan order per user at a time (stops duplicate checkouts).
+PaymentSchema.index(
+  { uid: 1 },
+  { unique: true, name: "one_open_subscription_order", partialFilterExpression: { purpose: "subscription", status: "created" } }
+);
 
 // Sequential invoice numbers.
 const CounterSchema = new mongoose.Schema({

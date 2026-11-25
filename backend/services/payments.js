@@ -106,6 +106,11 @@ async function fulfill(paymentDoc) {
   if (!payment || payment.status !== "paid" || payment.fulfilledAt) return payment;
 
   try {
+    if (payment.purpose === "subscription") {
+      // Loaded lazily: the subscription service uses this module too.
+      return await require("./subscriptions").activateFromPayment(payment);
+    }
+
     if (payment.purpose === "premium") {
       const durationMs = PRODUCTS.premium.durationDays * 24 * 60 * 60 * 1000;
       const now = new Date();
@@ -300,6 +305,8 @@ async function reconcile(payment) {
 }
 
 module.exports = {
+  refundPayment,
+  assignInvoice,
   getRazorpay,
   isValidCheckoutSignature,
   isValidWebhookSignature,

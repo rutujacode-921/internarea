@@ -114,6 +114,59 @@ async function sendNewSignInAlertEmail({ to, uiLanguage, where, when, ip }) {
   await smtp.sendMail({ from: process.env.MAIL_FROM || process.env.SMTP_USER, to, subject, text: lines.join("\n\n"), html });
 }
 
+// Subscription confirmation with the invoice PDF attached (Task 6).
+async function sendSubscriptionConfirmationEmail({ payment, plan, invoicePdf, uiLanguage }) {
+  const t = (key, vars) => translate(uiLanguage, `subscriptionEmail.${key}`, vars);
+  const date = (d) =>
+    d ? new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Kolkata" }).format(new Date(d)) + " IST" : "-";
+  const amount = new Intl.NumberFormat("en-IN", { style: "currency", currency: payment.currency || "INR" }).format(payment.amount / 100);
+  const sub = payment.subscription || {};
+  const quota = plan.limit === null ? t("unlimited") : t("perMonth", { count: plan.limit });
+  const rows = [
+    [t("plan"), `${plan.name} (${quota})`],
+    [t("amount"), amount + (sub.credit ? ` (${t("credit", { amount: new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(sub.credit / 100) })})` : "")],
+    [t("validity"), `${date(sub.periodStart)} → ${date(sub.periodEnd)}`],
+    [t("transactionId"), payment.razorpayPaymentId],
+    [t("orderId"), payment.razorpayOrderId],
+    [t("invoice"), payment.invoice.number],
+    [t("paidOn"), date(payment.paidAt)],
+    [t("billedTo"), [payment.name, payment.email].filter(Boolean).join(", ")],
+    [t("method"), payment.gateway === "mock" ? t("testPayment") : payment.method || "Razorpay"],
+  ];
+  const subject = t("subject", { plan: plan.name });
+  const intro = t(sub.kind === "renewal" ? "introRenewal" : sub.kind === "upgrade" ? "introUpgrade" : "intro", { plan: plan.name });
+  const text = `${t("heading")}\n\n${intro}\n\n${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\n${t("footer")}`;
+  const html = `
+  <div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#1f2937">
+    <h2 style="color:#2563eb;margin:0 0 16px">${escapeHtml(t("heading"))}</h2>
+    <p>${escapeHtml(intro)}</p>
+    <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px">
+      ${rows
+        .map(
+          ([k, v]) =>
+            `<tr><td style="padding:8px;border-bottom:1px solid #e5e7eb;color:#6b7280;white-space:nowrap">${escapeHtml(k)}</td><td style="padding:8px;border-bottom:1px solid #e5e7eb;font-weight:600">${escapeHtml(v)}</td></tr>`
+        )
+        .join("")}
+    </table>
+    <p style="color:#6b7280;font-size:13px">${escapeHtml(t("footer"))}</p>
+  </div>`;
+
+  const smtp = getTransporter();
+  if (!smtp) {
+    if (process.env.NODE_ENV === "production") throw new Error("SMTP is not configured");
+    console.log(`\n[DEV EMAIL] To: ${payment.email} | Subject: ${subject} | Invoice ${payment.invoice.number} attached (${invoicePdf.length} bytes)\n${text}\n`);
+    return;
+  }
+  await smtp.sendMail({
+    from: process.env.MAIL_FROM || process.env.SMTP_USER,
+    to: payment.email,
+    subject,
+    text,
+    html,
+    attachments: [{ filename: `${payment.invoice.number}.pdf`, content: invoicePdf, contentType: "application/pdf" }],
+  });
+}
+
 // Shared layout for code emails. Prints the code to the console in development without SMTP.
 async function sendOtpEmail({ to, code, subject, heading, intro, expiry, ignore, label = "OTP" }) {
   const text = `${heading}\n\n${intro}\n\n${code}\n\n${expiry}\n\n${ignore}`;
@@ -152,4 +205,5 @@ module.exports = {
   sendNewPasswordEmail,
   sendLoginOtpEmail,
   sendNewSignInAlertEmail,
+  sendSubscriptionConfirmationEmail,
 };

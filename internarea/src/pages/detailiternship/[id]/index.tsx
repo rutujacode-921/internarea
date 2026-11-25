@@ -1,4 +1,6 @@
 import { selectuser } from "@/Feature/Userslice";
+import ApplicationQuotaNote from "@/Components/subscription/ApplicationQuotaNote";
+import { notifySubscriptionChanged } from "@/lib/subscription";
 import axios from "axios";
 import {
   ArrowUpRight,
@@ -14,7 +16,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { api, API_BASE_URL } from "@/lib/api";
+import { api, API_BASE_URL, getApiError } from "@/lib/api";
 import ResumePicker from "@/Components/ResumePicker";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -74,11 +76,15 @@ const index = () => {
         resumeId,
       }
       await api.post("/api/application", applicationdata)
+      notifySubscriptionChanged()
       toast.success(t("apply.success"))
       router.push('/internship')
     } catch (error) {
       console.error(error)
-      toast.error(t("apply.failed"))
+      // e.g. the plan's monthly limit is used up, or already applied.
+      const err = getApiError(error)
+      toast.error(err.code === "NETWORK" ? t("errors.network") : err.message || t("apply.failed"))
+      notifySubscriptionChanged()
     }
   }
   return (
@@ -185,6 +191,7 @@ const index = () => {
               </div>
             </div>
             <div className="p-6 space-y-6">
+              {user && <ApplicationQuotaNote />}
               {/* Resume Section */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">

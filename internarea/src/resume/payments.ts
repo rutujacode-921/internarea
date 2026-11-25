@@ -1,6 +1,6 @@
 import { api } from "@/lib/api";
 
-export type Purpose = "premium" | "resume";
+export type Purpose = "premium" | "resume" | "subscription";
 export type TransactionStatus = "created" | "paid" | "failed" | "cancelled" | "expired" | "refunded";
 
 export interface Transaction {

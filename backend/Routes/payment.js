@@ -47,6 +47,7 @@ function serialize(payment) {
     premiumUntil: payment.premiumUntil,
     duplicate: Boolean(payment.duplicateOf),
     refundStatus: payment.refundStatus,
+    subscription: payment.purpose === "subscription" ? payment.subscription : undefined,
   };
 }
 

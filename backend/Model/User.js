@@ -20,6 +20,32 @@ const UserSchema = new mongoose.Schema(
     // The generated resume sent with internship and job applications.
     defaultResumeId: { type: mongoose.Schema.Types.ObjectId, ref: "GeneratedResume", default: null },
 
+    // ---- Internship application plan (Task 6) --------------------------------
+    // Kept up to date lazily by services/subscriptions.js (expiry, quota resets).
+    subscription: {
+      plan: { type: String, enum: ["free", "bronze", "silver", "gold"], default: "free" },
+      // The current prepaid period (paid plans only).
+      periodStart: { type: Date, default: null },
+      periodEnd: { type: Date, default: null },
+      // Cancelled: the plan stays until periodEnd, then becomes Free.
+      cancelAtPeriodEnd: { type: Boolean, default: false },
+      // Downgrade chosen for the next renewal.
+      scheduledPlan: { type: String, default: null },
+      // The next period, already paid for (renewed early).
+      prepaidNext: {
+        plan: { type: String, default: null },
+        paymentId: { type: mongoose.Schema.Types.ObjectId, default: null },
+      },
+      // Internship applications used in the current billing cycle.
+      usedApplications: { type: Number, default: 0 },
+      // Identifies the billing cycle that usedApplications belongs to.
+      cycleKey: { type: String, default: null },
+      // Payments already applied, so a payment is never counted twice.
+      appliedPaymentIds: { type: [mongoose.Schema.Types.ObjectId], default: [] },
+      // Bumped on every change; updates check it so concurrent changes can't clash.
+      version: { type: Number, default: 0 },
+    },
+
     // ---- Public Space ---------------------------------------------------------
     // Unique handle for @mentions and profile links (lowercase a-z, 0-9, _ and .).
     username: { type: String, default: null },
